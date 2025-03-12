@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
-import { Image, Menu, X } from "lucide-react"
+import { Image, Menu, X, Type } from "lucide-react"
 import { useState, useEffect } from "react"
 import { useMobile } from "@/hooks/useMobile"
 
@@ -22,6 +22,11 @@ const navItems: NavItem[] = [
     href: "/tools/image",
     icon: <Image className="h-5 w-5" />,
   },
+  {
+    title: "폰트 프리뷰 및 변환기",
+    href: "/tools/font",
+    icon: <Type className="h-5 w-5" />,
+  },
   // 향후 도구들이 여기에 추가될 예정
 ]
 
@@ -34,6 +39,9 @@ export default function Sidebar() {
   useEffect(() => {
     if (isMobile) {
       setIsOpen(false)
+    } else {
+      // PC에서는 항상 열린 상태로 유지
+      setIsOpen(true)
     }
   }, [pathname, isMobile])
 
