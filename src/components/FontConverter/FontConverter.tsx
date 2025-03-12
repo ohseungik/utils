@@ -172,7 +172,7 @@ export default function FontConverter() {
     
                 <TabsContent value="custom">
                   <div className="space-y-4">
-                    <div>
+                    <div className="flex flex-col gap-3">
                       <Label htmlFor="preview-text">미리보기 텍스트</Label>
                       <Input
                         id="preview-text"
@@ -181,7 +181,7 @@ export default function FontConverter() {
                         placeholder="미리보기할 텍스트를 입력하세요"
                       />
                     </div>
-                    <div>
+                    <div className="flex flex-col gap-3">
                       <div className="flex justify-between mb-2">
                         <Label htmlFor="font-size">글자 크기: {fontSize}px</Label>
                       </div>
