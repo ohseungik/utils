@@ -36,7 +36,7 @@ export default function FontConverter() {
     
         setIsProcessing(true)
         try {
-          const result = await convertFont(originalFont, targetFormat)
+          const result = await convertFont(originalFont)
           setConvertedFontUrl(result)
           toast("폰트 변환 완료 폰트가 성공적으로 변환되었습니다.");
         } catch (error) {

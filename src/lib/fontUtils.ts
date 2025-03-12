@@ -1,7 +1,7 @@
 "use client"
 
 // 폰트 변환 함수
-export async function convertFont(file: File, targetFormat: string): Promise<string> {
+export async function convertFont(file: File): Promise<string> {
   return new Promise((resolve, reject) => {
     try {
       // 브라우저에서는 실제 폰트 변환이 제한적이므로,
@@ -32,7 +32,7 @@ export async function convertFont(file: File, targetFormat: string): Promise<str
 }
 
 // 폰트 정보 추출 함수 (향후 구현)
-export async function extractFontInfo(file: File): Promise<any> {
+export async function extractFontInfo(file: File): Promise<{ name: string; format: string | undefined; size: number }> {
   // 이 함수는 폰트 파일에서 메타데이터를 추출합니다.
   // 실제 구현은 복잡하므로 여기서는 생략합니다.
   return {
