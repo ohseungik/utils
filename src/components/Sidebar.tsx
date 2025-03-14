@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
-import { Image, Menu, X, Type } from "lucide-react"
+import { Image, Menu, X, Type, Code } from "lucide-react"
 import { useState, useEffect } from "react"
 import { useMobile } from "@/hooks/useMobile"
 
@@ -26,6 +26,11 @@ const navItems: NavItem[] = [
     title: "폰트 프리뷰 및 변환기",
     href: "/tools/font",
     icon: <Type className="h-5 w-5" />,
+  },
+  {
+    title: "CSS 코드 압축기",
+    href: "/tools/css",
+    icon: <Code className="h-5 w-5" />,
   },
   // 향후 도구들이 여기에 추가될 예정
 ]

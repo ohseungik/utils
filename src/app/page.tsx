@@ -3,7 +3,7 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Image, Type } from "lucide-react"
+import { Image, Type, Code } from "lucide-react"
 
 export const metadata: Metadata = {
   title: "웹 도구 모음",
@@ -50,6 +50,12 @@ export default function Home() {
       description: "웹 폰트 미리보기 및 다양한 포맷(WOFF, TTF) 변환 기능을 제공합니다",
       icon: <Type className="h-5 w-5" />,
       href: "/tools/font",
+    },
+    {
+      title: "CSS 코드 압축기",
+      description: "CSS 코드를 Minify하고 포맷을 변환하는 기능을 제공합니다",
+      icon: <Code className="h-5 w-5" />,
+      href: "/tools/css",
     },
   ]
 
