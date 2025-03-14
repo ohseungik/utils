@@ -1,5 +1,7 @@
 "use client"
 
+import type React from "react"
+
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
@@ -64,12 +66,15 @@ export default function APITester() {
   // 요청 상태
   const [url, setUrl] = useState<string>("")
   const [method, setMethod] = useState<HttpMethod>("GET")
-  const [headers, setHeaders] = useState<RequestHeader[]>([
-    { id: generateUUID(), key: "", value: "", enabled: true },
-  ])
+  const [headers, setHeaders] = useState<RequestHeader[]>([{ id: generateUUID(), key: "", value: "", enabled: true }])
   const [params, setParams] = useState<RequestParam[]>([{ id: generateUUID(), key: "", value: "", enabled: true }])
   const [bodyType, setBodyType] = useState<BodyType>("none")
   const [requestBody, setRequestBody] = useState<string>("")
+
+  // 상태 변수에 CORS 프록시 관련 상태 추가
+  const [useCorsProxy, setUseCorsProxy] = useState<boolean>(false)
+  // CORS 프록시 URL 기본값 변경
+  const [corsProxyUrl, setCorsProxyUrl] = useState<string>("https://api.allorigins.win/raw?url=")
 
   // 응답 상태
   const [response, setResponse] = useState<ApiResponse | null>(null)
@@ -208,7 +213,19 @@ export default function APITester() {
       }
 
       // URL 준비 (파라미터 포함)
-      const finalUrl = getUrlWithParams()
+      let finalUrl = getUrlWithParams()
+
+      // CORS 프록시 적용
+      if (useCorsProxy && corsProxyUrl) {
+        // URL이 이미 인코딩되었는지 확인하고 적절히 처리
+        const encodedUrl = corsProxyUrl.includes("url=") ? encodeURIComponent(finalUrl) : finalUrl
+        finalUrl = corsProxyUrl + encodedUrl
+
+        // 프록시 사용 시 Origin 헤더 제거 (일부 프록시에서 문제 발생 가능)
+        if (headerObj["Origin"]) {
+          delete headerObj["Origin"]
+        }
+      }
 
       // 요청 시작 시간
       const startTime = performance.now()
@@ -326,7 +343,7 @@ export default function APITester() {
       setParams([{ id: generateUUID(), key: "", value: "", enabled: true }])
     }
 
-    toast(`요청 불러오기 완료 ${request.name} 요청을 불러왔습니다`)
+    toast(`요청 불러오기 완료 "${request.name}" 요청을 불러왔습니다`)
   }
 
   // 저장된 요청 삭제
@@ -416,29 +433,25 @@ export default function APITester() {
                 "nested": "value"
             }
         }`
-    
       case "form-data":
         return `{
             "name": "John Doe",
             "email": "john@example.com",
             "file": "파일 업로드는 지원되지 않습니다"
         }`
-
       case "x-www-form-urlencoded":
         return `{
             "name": "John Doe",
             "email": "john@example.com"
         }`
-
       case "raw":
         return "텍스트 본문을 입력하세요"
-
       default:
         return ""
     }
   }
 
-    // URL 입력 핸들러 수정 (약 85줄 근처)
+  // URL 입력 핸들러 수정 (약 85줄 근처)
   // setUrl 함수 부분을 수정합니다
   const handleUrlChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newUrl = e.target.value
@@ -549,10 +562,18 @@ export default function APITester() {
                 저장
               </Button>
             </div>
-            <Button variant="outline" size="sm" onClick={clearAll}>
-              <Trash2 className="mr-2 h-4 w-4" />
-              모두 지우기
-            </Button>
+            <div className="flex items-center gap-2">
+              <div className="flex items-center space-x-2">
+                <Switch id="use-cors-proxy" checked={useCorsProxy} onCheckedChange={setUseCorsProxy} />
+                <Label htmlFor="use-cors-proxy" className="text-sm whitespace-nowrap">
+                  CORS 프록시 사용
+                </Label>
+              </div>
+              <Button variant="outline" size="sm" onClick={clearAll}>
+                <Trash2 className="mr-2 h-4 w-4" />
+                모두 지우기
+              </Button>
+            </div>
           </div>
         </CardContent>
       </Card>
@@ -612,6 +633,7 @@ export default function APITester() {
                 <TabsTrigger value="params">파라미터</TabsTrigger>
                 <TabsTrigger value="headers">헤더</TabsTrigger>
                 <TabsTrigger value="body">본문</TabsTrigger>
+                <TabsTrigger value="settings">설정</TabsTrigger>
               </TabsList>
 
               <TabsContent value="params">
@@ -749,6 +771,90 @@ export default function APITester() {
                       <AlertDescription>GET 및 HEAD 요청은 일반적으로 본문을 포함하지 않습니다.</AlertDescription>
                     </Alert>
                   )}
+                </div>
+              </TabsContent>
+
+              <TabsContent value="settings">
+                <div className="space-y-4">
+                  <div>
+                    <div className="flex items-center justify-between mb-2">
+                      <Label htmlFor="cors-proxy">CORS 프록시 URL</Label>
+                      <div className="flex items-center space-x-2">
+                        <Switch id="use-cors-proxy-settings" checked={useCorsProxy} onCheckedChange={setUseCorsProxy} />
+                        <Label htmlFor="use-cors-proxy-settings" className="text-sm">
+                          활성화
+                        </Label>
+                      </div>
+                    </div>
+                    <Input
+                      id="cors-proxy"
+                      placeholder="https://api.allorigins.win/raw?url="
+                      value={corsProxyUrl}
+                      onChange={(e) => setCorsProxyUrl(e.target.value)}
+                      className="w-full"
+                      disabled={!useCorsProxy}
+                    />
+                    <p className="text-xs text-muted-foreground mt-1">
+                      CORS 오류 발생 시 프록시 서버를 통해 요청을 우회합니다.
+                    </p>
+
+                    <div className="mt-4 space-y-2">
+                      <p className="text-sm font-medium">추천 CORS 프록시:</p>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          onClick={() => setCorsProxyUrl("https://api.allorigins.win/raw?url=")}
+                          className="justify-start text-xs"
+                        >
+                          AllOrigins
+                        </Button>
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          onClick={() => setCorsProxyUrl("https://corsproxy.io/?")}
+                          className="justify-start text-xs"
+                        >
+                          CORS Proxy IO
+                        </Button>
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          onClick={() => setCorsProxyUrl("https://cors-anywhere.herokuapp.com/")}
+                          className="justify-start text-xs"
+                        >
+                          CORS Anywhere
+                        </Button>
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          onClick={() => setCorsProxyUrl("https://cors.bridged.cc/")}
+                          className="justify-start text-xs"
+                        >
+                          Bridged CORS
+                        </Button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <Alert>
+                    <AlertCircle className="h-4 w-4" />
+                    <AlertTitle>CORS 및 403 오류 해결 방법</AlertTitle>
+                    <AlertDescription className="space-y-2">
+                      <p>
+                        브라우저의 보안 정책으로 인해 다른 도메인의 API에 직접 요청할 때 CORS 오류가 발생할 수 있습니다.
+                      </p>
+                      <p>
+                        <strong>403 Forbidden 오류가 발생하는 경우:</strong>
+                      </p>
+                      <ul className="list-disc pl-5 space-y-1">
+                        <li>다른 CORS 프록시 서비스를 시도해보세요 (위 버튼 사용)</li>
+                        <li>API가 특정 API 키나 인증을 요구하는지 확인하세요</li>
+                        <li>요청 헤더에 Referer 또는 Origin 헤더가 필요할 수 있습니다</li>
+                        <li>일부 API는 프록시 서버를 통한 접근을 차단할 수 있습니다</li>
+                      </ul>
+                    </AlertDescription>
+                  </Alert>
                 </div>
               </TabsContent>
             </Tabs>
