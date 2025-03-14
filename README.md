@@ -9,3 +9,6 @@
 
  ### CSS 코드 압축기, 포맷팅 도구
  - https://utils-6fi.pages.dev/tools/css
+
+### JSON 포맷팅, 뷰어 도구
+ - https://utils-6fi.pages.dev/tools/json
