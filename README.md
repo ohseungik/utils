@@ -12,3 +12,9 @@
 
 ### JSON 포맷팅, 뷰어 도구
  - https://utils-6fi.pages.dev/tools/json
+
+### API 테스트 도구
+ - https://utils-6fi.pages.dev/tools/api
+
+
+해당 프로젝트는 AI를 통해서 만드는 프로젝트입니다.

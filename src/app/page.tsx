@@ -3,7 +3,7 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Image, Type, Code, FileJson } from "lucide-react"
+import { Image, Type, Code, FileJson, Globe } from "lucide-react"
 
 export const metadata: Metadata = {
   title: "웹 도구 모음",
@@ -62,6 +62,12 @@ export default function Home() {
       description: "JSON을 보기 좋게 정리하고 편집할 수 있는 도구입니다",
       icon: <FileJson className="h-5 w-5" />,
       href: "/tools/json",
+    },
+    {
+      title: "API 테스트 도구",
+      description: "Fetch 또는 Axios 기반 API 테스트 도구입니다",
+      icon: <Globe className="h-5 w-5" />,
+      href: "/tools/api",
     },
   ]
 

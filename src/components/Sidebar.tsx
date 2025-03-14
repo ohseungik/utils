@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
-import { Image, Menu, X, Type, Code, FileJson } from "lucide-react"
+import { Image, Menu, X, Type, Code, FileJson, Globe } from "lucide-react"
 import { useState, useEffect } from "react"
 import { useMobile } from "@/hooks/useMobile"
 
@@ -36,6 +36,11 @@ const navItems: NavItem[] = [
     title: "JSON 포매터 & 뷰어",
     href: "/tools/json",
     icon: <FileJson className="h-5 w-5" />,
+  },
+  {
+    title: "API 테스트 도구",
+    href: "/tools/api",
+    icon: <Globe className="h-5 w-5" />,
   },
   // 향후 도구들이 여기에 추가될 예정
 ]

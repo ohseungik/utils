@@ -11,7 +11,7 @@ import { Copy, FileCode, RefreshCw, Trash2, Wand2 } from "lucide-react"
 import { toast } from "sonner"
 import { minifyCss, beautifyCss } from "@/lib/cssUtils"
 
-export default function CssMinifier() {
+export default function CSSMinifier() {
   const [inputCss, setInputCss] = useState<string>("")
   const [outputCss, setOutputCss] = useState<string>("")
   const [isProcessing, setIsProcessing] = useState(false)

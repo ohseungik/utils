@@ -36,7 +36,7 @@ interface JsonNode {
   path: string
 }
 
-export default function JsonFormatter() {
+export default function JSONFormatter() {
   const [inputJson, setInputJson] = useState<string>("")
   const [outputJson, setOutputJson] = useState<string>("")
   const [isProcessing, setIsProcessing] = useState(false)
