@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
-import { Image, Menu, X, Type, Code } from "lucide-react"
+import { Image, Menu, X, Type, Code, FileJson } from "lucide-react"
 import { useState, useEffect } from "react"
 import { useMobile } from "@/hooks/useMobile"
 
@@ -31,6 +31,11 @@ const navItems: NavItem[] = [
     title: "CSS 코드 압축기",
     href: "/tools/css",
     icon: <Code className="h-5 w-5" />,
+  },
+  {
+    title: "JSON 포매터 & 뷰어",
+    href: "/tools/json",
+    icon: <FileJson className="h-5 w-5" />,
   },
   // 향후 도구들이 여기에 추가될 예정
 ]
@@ -94,7 +99,9 @@ export default function Sidebar() {
       >
         <div className="p-4 h-16 flex items-center border-b">
           {/* 타이틀 */}
-          <h1 className="font-bold text-xl">웹 도구</h1>
+          <Link href={"/"}>
+            <h1 className="font-bold text-xl">웹 도구</h1>
+          </Link>
         </div>
 
         <nav className="p-2 overflow-y-auto max-h-[calc(100vh-4rem)]">

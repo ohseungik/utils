@@ -3,7 +3,7 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Image, Type, Code } from "lucide-react"
+import { Image, Type, Code, FileJson } from "lucide-react"
 
 export const metadata: Metadata = {
   title: "웹 도구 모음",
@@ -56,6 +56,12 @@ export default function Home() {
       description: "CSS 코드를 Minify하고 포맷을 변환하는 기능을 제공합니다",
       icon: <Code className="h-5 w-5" />,
       href: "/tools/css",
+    },
+    {
+      title: "JSON 포매터 & 뷰어",
+      description: "JSON을 보기 좋게 정리하고 편집할 수 있는 도구입니다",
+      icon: <FileJson className="h-5 w-5" />,
+      href: "/tools/json",
     },
   ]
 
