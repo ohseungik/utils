@@ -116,19 +116,71 @@ export default function APITester() {
     setHeaders(headers.map((header) => (header.id === id ? { ...header, [field]: value } : header)))
   }
 
+  // URL을 파라미터로 업데이트하는 함수
+  const updateUrlWithParams = (paramsList: RequestParam[]) => {
+    // URL이 비어있으면 업데이트하지 않음
+    if (!url) return
+
+    try {
+      // 기본 URL 추출 (쿼리 파라미터 제외)
+      let baseUrl = url
+      const questionMarkIndex = url.indexOf("?")
+      if (questionMarkIndex !== -1) {
+        baseUrl = url.substring(0, questionMarkIndex)
+      }
+
+      // 활성화된 파라미터만 필터링
+      const enabledParams = paramsList.filter((param) => param.enabled && param.key)
+
+      // 파라미터가 없으면 기본 URL만 설정
+      if (enabledParams.length === 0) {
+        setUrl(baseUrl)
+        return
+      }
+
+      // URL 객체 생성
+      const urlObj = new URL(baseUrl.startsWith("http") ? baseUrl : `https://${baseUrl}`)
+
+      // 기존 파라미터 모두 제거
+      urlObj.search = ""
+
+      // 활성화된 파라미터 추가
+      enabledParams.forEach((param) => {
+        urlObj.searchParams.append(param.key, param.value)
+      })
+
+      // 프로토콜 유지하면서 URL 업데이트
+      const newUrl = baseUrl.startsWith("http") ? urlObj.toString() : urlObj.toString().replace(/^https?:\/\//, "")
+
+      setUrl(newUrl)
+    } catch (e) {
+      // URL 파싱 오류는 무시 (잘못된 URL 형식일 수 있음)
+      console.log("URL 업데이트 중 오류:", e)
+    }
+  }
+
   // 파라미터 추가
   const addParam = () => {
-    setParams([...params, { id: generateUUID(), key: "", value: "", enabled: true }])
+    const newParams = [...params, { id: generateUUID(), key: "", value: "", enabled: true }]
+    setParams(newParams)
+    // 파라미터가 추가될 때 URL 업데이트
+    updateUrlWithParams(newParams)
   }
 
   // 파라미터 제거
   const removeParam = (id: string) => {
-    setParams(params.filter((param) => param.id !== id))
+    const updatedParams = params.filter((param) => param.id !== id)
+    setParams(updatedParams)
+    // 파라미터가 제거될 때 URL 업데이트
+    updateUrlWithParams(updatedParams)
   }
 
   // 파라미터 업데이트
   const updateParam = (id: string, field: "key" | "value" | "enabled", value: string | boolean) => {
-    setParams(params.map((param) => (param.id === id ? { ...param, [field]: value } : param)))
+    const updatedParams = params.map((param) => (param.id === id ? { ...param, [field]: value } : param))
+    setParams(updatedParams)
+    // 파라미터가 변경될 때 URL 업데이트
+    updateUrlWithParams(updatedParams)
   }
 
   // URL에 파라미터 추가
@@ -456,11 +508,13 @@ export default function APITester() {
   const handleUrlChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newUrl = e.target.value
     setUrl(newUrl)
+  }
 
-    // URL에 쿼리 파라미터가 있는지 확인하고 파싱
+  // 이 함수는 URL을 파싱하고 파라미터를 추출합니다 (onBlur에서 호출됨)
+  const handleUrlBlur = () => {
     try {
-      if (newUrl && (newUrl.includes("?") || newUrl.includes("&"))) {
-        const urlObj = new URL(newUrl.startsWith("http") ? newUrl : `https://${newUrl}`)
+      if (url && (url.includes("?") || url.includes("&"))) {
+        const urlObj = new URL(url.startsWith("http") ? url : `https://${url}`)
 
         // 기존 파라미터 유지하면서 새 파라미터만 추가
         const newParams = Array.from(urlObj.searchParams.entries()).map(([key, value]) => ({
@@ -494,7 +548,7 @@ export default function APITester() {
         }
       }
     } catch (e) {
-      // URL 파싱 오류는 무시 (사용자가 URL을 입력 중일 수 있음)
+      // URL 파싱 오류는 무시 (잘못된 URL 형식일 수 있음)
       console.log("URL 파싱 중 오류:", e)
     }
   }
@@ -508,7 +562,7 @@ export default function APITester() {
             <div className="w-full md:w-1/5">
               <Label htmlFor="method">HTTP 메서드</Label>
               <Select value={method} onValueChange={(value) => setMethod(value as HttpMethod)}>
-                <SelectTrigger id="method" className="mt-2">
+                <SelectTrigger id="method" className="mt-2 w-full">
                   <SelectValue placeholder="메서드 선택" />
                 </SelectTrigger>
                 <SelectContent>
@@ -530,6 +584,7 @@ export default function APITester() {
                   placeholder="https://api.example.com/endpoint"
                   value={url}
                   onChange={handleUrlChange}
+                  onBlur={handleUrlBlur}
                   className="flex-1"
                 />
                 <Button onClick={sendRequest} disabled={isLoading || !url} className="whitespace-nowrap">
