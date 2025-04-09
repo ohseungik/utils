@@ -3,7 +3,7 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Image, Type, Code, FileJson, Globe } from "lucide-react"
+import { Image, Type, Code, FileJson, Globe, FileCode } from "lucide-react"
 
 export const metadata: Metadata = {
   title: "웹 도구 모음",
@@ -68,6 +68,12 @@ export default function Home() {
       description: "Fetch 또는 Axios 기반 API 테스트 도구입니다",
       icon: <Globe className="h-5 w-5" />,
       href: "/tools/api",
+    },
+    {
+      title: "Base64 인코딩/디코딩",
+      description: "텍스트와 파일을 Base64로 인코딩하고 디코딩할 수 있는 도구입니다",
+      icon: <FileCode className="h-5 w-5" />,
+      href: "/tools/base64",
     },
   ]
 
