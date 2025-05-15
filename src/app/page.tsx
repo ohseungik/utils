@@ -3,7 +3,7 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Image, Type, Code, FileJson, Globe, FileCode, Wand2 } from "lucide-react"
+import { Image, Type, Code, FileJson, Globe, FileCode, Wand2, QrCode } from "lucide-react"
 
 export const metadata: Metadata = {
   title: "웹 도구 모음",
@@ -80,6 +80,12 @@ export default function Home() {
       description: "CSS 코드를 Tailwind CSS 클래스로 변환해주는 도구입니다",
       icon: <Wand2 className="h-5 w-5" />,
       href: "/tools/tailwind",
+    },
+    {
+      title: "QR코드 생성기",
+      description: "텍스트나 URL을 QR코드로 변환하여 다운로드할 수 있는 도구입니다",
+      icon: <QrCode className="h-5 w-5" />,
+      href: "/tools/qrcode",
     },
   ]
 
