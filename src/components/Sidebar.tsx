@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
-import { Image, Menu, X, Type, Code, FileJson, Globe, FileCode } from "lucide-react"
+import { Image, Menu, X, Type, Code, FileJson, Globe, FileCode, Wand2 } from "lucide-react"
 import { useState, useEffect } from "react"
 import { useMobile } from "@/hooks/useMobile"
 
@@ -46,6 +46,11 @@ const navItems: NavItem[] = [
     title: "Base64 인코딩/디코딩",
     href: "/tools/base64",
     icon: <FileCode className="h-5 w-5" />,
+  },
+    {
+    title: "CSS → Tailwind 변환기",
+    href: "/tools/tailwind",
+    icon: <Wand2 className="h-5 w-5" />,
   },
   // 향후 도구들이 여기에 추가될 예정
 ]

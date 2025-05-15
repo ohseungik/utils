@@ -3,7 +3,7 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Image, Type, Code, FileJson, Globe, FileCode } from "lucide-react"
+import { Image, Type, Code, FileJson, Globe, FileCode, Wand2 } from "lucide-react"
 
 export const metadata: Metadata = {
   title: "웹 도구 모음",
@@ -74,6 +74,12 @@ export default function Home() {
       description: "텍스트와 파일을 Base64로 인코딩하고 디코딩할 수 있는 도구입니다",
       icon: <FileCode className="h-5 w-5" />,
       href: "/tools/base64",
+    },
+    {
+      title: "CSS → Tailwind 변환기",
+      description: "CSS 코드를 Tailwind CSS 클래스로 변환해주는 도구입니다",
+      icon: <Wand2 className="h-5 w-5" />,
+      href: "/tools/tailwind",
     },
   ]
 
