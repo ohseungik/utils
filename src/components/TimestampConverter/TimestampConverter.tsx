@@ -7,10 +7,7 @@ import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Calendar } from "@/components/ui/calendar"
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
-import { format } from "date-fns"
-import { CalendarIcon, Copy, RefreshCw } from "lucide-react"
+import { Copy, RefreshCw } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { formatTimestamp, getCurrentTimestamp, getTimezoneOptions } from "@/lib/dateUtils"
 
@@ -24,7 +21,7 @@ export default function TimestampConverter() {
   const [isValidTimestamp, setIsValidTimestamp] = useState(true)
 
   // Date to Timestamp
-  const [selectedDate, setSelectedDate] = useState<Date | undefined>(new Date())
+  const [selectedDate, setSelectedDate] = useState<string>(new Date().toISOString().split("T")[0])
   const [hours, setHours] = useState("00")
   const [minutes, setMinutes] = useState("00")
   const [seconds, setSeconds] = useState("00")
@@ -96,10 +93,11 @@ export default function TimestampConverter() {
     }
 
     try {
-      const date = new Date(selectedDate)
-      date.setHours(Number.parseInt(hours, 10) || 0)
-      date.setMinutes(Number.parseInt(minutes, 10) || 0)
-      date.setSeconds(Number.parseInt(seconds, 10) || 0)
+      const date = new Date(`${selectedDate}T${hours}:${minutes}:${seconds}`)
+      if (isNaN(date.getTime())) {
+        setTimestampResult({ seconds: "", milliseconds: "" })
+        return
+      }
 
       const timestampSeconds = Math.floor(date.getTime() / 1000).toString()
       const timestampMilliseconds = date.getTime().toString()
@@ -116,7 +114,7 @@ export default function TimestampConverter() {
   // Set current time
   const setCurrentTime = () => {
     const now = new Date()
-    setSelectedDate(now)
+    setSelectedDate(now.toISOString().split("T")[0])
     setHours(now.getHours().toString().padStart(2, "0"))
     setMinutes(now.getMinutes().toString().padStart(2, "0"))
     setSeconds(now.getSeconds().toString().padStart(2, "0"))
@@ -134,32 +132,18 @@ export default function TimestampConverter() {
       })
   }
 
-  // Handle time input changes
-  const handleHoursChange = (value: string) => {
-    const numValue = Number.parseInt(value, 10)
-    if (isNaN(numValue)) {
-      setHours("00")
-    } else if (numValue >= 0 && numValue <= 23) {
-      setHours(numValue.toString().padStart(2, "0"))
+  // Generate time options
+  const generateTimeOptions = (max: number) => {
+    const options = []
+    for (let i = 0; i <= max; i++) {
+      const value = i.toString().padStart(2, "0")
+      options.push(
+        <SelectItem key={value} value={value}>
+          {value}
+        </SelectItem>,
+      )
     }
-  }
-
-  const handleMinutesChange = (value: string) => {
-    const numValue = Number.parseInt(value, 10)
-    if (isNaN(numValue)) {
-      setMinutes("00")
-    } else if (numValue >= 0 && numValue <= 59) {
-      setMinutes(numValue.toString().padStart(2, "0"))
-    }
-  }
-
-  const handleSecondsChange = (value: string) => {
-    const numValue = Number.parseInt(value, 10)
-    if (isNaN(numValue)) {
-      setSeconds("00")
-    } else if (numValue >= 0 && numValue <= 59) {
-      setSeconds(numValue.toString().padStart(2, "0"))
-    }
+    return options
   }
 
   return (
@@ -300,26 +284,14 @@ export default function TimestampConverter() {
             <CardContent className="pt-6 space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <Label>날짜 선택</Label>
-                  <div className="flex flex-col space-y-2">
-                    <Popover>
-                      <PopoverTrigger asChild>
-                        <Button
-                          variant="outline"
-                          className={cn(
-                            "w-full justify-start text-left font-normal",
-                            !selectedDate && "text-muted-foreground",
-                          )}
-                        >
-                          <CalendarIcon className="mr-2 h-4 w-4" />
-                          {selectedDate ? format(selectedDate, "PPP") : <span>날짜 선택</span>}
-                        </Button>
-                      </PopoverTrigger>
-                      <PopoverContent className="w-auto p-0">
-                        <Calendar mode="single" selected={selectedDate} onSelect={setSelectedDate} initialFocus />
-                      </PopoverContent>
-                    </Popover>
-                  </div>
+                  <Label htmlFor="date-input">날짜 선택</Label>
+                  <Input
+                    id="date-input"
+                    type="date"
+                    value={selectedDate}
+                    onChange={(e) => setSelectedDate(e.target.value)}
+                    className="w-full"
+                  />
                 </div>
 
                 <div className="space-y-2">
@@ -330,45 +302,27 @@ export default function TimestampConverter() {
                       현재 시간
                     </Button>
                   </div>
-                  <div className="flex gap-2">
-                    <div className="flex-1">
-                      <Label htmlFor="hours" className="sr-only">
-                        시
-                      </Label>
-                      <Input
-                        id="hours"
-                        placeholder="시"
-                        value={hours}
-                        onChange={(e) => handleHoursChange(e.target.value)}
-                        className="text-center"
-                      />
-                    </div>
-                    <span className="flex items-center">:</span>
-                    <div className="flex-1">
-                      <Label htmlFor="minutes" className="sr-only">
-                        분
-                      </Label>
-                      <Input
-                        id="minutes"
-                        placeholder="분"
-                        value={minutes}
-                        onChange={(e) => handleMinutesChange(e.target.value)}
-                        className="text-center"
-                      />
-                    </div>
-                    <span className="flex items-center">:</span>
-                    <div className="flex-1">
-                      <Label htmlFor="seconds" className="sr-only">
-                        초
-                      </Label>
-                      <Input
-                        id="seconds"
-                        placeholder="초"
-                        value={seconds}
-                        onChange={(e) => handleSecondsChange(e.target.value)}
-                        className="text-center"
-                      />
-                    </div>
+                  <div className="grid grid-cols-3 gap-2">
+                    <Select value={hours} onValueChange={setHours}>
+                      <SelectTrigger>
+                        <SelectValue placeholder="시" />
+                      </SelectTrigger>
+                      <SelectContent>{generateTimeOptions(23)}</SelectContent>
+                    </Select>
+
+                    <Select value={minutes} onValueChange={setMinutes}>
+                      <SelectTrigger>
+                        <SelectValue placeholder="분" />
+                      </SelectTrigger>
+                      <SelectContent>{generateTimeOptions(59)}</SelectContent>
+                    </Select>
+
+                    <Select value={seconds} onValueChange={setSeconds}>
+                      <SelectTrigger>
+                        <SelectValue placeholder="초" />
+                      </SelectTrigger>
+                      <SelectContent>{generateTimeOptions(59)}</SelectContent>
+                    </Select>
                   </div>
                 </div>
               </div>
