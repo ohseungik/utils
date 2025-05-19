@@ -22,5 +22,8 @@
 ### CSS → Tailwind 변환기
  - https://utils-6fi.pages.dev/tools/tailwind
 
+### QR코드 생성기
+ - https://utils-6fi.pages.dev/tools/qrcode
+
 
 해당 프로젝트는 AI를 통해서 만드는 프로젝트입니다.
