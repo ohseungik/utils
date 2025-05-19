@@ -3,7 +3,7 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Image, Type, Code, FileJson, Globe, FileCode, Wand2, QrCode } from "lucide-react"
+import { Image, Type, Code, FileJson, Globe, FileCode, Wand2, QrCode, Clock } from "lucide-react"
 
 export const metadata: Metadata = {
   title: "웹 도구 모음",
@@ -86,6 +86,12 @@ export default function Home() {
       description: "텍스트나 URL을 QR코드로 변환하여 다운로드할 수 있는 도구입니다",
       icon: <QrCode className="h-5 w-5" />,
       href: "/tools/qrcode",
+    },
+    {
+      title: "타임스탬프 변환기",
+      description: "Unix 타임스탬프와 날짜/시간 형식 간의 변환 도구입니다",
+      icon: <Clock className="h-5 w-5" />,
+      href: "/tools/timestamp",
     },
   ]
 

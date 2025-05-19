@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
-import { Image, Menu, X, Type, Code, FileJson, Globe, FileCode, Wand2, QrCode } from "lucide-react"
+import { Image, Menu, X, Type, Code, FileJson, Globe, FileCode, Wand2, QrCode, Clock } from "lucide-react"
 import { useState, useEffect } from "react"
 import { useMobile } from "@/hooks/useMobile"
 
@@ -56,6 +56,11 @@ const navItems: NavItem[] = [
     title: "QR코드 생성기",
     href: "/tools/qrcode",
     icon: <QrCode className="h-5 w-5" />,
+  },
+  {
+    title: "타임스탬프 변환기",
+    href: "/tools/timestamp",
+    icon: <Clock className="h-5 w-5" />,
   },
   // 향후 도구들이 여기에 추가될 예정
 ]
