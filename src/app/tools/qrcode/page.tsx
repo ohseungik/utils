@@ -1,5 +1,4 @@
 import QrCodeGenerator from "@/components/QrCodeGenerator/QrCodeGenerator"
-
 export const metadata = {
   title: "QR코드 생성기 | 웹 도구 모음",
   description: "텍스트나 URL을 QR코드로 변환하여 다운로드할 수 있는 도구입니다",
