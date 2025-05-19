@@ -39,7 +39,6 @@ export default function QrCodeGenerator() {
     logoSize: 50,
   })
 
-  const canvasRef = useRef<HTMLCanvasElement>(null)
   const downloadLinkRef = useRef<HTMLAnchorElement>(null)
 
   // 입력 텍스트가 변경될 때마다 QR 코드 생성
@@ -83,26 +82,25 @@ export default function QrCodeGenerator() {
   }
 
   // QR 코드 복사
-  const handleCopy = () => {
+  const handleCopy = async () => {
     if (!qrCodeDataUrl) return
 
-    // 캔버스에서 이미지 데이터 가져오기
-    if (canvasRef.current) {
-      canvasRef.current.toBlob((blob) => {
-        if (blob) {
-          // 클립보드에 이미지 복사
-          const item = new ClipboardItem({ "image/png": blob })
-          navigator.clipboard
-            .write([item])
-            .then(() => {
-              toast("QR코드가 클립보드에 복사되었습니다")
-            })
-            .catch((error) => {
-              console.error("복사 오류:", error)
-              toast("클립보드에 복사하는 중 오류가 발생했습니다")
-            })
-        }
-      })
+    try {
+      // 이미지 URL에서 이미지 가져오기
+      const response = await fetch(qrCodeDataUrl)
+      const blob = await response.blob()
+
+      // 클립보드에 이미지 복사
+      await navigator.clipboard.write([
+        new ClipboardItem({
+          [blob.type]: blob,
+        }),
+      ])
+
+      toast("QR코드가 클립보드에 복사되었습니다")
+    } catch (error) {
+      console.error("복사 오류:", error)
+      toast("클립보드에 복사하는 중 오류가 발생했습니다")
     }
   }
 
@@ -261,15 +259,12 @@ export default function QrCodeGenerator() {
 
             <div className="flex justify-center items-center border rounded-lg p-4 min-h-[250px]">
               {qrCodeDataUrl ? (
-                <>
                   <img
                     src={qrCodeDataUrl || "/placeholder.svg"}
                     alt="Generated QR Code"
                     className="max-w-full max-h-[250px]"
                     style={{ width: options.size, height: options.size }}
                   />
-                  <canvas ref={canvasRef} className="hidden" />
-                </>
               ) : (
                 <div className="text-center text-muted-foreground">
                   <QrCode className="mx-auto h-16 w-16 mb-2 opacity-20" />
