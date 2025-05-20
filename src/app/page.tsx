@@ -93,6 +93,12 @@ export default function Home() {
       icon: <Clock className="h-5 w-5" />,
       href: "/tools/timestamp",
     },
+    {
+      title: "밀어서 결제하기 테스트",
+      description: "밀어서 결제하기 테스트 모듈입니다",
+      icon: <FileJson className="h-5 w-5" />,
+      href: "/tools/swipepay",
+    },
   ]
 
   return (

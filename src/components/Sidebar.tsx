@@ -62,6 +62,11 @@ const navItems: NavItem[] = [
     href: "/tools/timestamp",
     icon: <Clock className="h-5 w-5" />,
   },
+  {
+    title: "밀어서 결제하기 테스트",
+    href: "/tools/swipepay",
+    icon: <FileJson className="h-5 w-5" />,
+  },
   // 향후 도구들이 여기에 추가될 예정
 ]
 

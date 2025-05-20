@@ -25,5 +25,11 @@
 ### QR코드 생성기
  - https://utils-6fi.pages.dev/tools/qrcode
 
+### 타임스탬프 변환기
+ - https://utils-6fi.pages.dev/tools/timestamp
+
+### 밀어서 결제하기 모듈 샘플
+ - https://utils-6fi.pages.dev/tools/swipepay
+
 
 해당 프로젝트는 AI를 통해서 만드는 프로젝트입니다.
