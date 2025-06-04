@@ -292,12 +292,18 @@ document.addEventListener('DOMContentLoaded', function() {
 
 export default function CodePlayground() {
   const [code, setCode] = useState<CodeState>(defaultCode)
+  const [previewCode, setPreviewCode] = useState<CodeState>(defaultCode)
   const [activeTab, setActiveTab] = useState("html")
   const [isFullscreen, setIsFullscreen] = useState(false)
 
   const updateCode = useCallback((type: keyof CodeState, value: string) => {
     setCode((prev) => ({ ...prev, [type]: value }))
   }, [])
+
+  const runCode = useCallback(() => {
+    setPreviewCode({ ...code })
+    toast("코드가 성공적으로 실행되었습니다.")
+  }, [code])
 
   const generatePreview = useCallback(() => {
     const htmlContent = `
@@ -311,13 +317,13 @@ export default function CodePlayground() {
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <style>
-        ${code.css}
+        ${previewCode.css}
     </style>
 </head>
 <body>
-    ${code.html}
+    ${previewCode.html}
     <script type="text/babel">
-        ${code.js}
+        ${previewCode.js}
     </script>
     <script>
         window.onerror = function(msg, url, line, col, error) {
@@ -329,7 +335,7 @@ export default function CodePlayground() {
 </html>`
 
     return `data:text/html;charset=utf-8,${encodeURIComponent(htmlContent)}`
-  }, [code])
+  }, [previewCode])
 
   const saveCode = () => {
     try {
@@ -344,7 +350,9 @@ export default function CodePlayground() {
     try {
       const saved = localStorage.getItem("code-playground-saved")
       if (saved) {
-        setCode(JSON.parse(saved))
+        const parsedCode = JSON.parse(saved)
+        setCode(parsedCode)
+        setPreviewCode(parsedCode) // 미리보기도 업데이트
         toast("저장된 코드를 불러왔습니다.")
       } else {
         toast("저장된 코드가 없습니다.")
@@ -355,12 +363,15 @@ export default function CodePlayground() {
   }
 
   const loadExample = (exampleKey: keyof typeof examples) => {
-    setCode(examples[exampleKey].code)
+    const exampleCode = examples[exampleKey].code
+    setCode(exampleCode)
+    setPreviewCode(exampleCode) // 미리보기도 업데이트
     toast(`${examples[exampleKey].name} 예제를 불러왔습니다.`)
   }
 
   const resetCode = () => {
     setCode(defaultCode)
+    setPreviewCode(defaultCode) // 미리보기도 업데이트
     toast("코드가 초기 상태로 리셋되었습니다.")
   }
 
@@ -462,11 +473,15 @@ export default function CodePlayground() {
 
         {/* 미리보기 */}
         <div className="w-1/2 flex flex-col">
-          <div className="border-b p-4">
+          <div className="border-b p-4 flex justify-between items-center">
             <h2 className="text-lg font-semibold flex items-center gap-2">
               <Play className="h-5 w-5" />
               미리보기
             </h2>
+            <Button onClick={runCode} className="bg-green-600 hover:bg-green-700">
+              <Play className="h-4 w-4 mr-2" />
+              실행하기
+            </Button>
           </div>
           <div className="flex-1 overflow-hidden">
             <iframe
