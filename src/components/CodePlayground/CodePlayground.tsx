@@ -1,11 +1,13 @@
 "use client"
 
-import { useState, useCallback } from "react"
+import type React from "react"
+
+import { useState, useCallback, useRef } from "react"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Button } from "@/components/ui/button"
 import { Textarea } from "@/components/ui/textarea"
 import { Badge } from "@/components/ui/badge"
-import { Play, Save, Upload, RotateCcw, Maximize2 } from "lucide-react"
+import { Play, Save, Upload, RotateCcw, Maximize2, Download, FileUp } from "lucide-react"
 import { toast } from "sonner"
 
 interface CodeState {
@@ -484,11 +486,17 @@ document.addEventListener('DOMContentLoaded', function() {
   },
 }
 
+// 파일 형식 구분자
+const FILE_SEPARATOR = "===CODEPLAYGROUND_SEPARATOR==="
+const FILE_HEADER = "CodePlayground Export"
+const FILE_VERSION = "1.0"
+
 export default function CodePlayground() {
   const [code, setCode] = useState<CodeState>(defaultCode)
   const [previewCode, setPreviewCode] = useState<CodeState>(defaultCode)
   const [activeTab, setActiveTab] = useState("html")
   const [isFullscreen, setIsFullscreen] = useState(false)
+  const fileInputRef = useRef<HTMLInputElement>(null)
 
   const updateCode = useCallback((type: keyof CodeState, value: string) => {
     setCode((prev) => ({ ...prev, [type]: value }))
@@ -531,10 +539,94 @@ export default function CodePlayground() {
     return `data:text/html;charset=utf-8,${encodeURIComponent(htmlContent)}`
   }, [previewCode])
 
+  // 코드를 텍스트 파일로 내보내기
+  const exportToFile = () => {
+    try {
+      // 파일 내용 생성 (구분자로 HTML, CSS, JS 코드 구분)
+      const fileContent = `${FILE_HEADER} v${FILE_VERSION}
+HTML${FILE_SEPARATOR}
+${code.html}
+CSS${FILE_SEPARATOR}
+${code.css}
+JS${FILE_SEPARATOR}
+${code.js}`
+
+      // Blob 객체 생성
+      const blob = new Blob([fileContent], { type: "text/plain;charset=utf-8" })
+
+      // 다운로드 링크 생성 및 클릭
+      const url = URL.createObjectURL(blob)
+      const link = document.createElement("a")
+      link.href = url
+      link.download = `codeplayground_${new Date().toISOString().slice(0, 10)}.txt`
+      document.body.appendChild(link)
+      link.click()
+
+      // 정리
+      document.body.removeChild(link)
+      URL.revokeObjectURL(url)
+
+      toast("코드가 텍스트 파일로 저장되었습니다.")
+    } catch (error) {
+      toast("파일 저장 중 오류가 발생했습니다.")
+    }
+  }
+
+  // 텍스트 파일에서 코드 가져오기
+  const importFromFile = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0]
+    if (!file) return
+
+    const reader = new FileReader()
+    reader.onload = (e) => {
+      try {
+        const content = e.target?.result as string
+
+        // 파일 형식 확인
+        if (!content.startsWith(FILE_HEADER)) {
+          throw new Error("유효하지 않은 파일 형식입니다.")
+        }
+
+        // 코드 파싱
+        const htmlMatch = content.match(
+          /HTML===CODEPLAYGROUND_SEPARATOR===\n([\s\S]*?)CSS===CODEPLAYGROUND_SEPARATOR===\n/,
+        )
+        const cssMatch = content.match(
+          /CSS===CODEPLAYGROUND_SEPARATOR===\n([\s\S]*?)JS===CODEPLAYGROUND_SEPARATOR===\n/,
+        )
+        const jsMatch = content.match(/JS===CODEPLAYGROUND_SEPARATOR===\n([\s\S]*?)$/)
+
+        if (!htmlMatch || !cssMatch || !jsMatch) {
+          throw new Error("파일 내용을 파싱할 수 없습니다.")
+        }
+
+        const newCode = {
+          html: htmlMatch[1].trim(),
+          css: cssMatch[1].trim(),
+          js: jsMatch[1].trim(),
+        }
+
+        setCode(newCode)
+        setPreviewCode(newCode)
+
+        toast("파일에서 코드를 성공적으로 불러왔습니다.")
+      } catch (error) {
+        toast("파일 읽기 중 오류가 발생했습니다.")
+      }
+    }
+
+    reader.readAsText(file)
+
+    // 파일 입력 초기화 (같은 파일 다시 선택 가능하도록)
+    if (fileInputRef.current) {
+      fileInputRef.current.value = ""
+    }
+  }
+
   const saveCode = () => {
     try {
       localStorage.setItem("code-playground-saved", JSON.stringify(code))
-      toast("코드가 성공적으로 저장되었습니다.")
+      toast("코드가 브라우저에 저장되었습니다.")
     } catch (error) {
       toast("코드 저장 중 오류가 발생했습니다.")
     }
@@ -571,6 +663,9 @@ export default function CodePlayground() {
 
   return (
     <div className={`h-[calc(100vh-4rem)] flex flex-col ${isFullscreen ? "fixed inset-0 z-50 bg-background" : ""}`}>
+      {/* 파일 입력 (숨김) */}
+      <input type="file" ref={fileInputRef} onChange={importFromFile} accept=".txt" className="hidden" />
+
       {/* 헤더 */}
       <div className="border-b p-4">
         <div className="flex items-center justify-between">
@@ -578,14 +673,22 @@ export default function CodePlayground() {
             <h1 className="text-2xl font-bold">코드 플레이그라운드</h1>
             <p className="text-muted-foreground">HTML, CSS, React 코드를 실시간으로 테스트해보세요</p>
           </div>
-          <div className="flex gap-2">
+          <div className="flex gap-2 flex-wrap">
             <Button variant="outline" size="sm" onClick={saveCode}>
               <Save className="h-4 w-4 mr-2" />
-              저장
+              브라우저에 저장
             </Button>
             <Button variant="outline" size="sm" onClick={loadCode}>
               <Upload className="h-4 w-4 mr-2" />
-              불러오기
+              브라우저에서 불러오기
+            </Button>
+            <Button variant="outline" size="sm" onClick={exportToFile}>
+              <Download className="h-4 w-4 mr-2" />
+              파일로 내보내기
+            </Button>
+            <Button variant="outline" size="sm" onClick={() => fileInputRef.current?.click()}>
+              <FileUp className="h-4 w-4 mr-2" />
+              파일에서 가져오기
             </Button>
             <Button variant="outline" size="sm" onClick={resetCode}>
               <RotateCcw className="h-4 w-4 mr-2" />
