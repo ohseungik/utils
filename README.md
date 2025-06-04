@@ -28,7 +28,7 @@
 ### 타임스탬프 변환기
  - https://utils-6fi.pages.dev/tools/timestamp
 
-### 밀어서 결제하기 모듈 샘플
+### 밀어서 결제하기 테스트
  - https://utils-6fi.pages.dev/tools/swipepay
 
 
