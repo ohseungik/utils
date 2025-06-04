@@ -31,5 +31,8 @@
 ### 밀어서 결제하기 테스트
  - https://utils-6fi.pages.dev/tools/swipepay
 
+### 코드 플레이그라운드
+- https://utils-6fi.pages.dev/tools/codeplayground
+
 
 해당 프로젝트는 AI를 통해서 만드는 프로젝트입니다.
