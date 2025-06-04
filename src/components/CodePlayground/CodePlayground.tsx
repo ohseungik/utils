@@ -61,7 +61,7 @@ button:hover {
   alert('안녕하세요! 코드 플레이그라운드입니다.');
 }
 
-// React 예제
+// React 18 예제
 function App() {
   const [count, setCount] = React.useState(0);
   
@@ -79,8 +79,9 @@ function App() {
   );
 }
 
-// React 컴포넌트를 사용하려면 아래 주석을 해제하세요
-// ReactDOM.render(<App />, document.getElementById('app'));`,
+// React 18 createRoot 방식으로 렌더링
+// const root = ReactDOM.createRoot(document.getElementById('app'));
+// root.render(<App />);`,
 }
 
 const examples = {
@@ -144,6 +145,10 @@ const examples = {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+}
+
+.add-todo button:hover {
+  background: #0056b3;
 }`,
       js: `function TodoApp() {
   const [todos, setTodos] = React.useState([
@@ -169,9 +174,13 @@ const examples = {
     ));
   };
 
+  const deleteTodo = (id) => {
+    setTodos(todos.filter(todo => todo.id !== id));
+  };
+
   return (
     <div className="container">
-      <h1>Todo List</h1>
+      <h1>📝 Todo List (React 18)</h1>
       <div className="add-todo">
         <input
           type="text"
@@ -190,15 +199,169 @@ const examples = {
               checked={todo.completed}
               onChange={() => toggleTodo(todo.id)}
             />
-            <span>{todo.text}</span>
+            <span style={{ flex: 1 }}>{todo.text}</span>
+            <button 
+              onClick={() => deleteTodo(todo.id)}
+              style={{ 
+                background: '#dc3545', 
+                color: 'white', 
+                border: 'none', 
+                padding: '5px 10px', 
+                borderRadius: '3px',
+                cursor: 'pointer',
+                fontSize: '12px'
+              }}
+            >
+              삭제
+            </button>
           </div>
         ))}
+      </div>
+      <p style={{ marginTop: '20px', color: '#666', fontSize: '14px' }}>
+        총 {todos.length}개 항목 중 {todos.filter(t => t.completed).length}개 완료
+      </p>
+    </div>
+  );
+}
+
+// React 18 createRoot 방식으로 렌더링
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<TodoApp />);`,
+    },
+  },
+  reactHooks: {
+    name: "React Hooks",
+    code: {
+      html: `<div id="root"></div>`,
+      css: `body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+}
+
+.hooks-demo {
+  max-width: 600px;
+  margin: 0 auto;
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.section {
+  margin-bottom: 30px;
+  padding: 20px;
+  border: 2px solid #f0f0f0;
+  border-radius: 10px;
+}
+
+.section h3 {
+  margin-top: 0;
+  color: #333;
+}
+
+.counter-buttons button {
+  margin: 5px;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.increment { background: #28a745; color: white; }
+.decrement { background: #dc3545; color: white; }
+.reset { background: #6c757d; color: white; }
+
+.timer {
+  font-size: 24px;
+  font-weight: bold;
+  color: #007bff;
+}
+
+.input-demo input {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+}`,
+      js: `function HooksDemo() {
+  // useState Hook
+  const [count, setCount] = React.useState(0);
+  const [name, setName] = React.useState('');
+  
+  // useEffect Hook
+  const [seconds, setSeconds] = React.useState(0);
+  
+  React.useEffect(() => {
+    const interval = setInterval(() => {
+      setSeconds(prev => prev + 1);
+    }, 1000);
+    
+    return () => clearInterval(interval);
+  }, []);
+  
+  // useMemo Hook
+  const expensiveValue = React.useMemo(() => {
+    console.log('비싼 계산 실행...');
+    return count * count;
+  }, [count]);
+  
+  // useCallback Hook
+  const handleReset = React.useCallback(() => {
+    setCount(0);
+    setSeconds(0);
+  }, []);
+  
+  return (
+    <div className="hooks-demo">
+      <h2>🎣 React Hooks 데모</h2>
+      
+      <div className="section">
+        <h3>useState Hook</h3>
+        <p>카운터: {count}</p>
+        <p>제곱값 (useMemo): {expensiveValue}</p>
+        <div className="counter-buttons">
+          <button className="increment" onClick={() => setCount(count + 1)}>
+            증가
+          </button>
+          <button className="decrement" onClick={() => setCount(count - 1)}>
+            감소
+          </button>
+          <button className="reset" onClick={handleReset}>
+            리셋
+          </button>
+        </div>
+      </div>
+      
+      <div className="section">
+        <h3>useEffect Hook</h3>
+        <p>타이머: <span className="timer">{seconds}초</span></p>
+        <p>컴포넌트가 마운트된 후 자동으로 시작됩니다.</p>
+      </div>
+      
+      <div className="section">
+        <h3>Controlled Input</h3>
+        <div className="input-demo">
+          <input
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            placeholder="이름을 입력하세요"
+          />
+          <p>안녕하세요, {name || '익명'}님!</p>
+        </div>
       </div>
     </div>
   );
 }
 
-ReactDOM.render(<TodoApp />, document.getElementById('root'));`,
+// React 18 createRoot 방식으로 렌더링
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<HooksDemo />);`,
     },
   },
   animation: {
@@ -232,6 +395,12 @@ ReactDOM.render(<TodoApp />, document.getElementById('root'));`,
   height: 100px;
   margin: 20px;
   border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.box:hover {
+  transform: scale(1.1);
 }
 
 .box1 {
@@ -272,6 +441,12 @@ h2 {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  animation: textGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes textGlow {
+  from { filter: drop-shadow(0 0 5px rgba(255, 107, 107, 0.5)); }
+  to { filter: drop-shadow(0 0 20px rgba(78, 205, 196, 0.8)); }
 }`,
       js: `// 애니메이션 제어
 document.addEventListener('DOMContentLoaded', function() {
@@ -279,12 +454,31 @@ document.addEventListener('DOMContentLoaded', function() {
   
   boxes.forEach((box, index) => {
     box.addEventListener('click', function() {
+      // 애니메이션 일시정지/재생 토글
+      const currentState = this.style.animationPlayState;
       this.style.animationPlayState = 
-        this.style.animationPlayState === 'paused' ? 'running' : 'paused';
+        currentState === 'paused' ? 'running' : 'paused';
+      
+      // 클릭 효과 추가
+      this.style.transform = 'scale(0.9)';
+      setTimeout(() => {
+        this.style.transform = '';
+      }, 150);
+    });
+    
+    // 더블클릭으로 애니메이션 속도 변경
+    box.addEventListener('dblclick', function() {
+      const currentDuration = this.style.animationDuration || '2s';
+      const newDuration = currentDuration === '2s' ? '0.5s' : '2s';
+      this.style.animationDuration = newDuration;
+      
+      console.log(\`Box \${index + 1} 애니메이션 속도 변경: \${newDuration}\`);
     });
   });
   
-  console.log('애니메이션이 시작되었습니다! 박스를 클릭하면 애니메이션을 일시정지할 수 있습니다.');
+  console.log('🎨 애니메이션이 시작되었습니다!');
+  console.log('💡 팁: 박스를 클릭하면 애니메이션을 일시정지할 수 있습니다.');
+  console.log('💡 팁: 박스를 더블클릭하면 애니메이션 속도가 변경됩니다.');
 });`,
     },
   },
@@ -412,7 +606,7 @@ export default function CodePlayground() {
           <div className="border-b p-4">
             <div className="flex items-center justify-between mb-4">
               <h2 className="text-lg font-semibold">코드 에디터</h2>
-              <div className="flex gap-2">
+              <div className="flex gap-2 flex-wrap">
                 {Object.entries(examples).map(([key, example]) => (
                   <Button
                     key={key}
