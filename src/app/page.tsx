@@ -3,7 +3,7 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Image, Type, Code, FileJson, Globe, FileCode, Wand2, QrCode, Clock, Play } from "lucide-react"
+import { Image, Type, Code, FileJson, Globe, FileCode, Wand2, QrCode, Clock, Play, FileCode2 } from "lucide-react"
 
 export const metadata: Metadata = {
   title: "웹 도구 모음",
@@ -104,6 +104,12 @@ export default function Home() {
       description: "HTML, CSS, React 코드를 실시간으로 테스트하고 미리보기할 수 있는 도구입니다",
       icon: <Play className="h-5 w-5" />,
       href: "/tools/codeplayground",
+    },
+    {
+      title: "SQL 쿼리 포매터",
+      description: "SQL 쿼리를 보기 좋게 정리하고 포맷하는 도구입니다",
+      icon: <FileCode2 className="h-5 w-5" />,
+      href: "/tools/sql",
     },
   ]
 
