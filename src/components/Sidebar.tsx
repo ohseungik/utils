@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
-import { Image, Menu, X, Type, Code, FileJson, Globe, FileCode, Wand2, QrCode, Clock, Play, FileCode2 } from "lucide-react"
+import { Image, Menu, X, Type, Code, FileJson, Globe, FileCode, Wand2, QrCode, Clock, Play, FileCode2, FileArchive } from "lucide-react"
 import { useState, useEffect } from "react"
 import { useMobile } from "@/hooks/useMobile"
 
@@ -72,10 +72,15 @@ const navItems: NavItem[] = [
     href: "/tools/codeplayground",
     icon: <Play className="h-5 w-5" />,
   },
-    {
+  {
     title: "SQL 쿼리 포매터",
     href: "/tools/sql",
     icon: <FileCode2 className="h-5 w-5" />,
+  },
+  {
+    title: "XML 포매터",
+    href: "/tools/xml",
+    icon: <FileArchive className="h-5 w-5" />,
   }
   // 향후 도구들이 여기에 추가될 예정
 ]
