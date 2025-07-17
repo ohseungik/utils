@@ -34,5 +34,10 @@
 ### 코드 플레이그라운드
 - https://utils-6fi.pages.dev/tools/codeplayground
 
+### sql 쿼리 포매터
+- https://utils-6fi.pages.dev/tools/sql
+
+### xml 포매터
+- https://utils-6fi.pages.dev/tools/xml
 
 해당 프로젝트는 AI를 통해서 만드는 프로젝트입니다.
