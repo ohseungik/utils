@@ -328,6 +328,31 @@ export default function TextToImagePage() {
     generateImage()
   }, [generateImage])
 
+// useEffect 추가 (기존 generateImage useEffect 아래에)
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      // 텍스트 입력 중이 아닐 때만 Delete 키 처리
+      const activeElement = document.activeElement
+      const isInputFocused =
+        activeElement &&
+        (activeElement.tagName === "INPUT" ||
+          activeElement.tagName === "TEXTAREA")
+
+      if (e.key === "Delete" && !isInputFocused) {
+        e.preventDefault()
+        deleteSelectedElement()
+      }
+    }
+
+    // 키보드 이벤트 리스너 추가
+    document.addEventListener("keydown", handleKeyDown)
+
+    // 컴포넌트 언마운트 시 이벤트 리스너 제거
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown)
+    }
+  }, [selectedElementId, textElements.length]) // deleteSelectedElement 함수가 의존하는 값들
+
   return (
     <div className="min-h-screen bg-background">
       <div className="max-w-6xl mx-auto p-6 space-y-6">
