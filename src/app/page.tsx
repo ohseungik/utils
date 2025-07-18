@@ -3,7 +3,7 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Image, Type, Code, FileJson, Globe, FileCode, Wand2, QrCode, Clock, Play, FileCode2, FileArchive } from "lucide-react"
+import { Image, Type, Code, FileJson, Globe, FileCode, Wand2, QrCode, Clock, Play, FileCode2, FileArchive, ImagePlus } from "lucide-react"
 
 export const metadata: Metadata = {
   title: "웹 도구 모음",
@@ -116,6 +116,12 @@ export default function Home() {
       description: "XML를 보기 좋게 정리하고 포맷하는 도구입니다",
       icon: <FileArchive className="h-5 w-5" />,
       href: "/tools/xml",
+    },
+    {
+      title: "Text to Image 변환기",
+      description: "텍스트를 이미지로 변환하고 다양한 스타일을 적용할 수 있는 도구입니다",
+      icon: <ImagePlus className="h-5 w-5" />,
+      href: "/tools/texttoimage",
     },
   ]
 

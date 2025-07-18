@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
-import { Image, Menu, X, Type, Code, FileJson, Globe, FileCode, Wand2, QrCode, Clock, Play, FileCode2, FileArchive } from "lucide-react"
+import { Image, Menu, X, Type, Code, FileJson, Globe, FileCode, Wand2, QrCode, Clock, Play, FileCode2, FileArchive, ImagePlus } from "lucide-react"
 import { useState, useEffect } from "react"
 import { useMobile } from "@/hooks/useMobile"
 
@@ -81,6 +81,11 @@ const navItems: NavItem[] = [
     title: "XML 포매터",
     href: "/tools/xml",
     icon: <FileArchive className="h-5 w-5" />,
+  },
+  {
+    title: "Text to Image 변환기",
+    href: "/tools/texttoimage",
+    icon: <ImagePlus className="h-5 w-5" />,
   }
   // 향후 도구들이 여기에 추가될 예정
 ]
