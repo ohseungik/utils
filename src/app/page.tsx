@@ -3,7 +3,7 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Image, Type, Code, FileJson, Globe, FileCode, Wand2, QrCode, Clock, Play, FileCode2, FileArchive, ImagePlus } from "lucide-react"
+import { Image, Type, Code, FileJson, Globe, FileCode, Wand2, QrCode, Clock, Play, FileCode2, FileArchive, ImagePlus, SignatureIcon } from "lucide-react"
 
 export const metadata: Metadata = {
   title: "웹 도구 모음",
@@ -122,6 +122,12 @@ export default function Home() {
       description: "텍스트를 이미지로 변환하고 다양한 스타일을 적용할 수 있는 도구입니다",
       icon: <ImagePlus className="h-5 w-5" />,
       href: "/tools/texttoimage",
+    },
+    {
+      title: "서명 생성기",
+      description: "디지털 서명을 생성하고 다운로드할 수 있는 도구입니다",
+      icon: <SignatureIcon className="h-5 w-5" />,
+      href: "/tools/signature",
     },
   ]
 
