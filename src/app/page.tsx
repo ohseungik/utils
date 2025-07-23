@@ -3,7 +3,7 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Image, Type, Code, FileJson, Globe, FileCode, Wand2, QrCode, Clock, Play, FileCode2, FileArchive, ImagePlus, SignatureIcon } from "lucide-react"
+import { Image, Type, Code, FileJson, Globe, FileCode, Wand2, QrCode, Clock, Play, FileCode2, FileArchive, ImagePlus, SignatureIcon, RegexIcon } from "lucide-react"
 
 export const metadata: Metadata = {
   title: "웹 도구 모음",
@@ -128,6 +128,12 @@ export default function Home() {
       description: "디지털 서명을 생성하고 다운로드할 수 있는 도구입니다",
       icon: <SignatureIcon className="h-5 w-5" />,
       href: "/tools/signature",
+    },
+    {
+      title: "regex 정규표현식 매칭 도구",
+      description: "정규표현식을 테스트하고 매칭 결과를 확인할 수 있는 도구입니다",
+      icon: <RegexIcon className="h-5 w-5" />,
+      href: "/tools/regex",
     },
   ]
 
