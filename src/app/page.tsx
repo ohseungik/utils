@@ -3,7 +3,7 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Image, Type, Code, FileJson, Globe, FileCode, Wand2, QrCode, Clock, Play, FileCode2, FileArchive, ImagePlus, SignatureIcon, RegexIcon } from "lucide-react"
+import { Image, Type, Code, FileJson, Globe, FileCode, Wand2, QrCode, Clock, Play, FileCode2, FileArchive, ImagePlus, SignatureIcon, RegexIcon, FileIcon } from "lucide-react"
 
 export const metadata: Metadata = {
   title: "웹 도구 모음",
@@ -134,6 +134,12 @@ export default function Home() {
       description: "정규표현식을 테스트하고 매칭 결과를 확인할 수 있는 도구입니다",
       icon: <RegexIcon className="h-5 w-5" />,
       href: "/tools/regex",
+    },
+    {
+      title: "브라우저 저장소 관리 도구",
+      description: "로컬스토리지와 세션스토리지를 관리하고 데이터를 추가, 삭제, 조회할 수 있는 도구입니다",
+      icon: <FileIcon className="h-5 w-5" />,
+      href: "/tools/storage",
     },
   ]
 

@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
-import { Image, Menu, X, Type, Code, FileJson, Globe, FileCode, Wand2, QrCode, Clock, Play, FileCode2, FileArchive, ImagePlus, SignatureIcon, RegexIcon } from "lucide-react"
+import { Image, Menu, X, Type, Code, FileJson, Globe, FileCode, Wand2, QrCode, Clock, Play, FileCode2, FileArchive, ImagePlus, SignatureIcon, RegexIcon, FileIcon } from "lucide-react"
 import { useState, useEffect } from "react"
 import { useMobile } from "@/hooks/useMobile"
 
@@ -96,7 +96,12 @@ const navItems: NavItem[] = [
     title: "regex 정규표현식 매칭 도구",
     href: "/tools/regex",
     icon: <RegexIcon className="h-5 w-5" />,
-  }
+  },
+  {
+    title: "브라우저 저장소 관리 도구",
+    href: "/tools/storage",
+    icon: <FileIcon className="h-5 w-5" />,
+  },
   // 향후 도구들이 여기에 추가될 예정
 ]
 

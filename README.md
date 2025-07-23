@@ -46,4 +46,10 @@
 ### 서명 생성기
 - https://utils-6fi.pages.dev/tools/signature
 
+### regex 정규표현식 체크 도구
+- https://utils-6fi.pages.dev/tools/regex
+
+### 브라우저 저장소 관리 도구
+- https://utils-6fi.pages.dev/tools/storage
+
 해당 프로젝트는 AI를 통해서 만드는 프로젝트입니다.
