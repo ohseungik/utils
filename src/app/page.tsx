@@ -3,7 +3,7 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Image, Type, Code, FileJson, Globe, FileCode, Wand2, QrCode, Clock, Play, FileCode2, FileArchive, ImagePlus, SignatureIcon, RegexIcon, FileIcon } from "lucide-react"
+import { Image, Type, Code, FileJson, Globe, FileCode, Wand2, QrCode, Clock, Play, FileCode2, FileArchive, ImagePlus, SignatureIcon, RegexIcon, FileIcon, KeyboardIcon } from "lucide-react"
 
 export const metadata: Metadata = {
   title: "웹 도구 모음",
@@ -140,6 +140,12 @@ export default function Home() {
       description: "로컬스토리지와 세션스토리지를 관리하고 데이터를 추가, 삭제, 조회할 수 있는 도구입니다",
       icon: <FileIcon className="h-5 w-5" />,
       href: "/tools/storage",
+    },
+    {
+      title: "keycode 추적기",
+      description: "키보드 입력을 실시간으로 추적하고 키코드 정보를 제공합니다",
+      icon: <KeyboardIcon className="h-5 w-5" />,
+      href: "/tools/keycode",
     },
   ]
 
