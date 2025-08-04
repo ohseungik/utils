@@ -52,4 +52,7 @@
 ### 브라우저 저장소 관리 도구
 - https://utils-6fi.pages.dev/tools/storage
 
+### keyCode 추적기
+- https://utils-6fi.pages.dev/tools/keycode
+
 해당 프로젝트는 AI를 통해서 만드는 프로젝트입니다.
