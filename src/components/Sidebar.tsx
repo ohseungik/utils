@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
-import { Image, Menu, X, Type, Code, FileJson, Globe, FileCode, Wand2, QrCode, Clock, Play, FileCode2, FileArchive, ImagePlus, SignatureIcon, RegexIcon, FileIcon, KeyboardIcon, Link2, Hash } from "lucide-react"
+import { Image, Menu, X, Type, Code, FileJson, Globe, FileCode, Wand2, QrCode, Clock, Play, FileCode2, FileArchive, ImagePlus, SignatureIcon, RegexIcon, FileIcon, KeyboardIcon, Link2, Hash, Ruler } from "lucide-react"
 import { useState, useEffect } from "react"
 import { useMobile } from "@/hooks/useMobile"
 
@@ -116,6 +116,11 @@ const navItems: NavItem[] = [
     title: "Hash 생성기",
     href: "/tools/hash",
     icon: <Hash className="h-5 w-5" />,
+  },
+  {
+    title: "CSS 단위 변환기",
+    href: "/tools/unit",
+    icon: <Ruler className="h-5 w-5" />,
   },
   // 향후 도구들이 여기에 추가될 예정
 ]

@@ -3,7 +3,7 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Image, Type, Code, FileJson, Globe, FileCode, Wand2, QrCode, Clock, Play, FileCode2, FileArchive, ImagePlus, SignatureIcon, RegexIcon, FileIcon, KeyboardIcon, Link2, Hash } from "lucide-react"
+import { Image, Type, Code, FileJson, Globe, FileCode, Wand2, QrCode, Clock, Play, FileCode2, FileArchive, ImagePlus, SignatureIcon, RegexIcon, FileIcon, KeyboardIcon, Link2, Hash, Ruler } from "lucide-react"
 
 export const metadata: Metadata = {
   title: "웹 도구 모음",
@@ -158,6 +158,12 @@ export default function Home() {
       description: "텍스트나 파일의 해시값을 생성합니다. MD5, SHA-1, SHA-256, SHA-384, SHA-512 알고리즘을 지원합니다.",
       icon: <Hash className="h-5 w-5" />,
       href: "/tools/hash",
+    },
+    {
+      title: "CSS 단위 변환기",
+      description: "자주 사용하는 CSS 속성의 값을 빠르게 변환하세요",
+      icon: <Ruler className="h-5 w-5" />,
+      href: "/tools/unit",
     },
   ]
 
