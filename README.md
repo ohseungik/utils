@@ -58,5 +58,8 @@
 ### queryString 파서 & 빌더
 - https://utils-6fi.pages.dev/tools/querystring
 
+### Hash 생성기
+- https://utils-6fi.pages.dev/tools/hash
+
 
 해당 프로젝트는 AI를 통해서 만드는 프로젝트입니다.

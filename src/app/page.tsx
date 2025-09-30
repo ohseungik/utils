@@ -3,7 +3,7 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Image, Type, Code, FileJson, Globe, FileCode, Wand2, QrCode, Clock, Play, FileCode2, FileArchive, ImagePlus, SignatureIcon, RegexIcon, FileIcon, KeyboardIcon, Link2 } from "lucide-react"
+import { Image, Type, Code, FileJson, Globe, FileCode, Wand2, QrCode, Clock, Play, FileCode2, FileArchive, ImagePlus, SignatureIcon, RegexIcon, FileIcon, KeyboardIcon, Link2, Hash } from "lucide-react"
 
 export const metadata: Metadata = {
   title: "웹 도구 모음",
@@ -152,6 +152,12 @@ export default function Home() {
       description: "URL의 쿼리 스트링을 파싱하거나 새로운 쿼리 스트링을 생성할 수 있는 도구입니다.",
       icon: <Link2 className="h-5 w-5" />,
       href: "/tools/querystring",
+    },
+    {
+      title: "Hash 생성기",
+      description: "텍스트나 파일의 해시값을 생성합니다. MD5, SHA-1, SHA-256, SHA-384, SHA-512 알고리즘을 지원합니다.",
+      icon: <Hash className="h-5 w-5" />,
+      href: "/tools/hash",
     },
   ]
 
