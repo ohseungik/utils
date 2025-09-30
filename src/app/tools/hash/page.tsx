@@ -59,11 +59,11 @@ export default function HashGeneratorPage() {
   }
 
   // ArrayBuffer를 16진수 문자열로 변환
-  const bufferToHex = (buffer: ArrayBuffer): string => {
+  const bufferToHex = (buffer: ArrayBufferLike): string => {
     const byteArray = new Uint8Array(buffer)
     return Array.from(byteArray)
-      .map((byte) => byte.toString(16).padStart(2, "0"))
-      .join("")
+        .map((byte) => byte.toString(16).padStart(2, "0"))
+        .join("")
   }
 
   // MD5 해시 생성 (간단한 구현)
