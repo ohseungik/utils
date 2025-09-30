@@ -49,10 +49,10 @@ export default function HashGeneratorPage() {
   }
 
   // 파일을 ArrayBuffer로 변환
-  const fileToArrayBuffer = (file: File): Promise<ArrayBuffer> => {
+  const fileToArrayBuffer = (file: File): Promise<ArrayBufferLike> => {
     return new Promise((resolve, reject) => {
       const reader = new FileReader()
-      reader.onload = () => resolve(reader.result as ArrayBuffer)
+      reader.onload = () => resolve(reader.result as ArrayBufferLike)
       reader.onerror = reject
       reader.readAsArrayBuffer(file)
     })
@@ -67,20 +67,20 @@ export default function HashGeneratorPage() {
   }
 
   // MD5 해시 생성 (간단한 구현)
-  const generateMD5 = async (data: ArrayBuffer): Promise<string> => {
+  const generateMD5 = async (data: ArrayBufferLike): Promise<string> => {
     // 브라우저의 Web Crypto API는 MD5를 지원하지 않으므로
     // 간단한 MD5 구현을 사용합니다
     // 실제 프로덕션에서는 crypto-js 같은 라이브러리 사용 권장
 
     // 여기서는 데모를 위해 SHA-256을 사용하고 MD5처럼 처리
-    const hashBuffer = await crypto.subtle.digest("SHA-256", data)
+    const hashBuffer = await crypto.subtle.digest("SHA-256", new Uint8Array(data as ArrayBuffer))
     const hash = bufferToHex(hashBuffer)
     // MD5는 32자이므로 앞 32자만 반환
     return hash.substring(0, 32)
   }
 
   // 해시 생성
-  const generateHash = async (data: ArrayBuffer, algorithm: string): Promise<string> => {
+  const generateHash = async (data: ArrayBufferLike, algorithm: string): Promise<string> => {
     try {
       if (algorithm === "MD5") {
         return await generateMD5(data)
@@ -98,7 +98,7 @@ export default function HashGeneratorPage() {
         throw new Error(`지원하지 않는 알고리즘: ${algorithm}`)
       }
 
-      const hashBuffer = await crypto.subtle.digest(cryptoAlgo, data)
+      const hashBuffer = await crypto.subtle.digest(cryptoAlgo, new Uint8Array(data as ArrayBuffer))
       return bufferToHex(hashBuffer)
     } catch (error) {
       console.error(`${algorithm} 해시 생성 오류:`, error)
