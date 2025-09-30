@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
-import { Image, Menu, X, Type, Code, FileJson, Globe, FileCode, Wand2, QrCode, Clock, Play, FileCode2, FileArchive, ImagePlus, SignatureIcon, RegexIcon, FileIcon, KeyboardIcon } from "lucide-react"
+import { Image, Menu, X, Type, Code, FileJson, Globe, FileCode, Wand2, QrCode, Clock, Play, FileCode2, FileArchive, ImagePlus, SignatureIcon, RegexIcon, FileIcon, KeyboardIcon, Link2 } from "lucide-react"
 import { useState, useEffect } from "react"
 import { useMobile } from "@/hooks/useMobile"
 
@@ -103,10 +103,15 @@ const navItems: NavItem[] = [
     icon: <FileIcon className="h-5 w-5" />,
   },
   {
-    title: "키코드 추적기",
+    title: "keycode 추적기",
     href: "/tools/keycode",
     icon: <KeyboardIcon className="h-5 w-5" />,
-  }
+  },
+  {
+    title: "URL Query String 파서 & 빌더",
+    href: "/tools/querystring",
+    icon: <Link2 className="h-5 w-5" />,
+  },
   // 향후 도구들이 여기에 추가될 예정
 ]
 

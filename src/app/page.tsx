@@ -3,7 +3,7 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Image, Type, Code, FileJson, Globe, FileCode, Wand2, QrCode, Clock, Play, FileCode2, FileArchive, ImagePlus, SignatureIcon, RegexIcon, FileIcon, KeyboardIcon } from "lucide-react"
+import { Image, Type, Code, FileJson, Globe, FileCode, Wand2, QrCode, Clock, Play, FileCode2, FileArchive, ImagePlus, SignatureIcon, RegexIcon, FileIcon, KeyboardIcon, Link2 } from "lucide-react"
 
 export const metadata: Metadata = {
   title: "웹 도구 모음",
@@ -146,6 +146,12 @@ export default function Home() {
       description: "키보드 입력을 실시간으로 추적하고 키코드 정보를 제공합니다",
       icon: <KeyboardIcon className="h-5 w-5" />,
       href: "/tools/keycode",
+    },
+    {
+      title: "URL Query String 파서 & 빌더",
+      description: "URL의 쿼리 스트링을 파싱하거나 새로운 쿼리 스트링을 생성할 수 있는 도구입니다.",
+      icon: <Link2 className="h-5 w-5" />,
+      href: "/tools/querystring",
     },
   ]
 
