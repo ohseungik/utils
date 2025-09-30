@@ -43,7 +43,7 @@ export default function HashGeneratorPage() {
   ]
 
   // 텍스트를 ArrayBuffer로 변환
-  const textToArrayBuffer = (text: string): ArrayBuffer => {
+  const textToArrayBuffer = (text: string): ArrayBufferLike => {
     const encoder = new TextEncoder()
     return encoder.encode(text).buffer
   }
