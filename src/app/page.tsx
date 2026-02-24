@@ -1,20 +1,49 @@
-import type React from "react"
-import type { Metadata } from "next"
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Image, Type, Code, FileJson, Globe, FileCode, Wand2, QrCode, Clock, Play, FileCode2, FileArchive, ImagePlus, SignatureIcon, RegexIcon, FileIcon, KeyboardIcon, Link2, Hash, Ruler } from "lucide-react"
+import type React from "react";
+import type { Metadata } from "next";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import {
+  Image,
+  Type,
+  Code,
+  FileJson,
+  Globe,
+  FileCode,
+  Wand2,
+  QrCode,
+  Clock,
+  Play,
+  FileCode2,
+  FileArchive,
+  ImagePlus,
+  SignatureIcon,
+  RegexIcon,
+  FileIcon,
+  KeyboardIcon,
+  Link2,
+  Hash,
+  Ruler,
+  FileText,
+} from "lucide-react";
 
 export const metadata: Metadata = {
   title: "웹 도구 모음",
   description: "다양한 웹 도구를 한 곳에서 사용해보세요",
-}
+};
 
 interface ToolCardProps {
-  title: string
-  description: string
-  icon: React.ReactNode
-  href: string
+  title: string;
+  description: string;
+  icon: React.ReactNode;
+  href: string;
 }
 
 function ToolCard({ title, description, icon, href }: ToolCardProps) {
@@ -27,14 +56,16 @@ function ToolCard({ title, description, icon, href }: ToolCardProps) {
         </div>
         <CardDescription>{description}</CardDescription>
       </CardHeader>
-      <CardContent className="flex-grow">{/* 추가 콘텐츠가 필요하면 여기에 */}</CardContent>
+      <CardContent className="flex-grow">
+        {/* 추가 콘텐츠가 필요하면 여기에 */}
+      </CardContent>
       <CardFooter>
         <Link href={href} className="w-full">
           <Button className="w-full">도구 사용하기</Button>
         </Link>
       </CardFooter>
     </Card>
-  )
+  );
 }
 
 export default function Home() {
@@ -47,7 +78,8 @@ export default function Home() {
     },
     {
       title: "폰트 프리뷰 및 변환기",
-      description: "웹 폰트 미리보기 및 다양한 포맷(WOFF, TTF) 변환 기능을 제공합니다",
+      description:
+        "웹 폰트 미리보기 및 다양한 포맷(WOFF, TTF) 변환 기능을 제공합니다",
       icon: <Type className="h-5 w-5" />,
       href: "/tools/font",
     },
@@ -71,7 +103,8 @@ export default function Home() {
     },
     {
       title: "Base64 인코딩/디코딩",
-      description: "텍스트와 파일을 Base64로 인코딩하고 디코딩할 수 있는 도구입니다",
+      description:
+        "텍스트와 파일을 Base64로 인코딩하고 디코딩할 수 있는 도구입니다",
       icon: <FileCode className="h-5 w-5" />,
       href: "/tools/base64",
     },
@@ -83,7 +116,8 @@ export default function Home() {
     },
     {
       title: "QR코드 생성기",
-      description: "텍스트나 URL을 QR코드로 변환하여 다운로드할 수 있는 도구입니다",
+      description:
+        "텍스트나 URL을 QR코드로 변환하여 다운로드할 수 있는 도구입니다",
       icon: <QrCode className="h-5 w-5" />,
       href: "/tools/qrcode",
     },
@@ -101,7 +135,8 @@ export default function Home() {
     },
     {
       title: "코드 플레이그라운드",
-      description: "HTML, CSS, React 코드를 실시간으로 테스트하고 미리보기할 수 있는 도구입니다",
+      description:
+        "HTML, CSS, React 코드를 실시간으로 테스트하고 미리보기할 수 있는 도구입니다",
       icon: <Play className="h-5 w-5" />,
       href: "/tools/codeplayground",
     },
@@ -119,7 +154,8 @@ export default function Home() {
     },
     {
       title: "Text to Image 변환기",
-      description: "텍스트를 이미지로 변환하고 다양한 스타일을 적용할 수 있는 도구입니다",
+      description:
+        "텍스트를 이미지로 변환하고 다양한 스타일을 적용할 수 있는 도구입니다",
       icon: <ImagePlus className="h-5 w-5" />,
       href: "/tools/texttoimage",
     },
@@ -131,13 +167,15 @@ export default function Home() {
     },
     {
       title: "regex 정규표현식 매칭 도구",
-      description: "정규표현식을 테스트하고 매칭 결과를 확인할 수 있는 도구입니다",
+      description:
+        "정규표현식을 테스트하고 매칭 결과를 확인할 수 있는 도구입니다",
       icon: <RegexIcon className="h-5 w-5" />,
       href: "/tools/regex",
     },
     {
       title: "브라우저 저장소 관리 도구",
-      description: "로컬스토리지와 세션스토리지를 관리하고 데이터를 추가, 삭제, 조회할 수 있는 도구입니다",
+      description:
+        "로컬스토리지와 세션스토리지를 관리하고 데이터를 추가, 삭제, 조회할 수 있는 도구입니다",
       icon: <FileIcon className="h-5 w-5" />,
       href: "/tools/storage",
     },
@@ -149,13 +187,15 @@ export default function Home() {
     },
     {
       title: "URL Query String 파서 & 빌더",
-      description: "URL의 쿼리 스트링을 파싱하거나 새로운 쿼리 스트링을 생성할 수 있는 도구입니다.",
+      description:
+        "URL의 쿼리 스트링을 파싱하거나 새로운 쿼리 스트링을 생성할 수 있는 도구입니다.",
       icon: <Link2 className="h-5 w-5" />,
       href: "/tools/querystring",
     },
     {
       title: "Hash 생성기",
-      description: "텍스트나 파일의 해시값을 생성합니다. MD5, SHA-1, SHA-256, SHA-384, SHA-512 알고리즘을 지원합니다.",
+      description:
+        "텍스트나 파일의 해시값을 생성합니다. MD5, SHA-1, SHA-256, SHA-384, SHA-512 알고리즘을 지원합니다.",
       icon: <Hash className="h-5 w-5" />,
       href: "/tools/hash",
     },
@@ -165,15 +205,23 @@ export default function Home() {
       icon: <Ruler className="h-5 w-5" />,
       href: "/tools/unit",
     },
-  ]
+    {
+      title: "글자수 & 단어수 카운터",
+      description:
+        "텍스트의 글자수, 단어수, 문장수, 단락수를 실시간으로 계산하는 도구입니다",
+      icon: <FileText className="h-5 w-5" />,
+      href: "/tools/wordcounter",
+    },
+  ];
 
   return (
     <div className="container mx-auto max-w-6xl py-6">
       <div className="mb-8 text-center">
         <h1 className="text-4xl font-bold mb-4">웹 도구 모음</h1>
         <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-          다양한 웹 개발 및 디자인 작업에 필요한 도구들을 한 곳에서 사용해보세요. 모든 처리는 브라우저에서 이루어지며
-          파일은 서버로 전송되지 않습니다.
+          다양한 웹 개발 및 디자인 작업에 필요한 도구들을 한 곳에서
+          사용해보세요. 모든 처리는 브라우저에서 이루어지며 파일은 서버로
+          전송되지 않습니다.
         </p>
       </div>
 
@@ -189,6 +237,5 @@ export default function Home() {
         ))}
       </div>
     </div>
-  )
+  );
 }
-
