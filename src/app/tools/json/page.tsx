@@ -1,19 +1,18 @@
-import JSONFormatter from "@/components/JSONFormatter/JSONFormatter"
+"use client";
 
-export const metadata = {
-  title: "JSON 포매터 & 뷰어 | 웹 도구 모음",
-  description: "JSON을 보기 좋게 정리하고 편집할 수 있는 도구입니다",
-}
+import JSONFormatter from "@/components/JSONFormatter/JSONFormatter";
+import { useLanguage } from "@/contexts/LanguageContext";
 
-export default function JsonFormatterPage() {
+export default function JSONFormatterPage() {
+  const { t } = useLanguage();
+
   return (
     <div className="container mx-auto max-w-5xl">
       <div className="mb-8">
-        <h1 className="text-3xl font-bold mb-2">JSON 포매터 & 뷰어</h1>
-        <p className="text-muted-foreground">JSON을 보기 좋게 정리하고 편집할 수 있는 도구입니다</p>
+        <h1 className="text-3xl font-bold mb-2">{t("tools.json.title")}</h1>
+        <p className="text-muted-foreground">{t("tools.json.description")}</p>
       </div>
       <JSONFormatter />
     </div>
-  )
+  );
 }
-

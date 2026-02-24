@@ -1,29 +1,45 @@
-"use client"
+"use client";
 
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Checkbox } from "@/components/ui/checkbox"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Textarea } from "@/components/ui/textarea"
-import { toast } from "sonner"
-import { AlertCircle, CheckCircle, Copy, FileText, Hash, HelpCircle, RotateCcw, Zap } from "lucide-react"
-import { useEffect, useState } from "react"
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import { toast } from "sonner";
+import {
+  AlertCircle,
+  CheckCircle,
+  Copy,
+  FileText,
+  Hash,
+  HelpCircle,
+  RotateCcw,
+  Zap,
+} from "lucide-react";
+import { useEffect, useState } from "react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface MatchResult {
-  match: string
-  index: number
-  groups: string[]
-  namedGroups: Record<string, string>
+  match: string;
+  index: number;
+  groups: string[];
+  namedGroups: Record<string, string>;
 }
 
 interface RegexFlags {
-  global: boolean
-  ignoreCase: boolean
-  multiline: boolean
-  dotAll: boolean
-  unicode: boolean
-  sticky: boolean
+  global: boolean;
+  ignoreCase: boolean;
+  multiline: boolean;
+  dotAll: boolean;
+  unicode: boolean;
+  sticky: boolean;
 }
 
 const defaultFlags: RegexFlags = {
@@ -33,7 +49,7 @@ const defaultFlags: RegexFlags = {
   dotAll: false,
   unicode: false,
   sticky: false,
-}
+};
 
 const regexExamples = [
   {
@@ -52,13 +68,15 @@ const regexExamples = [
     name: "URL",
     pattern: "https?://[\\w\\-._~:/?#[\\]@!$&'()*+,;=%]+",
     description: "HTTP/HTTPS URL을 매치합니다",
-    testText: "사이트: https://www.example.com, http://test.co.kr/path?param=value",
+    testText:
+      "사이트: https://www.example.com, http://test.co.kr/path?param=value",
   },
   {
     name: "HTML 태그",
     pattern: "<[^>]+>",
     description: "HTML 태그를 매치합니다",
-    testText: "<div class='container'><p>Hello <strong>World</strong></p></div>",
+    testText:
+      "<div class='container'><p>Hello <strong>World</strong></p></div>",
   },
   {
     name: "숫자 (정수/소수)",
@@ -72,46 +90,47 @@ const regexExamples = [
     description: "한글 문자를 매치합니다",
     testText: "Hello 안녕하세요 World 반갑습니다 123",
   },
-]
+];
 
 export default function RegexTester() {
-  const [pattern, setPattern] = useState("")
-  const [testText, setTestText] = useState("")
-  const [flags, setFlags] = useState<RegexFlags>(defaultFlags)
-  const [matches, setMatches] = useState<MatchResult[]>([])
-  const [isValidRegex, setIsValidRegex] = useState(true)
-  const [regexError, setRegexError] = useState("")
+  const { t } = useLanguage();
+  const [pattern, setPattern] = useState("");
+  const [testText, setTestText] = useState("");
+  const [flags, setFlags] = useState<RegexFlags>(defaultFlags);
+  const [matches, setMatches] = useState<MatchResult[]>([]);
+  const [isValidRegex, setIsValidRegex] = useState(true);
+  const [regexError, setRegexError] = useState("");
 
   const updateFlag = (flag: keyof RegexFlags, value: boolean) => {
-    setFlags((prev) => ({ ...prev, [flag]: value }))
-  }
+    setFlags((prev) => ({ ...prev, [flag]: value }));
+  };
 
   const getFlagsString = () => {
-    let flagsStr = ""
-    if (flags.global) flagsStr += "g"
-    if (flags.ignoreCase) flagsStr += "i"
-    if (flags.multiline) flagsStr += "m"
-    if (flags.dotAll) flagsStr += "s"
-    if (flags.unicode) flagsStr += "u"
-    if (flags.sticky) flagsStr += "y"
-    return flagsStr
-  }
+    let flagsStr = "";
+    if (flags.global) flagsStr += "g";
+    if (flags.ignoreCase) flagsStr += "i";
+    if (flags.multiline) flagsStr += "m";
+    if (flags.dotAll) flagsStr += "s";
+    if (flags.unicode) flagsStr += "u";
+    if (flags.sticky) flagsStr += "y";
+    return flagsStr;
+  };
 
   const testRegex = () => {
     if (!pattern) {
-      setMatches([])
-      setIsValidRegex(true)
-      setRegexError("")
-      return
+      setMatches([]);
+      setIsValidRegex(true);
+      setRegexError("");
+      return;
     }
 
     try {
-      const regex = new RegExp(pattern, getFlagsString())
-      setIsValidRegex(true)
-      setRegexError("")
+      const regex = new RegExp(pattern, getFlagsString());
+      setIsValidRegex(true);
+      setRegexError("");
 
-      const results: MatchResult[] = []
-      let match
+      const results: MatchResult[] = [];
+      let match;
 
       if (flags.global) {
         while ((match = regex.exec(testText)) !== null) {
@@ -120,81 +139,83 @@ export default function RegexTester() {
             index: match.index,
             groups: match.slice(1),
             namedGroups: match.groups || {},
-          })
+          });
 
           // 무한 루프 방지
           if (match.index === regex.lastIndex) {
-            regex.lastIndex++
+            regex.lastIndex++;
           }
         }
       } else {
-        match = regex.exec(testText)
+        match = regex.exec(testText);
         if (match) {
           results.push({
             match: match[0],
             index: match.index,
             groups: match.slice(1),
             namedGroups: match.groups || {},
-          })
+          });
         }
       }
 
-      setMatches(results)
+      setMatches(results);
     } catch (error) {
-      setIsValidRegex(false)
-      setRegexError(error instanceof Error ? error.message : "정규표현식 오류")
-      setMatches([])
+      setIsValidRegex(false);
+      setRegexError(error instanceof Error ? error.message : "정규표현식 오류");
+      setMatches([]);
     }
-  }
+  };
 
   useEffect(() => {
-    testRegex()
-  }, [pattern, testText, flags])
+    testRegex();
+  }, [pattern, testText, flags]);
 
   const getHighlightedText = () => {
     if (!testText || matches.length === 0) {
-      return testText
+      return testText;
     }
 
-    let highlightedText = testText
-    const sortedMatches = [...matches].sort((a, b) => b.index - a.index)
+    let highlightedText = testText;
+    const sortedMatches = [...matches].sort((a, b) => b.index - a.index);
 
     sortedMatches.forEach((match, index) => {
-      const replacement = `<span class="bg-yellow-200 px-1 rounded font-medium" data-match-index="${matches.indexOf(match)}">${match.match}</span>`
+      const replacement = `<span class="bg-yellow-200 px-1 rounded font-medium" data-match-index="${matches.indexOf(match)}">${match.match}</span>`;
       highlightedText =
         highlightedText.substring(0, match.index) +
         replacement +
-        highlightedText.substring(match.index + match.match.length)
-    })
+        highlightedText.substring(match.index + match.match.length);
+    });
 
-    return highlightedText
-  }
+    return highlightedText;
+  };
 
   const loadExample = (example: (typeof regexExamples)[0]) => {
-    setPattern(example.pattern)
-    setTestText(example.testText)
+    setPattern(example.pattern);
+    setTestText(example.testText);
     toast(`${example.name} 예제가 로드되었습니다.`);
-  }
+  };
 
   const copyRegex = () => {
-    const regexString = `/${pattern}/${getFlagsString()}`
-    navigator.clipboard.writeText(regexString)
+    const regexString = `/${pattern}/${getFlagsString()}`;
+    navigator.clipboard.writeText(regexString);
     toast("정규표현식이 클립보드에 복사되었습니다.");
-  }
+  };
 
   const clearAll = () => {
-    setPattern("")
-    setTestText("")
-    setMatches([])
-    setFlags(defaultFlags)
-  }
+    setPattern("");
+    setTestText("");
+    setMatches([]);
+    setFlags(defaultFlags);
+  };
 
   return (
     <div className="min-h-screen bg-gray-50 p-4">
       <div className="mx-auto max-w-7xl">
         <div className="mb-8 text-center">
-          <h1 className="text-3xl font-bold mb-2">정규표현식 테스트 도구</h1>
-          <p className="text-gray-600">정규표현식을 테스트하고 매치 결과를 실시간으로 확인하세요</p>
+          <h1 className="text-3xl font-bold mb-2">
+            {t("tools.regex.pageTitle")}
+          </h1>
+          <p className="text-gray-600">{t("tools.regex.pageDescription")}</p>
         </div>
 
         <div className="grid gap-6 lg:grid-cols-4">
@@ -207,7 +228,9 @@ export default function RegexTester() {
                   <Hash className="h-5 w-5" />
                   정규표현식
                 </CardTitle>
-                <CardDescription>테스트할 정규표현식을 입력하세요</CardDescription>
+                <CardDescription>
+                  테스트할 정규표현식을 입력하세요
+                </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="space-y-2">
@@ -239,7 +262,9 @@ export default function RegexTester() {
                       <Checkbox
                         id="flag-global"
                         checked={flags.global}
-                        onCheckedChange={(checked) => updateFlag("global", checked as boolean)}
+                        onCheckedChange={(checked) =>
+                          updateFlag("global", checked as boolean)
+                        }
                       />
                       <Label htmlFor="flag-global" className="text-sm">
                         g (Global) - 전역 검색
@@ -249,7 +274,9 @@ export default function RegexTester() {
                       <Checkbox
                         id="flag-ignorecase"
                         checked={flags.ignoreCase}
-                        onCheckedChange={(checked) => updateFlag("ignoreCase", checked as boolean)}
+                        onCheckedChange={(checked) =>
+                          updateFlag("ignoreCase", checked as boolean)
+                        }
                       />
                       <Label htmlFor="flag-ignorecase" className="text-sm">
                         i (Ignore Case) - 대소문자 무시
@@ -259,7 +286,9 @@ export default function RegexTester() {
                       <Checkbox
                         id="flag-multiline"
                         checked={flags.multiline}
-                        onCheckedChange={(checked) => updateFlag("multiline", checked as boolean)}
+                        onCheckedChange={(checked) =>
+                          updateFlag("multiline", checked as boolean)
+                        }
                       />
                       <Label htmlFor="flag-multiline" className="text-sm">
                         m (Multiline) - 다중행
@@ -269,7 +298,9 @@ export default function RegexTester() {
                       <Checkbox
                         id="flag-dotall"
                         checked={flags.dotAll}
-                        onCheckedChange={(checked) => updateFlag("dotAll", checked as boolean)}
+                        onCheckedChange={(checked) =>
+                          updateFlag("dotAll", checked as boolean)
+                        }
                       />
                       <Label htmlFor="flag-dotall" className="text-sm">
                         s (Dot All) - . 이 개행문자 포함
@@ -279,7 +310,9 @@ export default function RegexTester() {
                       <Checkbox
                         id="flag-unicode"
                         checked={flags.unicode}
-                        onCheckedChange={(checked) => updateFlag("unicode", checked as boolean)}
+                        onCheckedChange={(checked) =>
+                          updateFlag("unicode", checked as boolean)
+                        }
                       />
                       <Label htmlFor="flag-unicode" className="text-sm">
                         u (Unicode) - 유니코드
@@ -289,7 +322,9 @@ export default function RegexTester() {
                       <Checkbox
                         id="flag-sticky"
                         checked={flags.sticky}
-                        onCheckedChange={(checked) => updateFlag("sticky", checked as boolean)}
+                        onCheckedChange={(checked) =>
+                          updateFlag("sticky", checked as boolean)
+                        }
                       />
                       <Label htmlFor="flag-sticky" className="text-sm">
                         y (Sticky) - 고정 위치
@@ -299,7 +334,11 @@ export default function RegexTester() {
                 </div>
 
                 <div className="flex gap-2">
-                  <Button onClick={copyRegex} disabled={!pattern} variant="outline">
+                  <Button
+                    onClick={copyRegex}
+                    disabled={!pattern}
+                    variant="outline"
+                  >
                     <Copy className="h-4 w-4 mr-2" />
                     정규표현식 복사
                   </Button>
@@ -318,7 +357,9 @@ export default function RegexTester() {
                   <FileText className="h-5 w-5" />
                   테스트 텍스트
                 </CardTitle>
-                <CardDescription>정규표현식을 테스트할 텍스트를 입력하세요</CardDescription>
+                <CardDescription>
+                  정규표현식을 테스트할 텍스트를 입력하세요
+                </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="space-y-2">
@@ -360,7 +401,9 @@ export default function RegexTester() {
                     매치 결과
                   </CardTitle>
                   <CardDescription>
-                    {matches.length > 0 ? `${matches.length}개의 매치가 발견되었습니다` : "매치된 결과가 없습니다"}
+                    {matches.length > 0
+                      ? `${matches.length}개의 매치가 발견되었습니다`
+                      : "매치된 결과가 없습니다"}
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
@@ -385,18 +428,28 @@ export default function RegexTester() {
                   {matches.map((match, index) => (
                     <div key={index} className="p-3 bg-gray-50 rounded-lg">
                       <div className="flex items-center justify-between mb-2">
-                        <span className="font-medium text-sm">매치 #{index + 1}</span>
-                        <span className="text-xs text-gray-500">위치: {match.index}</span>
+                        <span className="font-medium text-sm">
+                          매치 #{index + 1}
+                        </span>
+                        <span className="text-xs text-gray-500">
+                          위치: {match.index}
+                        </span>
                       </div>
                       <div className="space-y-1">
                         <p className="text-sm">
-                          <span className="font-medium">매치:</span> {match.match}
+                          <span className="font-medium">매치:</span>{" "}
+                          {match.match}
                         </p>
                         {match.groups.length > 0 && (
                           <div>
-                            <p className="text-xs font-medium text-gray-700">캡처 그룹:</p>
+                            <p className="text-xs font-medium text-gray-700">
+                              캡처 그룹:
+                            </p>
                             {match.groups.map((group, groupIndex) => (
-                              <p key={groupIndex} className="text-xs text-gray-600 ml-2">
+                              <p
+                                key={groupIndex}
+                                className="text-xs text-gray-600 ml-2"
+                              >
                                 {groupIndex + 1} : {group}
                               </p>
                             ))}
@@ -404,12 +457,19 @@ export default function RegexTester() {
                         )}
                         {Object.keys(match.namedGroups).length > 0 && (
                           <div>
-                            <p className="text-xs font-medium text-gray-700">명명된 그룹:</p>
-                            {Object.entries(match.namedGroups).map(([name, value]) => (
-                              <p key={name} className="text-xs text-gray-600 ml-2">
-                                {name} : {value}
-                              </p>
-                            ))}
+                            <p className="text-xs font-medium text-gray-700">
+                              명명된 그룹:
+                            </p>
+                            {Object.entries(match.namedGroups).map(
+                              ([name, value]) => (
+                                <p
+                                  key={name}
+                                  className="text-xs text-gray-600 ml-2"
+                                >
+                                  {name} : {value}
+                                </p>
+                              ),
+                            )}
                           </div>
                         )}
                       </div>
@@ -439,7 +499,9 @@ export default function RegexTester() {
                   >
                     <div>
                       <p className="font-medium text-sm">{example.name}</p>
-                      <p className="text-xs text-gray-500 mt-1">{example.description}</p>
+                      <p className="text-xs text-gray-500 mt-1">
+                        {example.description}
+                      </p>
                     </div>
                   </Button>
                 ))}
@@ -474,5 +536,5 @@ export default function RegexTester() {
         </div>
       </div>
     </div>
-  )
+  );
 }

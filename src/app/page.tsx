@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import type React from "react";
 import Link from "next/link";
@@ -44,7 +44,13 @@ interface ToolCardProps {
   buttonText: string;
 }
 
-function ToolCard({ title, description, icon, href, buttonText }: ToolCardProps) {
+function ToolCard({
+  title,
+  description,
+  icon,
+  href,
+  buttonText,
+}: ToolCardProps) {
   return (
     <Card className="h-full flex flex-col">
       <CardHeader>

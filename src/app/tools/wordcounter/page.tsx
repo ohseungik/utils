@@ -1,19 +1,19 @@
-import WordCounter from "@/components/WordCounter/WordCounter";
+"use client";
 
-export const metadata = {
-  title: "글자수 & 단어수 카운터 | 웹 도구 모음",
-  description:
-    "텍스트의 글자수, 단어수, 문장수, 단락수를 실시간으로 계산하는 도구입니다",
-};
+import WordCounter from "@/components/WordCounter/WordCounter";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function WordCounterPage() {
+  const { t } = useLanguage();
+
   return (
     <div className="container mx-auto max-w-7xl">
       <div className="mb-8">
-        <h1 className="text-3xl font-bold mb-2">글자수 & 단어수 카운터</h1>
+        <h1 className="text-3xl font-bold mb-2">
+          {t("tools.wordcounter.pageTitle")}
+        </h1>
         <p className="text-muted-foreground">
-          텍스트의 글자수, 단어수, 문장수, 단락수를 실시간으로 분석하고 예상
-          읽기 시간을 계산합니다
+          {t("tools.wordcounter.pageSubtitle")}
         </p>
       </div>
       <WordCounter />

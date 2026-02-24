@@ -18,7 +18,12 @@
     "success": "Success",
     "cancel": "Cancel",
     "confirm": "Confirm",
-    "close": "Close"
+    "close": "Close",
+    "optimize": "Optimize",
+    "format": "Format",
+    "convert": "Convert",
+    "generate": "Generate",
+    "test": "Test"
   },
   "header": {
     "title": "Web Tools",
@@ -77,47 +82,136 @@
     },
     "sql": {
       "title": "SQL Query Formatter",
-      "description": "A tool to format and organize SQL queries"
+      "description": "A tool to format and organize SQL queries",
+      "pageTitle": "SQL Query Formatter",
+      "pageDescription": "Format and beautify SQL queries",
+      "inputQuery": "Input Query",
+      "inputDescription": "Enter the SQL query to format",
+      "inputPlaceholder": "SELECT * FROM users WHERE id = 1 AND name LIKE '%john%' ORDER BY created_at DESC;",
+      "formatButton": "Format",
+      "resetButton": "Reset",
+      "formattedQuery": "Formatted SQL",
+      "copyButton": "Copy",
+      "outputDescription": "Formatted result will be displayed here",
+      "emptyState": "Formatted SQL will be displayed here",
+      "exampleTitle": "Examples",
+      "exampleDescription": "You can format SQL queries like these",
+      "beforeFormat": "Before:",
+      "afterFormat": "After:"
     },
     "xml": {
       "title": "XML Formatter",
-      "description": "A tool to format and organize XML"
-    },
-    "texttoimage": {
-      "title": "Text to Image Converter",
-      "description": "A tool to convert text to image and apply various styles"
+      "description": "A tool to format and organize XML",
+      "pageTitle": "XML Formatter",
+      "pageDescription": "Format and beautify XML",
+      "originalXml": "Original XML",
+      "inputDescription": "Enter the XML code to format",
+      "inputPlaceholder": "<root><user id=\"1\"><name>John</name><email>john@example.com</email></user></root>",
+      "formatButton": "Format",
+      "resetButton": "Reset",
+      "formattedXml": "Formatted XML",
+      "copyButton": "Copy",
+      "outputDescription": "Formatted result will be displayed here",
+      "emptyState": "Formatted XML will be displayed here",
+      "exampleTitle": "Examples",
+      "exampleDescription": "You can format XML code like this",
+      "beforeFormat": "Before:",
+      "afterFormat": "After:",
+      "formatError": "An error occurred during formatting.",
+      "copySuccess": "Formatted XML copied to clipboard.",
+      "copyError": "Failed to copy to clipboard."
     },
     "signature": {
       "title": "Signature Generator",
-      "description": "A tool to generate and download digital signatures"
+      "description": "A tool to generate and download digital signatures",
+      "pageTitle": "Signature Generator",
+      "pageDescription": "Generate digital signatures",
+      "cardTitle": "Signature Capture Tool",
+      "cardDescription": "Draw your signature below and download it",
+      "signatureLabel": "Signature",
+      "clearButton": "Clear",
+      "downloadButton": "Download",
+      "placeholder": "Sign here (transparent background)",
+      "instruction": "Draw your signature above using mouse or touch. Saved with transparent background.",
+      "downloadSuccess": "Signature downloaded successfully."
     },
     "regex": {
       "title": "Regex Pattern Matcher",
-      "description": "A tool to test regular expressions and check matching results"
+      "description": "A tool to test regular expressions and check matching results",
+      "pageTitle": "Regular Expression Tester",
+      "pageDescription": "Test regex patterns and view matching results"
     },
     "storage": {
       "title": "Browser Storage Manager",
-      "description": "A tool to manage local storage and session storage, add, delete, and view data"
+      "description": "A tool to manage local storage and session storage, add, delete, and view data",
+      "pageTitle": "Browser Storage Manager",
+      "pageDescription": "Manage localStorage and sessionStorage"
     },
     "keycode": {
       "title": "KeyCode Tracker",
-      "description": "Real-time keyboard input tracking and keycode information"
+      "description": "Real-time keyboard input tracking and keycode information",
+      "pageTitle": "KeyCode Tracker",
+      "pageDescription": "Display information about the keyboard key you press",
+      "cardTitle": "Keyboard Input",
+      "cardDescription": "Click or tap the gray area below to focus, then press any key.",
+      "resetButton": "Reset",
+      "placeholder": "Press a keyboard key",
+      "placeholderDescription": "Information about the last pressed key will be displayed here.",
+      "clearSuccess": "KeyCode information cleared.",
+      "copySuccess": " copied to clipboard.",
+      "copyError": "Failed to copy to clipboard."
     },
     "querystring": {
       "title": "URL Query String Parser & Builder",
-      "description": "A tool to parse URL query strings or generate new query strings"
+      "description": "A tool to parse URL query strings or generate new query strings",
+      "pageTitle": "Query String Parser & Builder",
+      "pageDescription": "Parse and build URL query strings"
     },
     "hash": {
       "title": "Hash Generator",
-      "description": "Generate hash values for text or files. Supports MD5, SHA-1, SHA-256, SHA-384, SHA-512 algorithms"
+      "description": "Generate hash values for text or files. Supports MD5, SHA-1, SHA-256, SHA-384, SHA-512 algorithms",
+      "pageTitle": "Hash Generator",
+      "pageDescription": "Generate hash values for text or files"
     },
     "unit": {
       "title": "CSS Unit Converter",
-      "description": "Quickly convert values of frequently used CSS properties"
+      "description": "Quickly convert values of frequently used CSS properties",
+      "pageTitle": "CSS Unit Converter",
+      "pageDescription": "Convert CSS units"
+    },
+    "texttoimage": {
+      "title": "Text to Image Converter",
+      "description": "A tool to convert text to image and apply various styles",
+      "pageTitle": "Text to Image Converter",
+      "pageDescription": "Convert text to images"
     },
     "wordcounter": {
       "title": "Word & Character Counter",
-      "description": "A tool to calculate the number of characters, words, sentences, and paragraphs in real-time"
+      "description": "A tool to calculate the number of characters, words, sentences, and paragraphs in real-time",
+      "pageTitle": "Word & Character Counter",
+      "pageSubtitle": "Analyze the number of characters, words, sentences, and paragraphs in real-time and calculate estimated reading time",
+      "textInput": "Text Input",
+      "placeholder": "Enter or paste your text here...",
+      "textStats": "Text Statistics",
+      "totalCharacters": "Total Characters",
+      "charactersNoSpaces": "No Spaces",
+      "words": "Words",
+      "sentences": "Sentences",
+      "paragraphs": "Paragraphs",
+      "lines": "Lines",
+      "readingTime": "Estimated Reading Time",
+      "minutes": "min",
+      "readingTimeNote": "Based on average 200 words/min",
+      "toUpperCase": "To Uppercase",
+      "toLowerCase": "To Lowercase",
+      "capitalize": "Capitalize Sentences",
+      "helpTitle": "💡 Help",
+      "helpItems": [
+        "Character and word count are calculated in real-time",
+        "Words are separated by spaces",
+        "Sentences are separated by periods, exclamation marks, or question marks",
+        "Paragraphs are separated by blank lines"
+      ]
     }
   }
 }

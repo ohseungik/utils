@@ -1,18 +1,18 @@
-import Base64Converter from "@/components/Base64Converter/Base64Converter"
+"use client";
 
-export const metadata = {
-  title: "Base64 인코딩/디코딩 | 웹 도구 모음",
-  description: "텍스트와 파일을 Base64로 인코딩하고 디코딩할 수 있는 도구입니다",
-}
+import Base64Converter from "@/components/Base64Converter/Base64Converter";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function Base64ConverterPage() {
+  const { t } = useLanguage();
+
   return (
     <div className="container mx-auto max-w-5xl">
       <div className="mb-8">
-        <h1 className="text-3xl font-bold mb-2">Base64 인코딩/디코딩</h1>
-        <p className="text-muted-foreground">텍스트와 파일을 Base64로 인코딩하고 디코딩할 수 있는 도구입니다</p>
+        <h1 className="text-3xl font-bold mb-2">{t("tools.base64.title")}</h1>
+        <p className="text-muted-foreground">{t("tools.base64.description")}</p>
       </div>
       <Base64Converter />
     </div>
-  )
+  );
 }

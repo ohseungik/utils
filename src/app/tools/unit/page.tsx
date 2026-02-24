@@ -1,32 +1,64 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
-import { Label } from "@/components/ui/label"
-import { Ruler, Copy, RefreshCw, Settings2, Monitor, Smartphone, Tablet } from "lucide-react"
-import { Input } from "@/components/ui/input"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { toast } from "sonner"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Slider } from "@/components/ui/slider"
-import { Badge } from "@/components/ui/badge"
+import { useState, useEffect } from "react";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+} from "@/components/ui/card";
+import { Label } from "@/components/ui/label";
+import {
+  Ruler,
+  Copy,
+  RefreshCw,
+  Settings2,
+  Monitor,
+  Smartphone,
+  Tablet,
+} from "lucide-react";
+import { Input } from "@/components/ui/input";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { toast } from "sonner";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Slider } from "@/components/ui/slider";
+import { Badge } from "@/components/ui/badge";
+import { useLanguage } from "@/contexts/LanguageContext";
 
-type UnitType = "px" | "rem" | "em" | "vh" | "vw" | "vmin" | "vmax" | "pt" | "cm" | "in"
+type UnitType =
+  | "px"
+  | "rem"
+  | "em"
+  | "vh"
+  | "vw"
+  | "vmin"
+  | "vmax"
+  | "pt"
+  | "cm"
+  | "in";
 
 interface ConversionResult {
-  unit: UnitType
-  value: string
-  description: string
+  unit: UnitType;
+  value: string;
+  description: string;
 }
 
 export default function UnitConverterPage() {
-  const [inputValue, setInputValue] = useState<string>("16")
-  const [inputUnit, setInputUnit] = useState<UnitType>("px")
-  const [baseFontSize, setBaseFontSize] = useState<number>(16)
-  const [viewportWidth, setViewportWidth] = useState<number>(1920)
-  const [viewportHeight, setViewportHeight] = useState<number>(1080)
-  const [results, setResults] = useState<ConversionResult[]>([])
+  const { t } = useLanguage();
+  const [inputValue, setInputValue] = useState<string>("16");
+  const [inputUnit, setInputUnit] = useState<UnitType>("px");
+  const [baseFontSize, setBaseFontSize] = useState<number>(16);
+  const [viewportWidth, setViewportWidth] = useState<number>(1920);
+  const [viewportHeight, setViewportHeight] = useState<number>(1080);
+  const [results, setResults] = useState<ConversionResult[]>([]);
 
   // 단위 설명
   const unitDescriptions: Record<UnitType, string> = {
@@ -40,151 +72,177 @@ export default function UnitConverterPage() {
     pt: "Point - 1pt = 1/72 inch (인쇄 단위)",
     cm: "Centimeter - 센티미터",
     in: "Inch - 인치 (1in = 96px)",
-  }
+  };
 
   // 단위 변환 함수
-  const convertUnit = (value: number, fromUnit: UnitType, toUnit: UnitType): number => {
+  const convertUnit = (
+    value: number,
+    fromUnit: UnitType,
+    toUnit: UnitType,
+  ): number => {
     // 먼저 모든 값을 px로 변환
-    let pxValue: number
+    let pxValue: number;
 
     switch (fromUnit) {
       case "px":
-        pxValue = value
-        break
+        pxValue = value;
+        break;
       case "rem":
-        pxValue = value * baseFontSize
-        break
+        pxValue = value * baseFontSize;
+        break;
       case "em":
-        pxValue = value * baseFontSize
-        break
+        pxValue = value * baseFontSize;
+        break;
       case "vh":
-        pxValue = (value * viewportHeight) / 100
-        break
+        pxValue = (value * viewportHeight) / 100;
+        break;
       case "vw":
-        pxValue = (value * viewportWidth) / 100
-        break
+        pxValue = (value * viewportWidth) / 100;
+        break;
       case "vmin":
-        pxValue = (value * Math.min(viewportWidth, viewportHeight)) / 100
-        break
+        pxValue = (value * Math.min(viewportWidth, viewportHeight)) / 100;
+        break;
       case "vmax":
-        pxValue = (value * Math.max(viewportWidth, viewportHeight)) / 100
-        break
+        pxValue = (value * Math.max(viewportWidth, viewportHeight)) / 100;
+        break;
       case "pt":
-        pxValue = (value * 96) / 72
-        break
+        pxValue = (value * 96) / 72;
+        break;
       case "cm":
-        pxValue = (value * 96) / 2.54
-        break
+        pxValue = (value * 96) / 2.54;
+        break;
       case "in":
-        pxValue = value * 96
-        break
+        pxValue = value * 96;
+        break;
       default:
-        pxValue = value
+        pxValue = value;
     }
 
     // px에서 목표 단위로 변환
     switch (toUnit) {
       case "px":
-        return pxValue
+        return pxValue;
       case "rem":
-        return pxValue / baseFontSize
+        return pxValue / baseFontSize;
       case "em":
-        return pxValue / baseFontSize
+        return pxValue / baseFontSize;
       case "vh":
-        return (pxValue * 100) / viewportHeight
+        return (pxValue * 100) / viewportHeight;
       case "vw":
-        return (pxValue * 100) / viewportWidth
+        return (pxValue * 100) / viewportWidth;
       case "vmin":
-        return (pxValue * 100) / Math.min(viewportWidth, viewportHeight)
+        return (pxValue * 100) / Math.min(viewportWidth, viewportHeight);
       case "vmax":
-        return (pxValue * 100) / Math.max(viewportWidth, viewportHeight)
+        return (pxValue * 100) / Math.max(viewportWidth, viewportHeight);
       case "pt":
-        return (pxValue * 72) / 96
+        return (pxValue * 72) / 96;
       case "cm":
-        return (pxValue * 2.54) / 96
+        return (pxValue * 2.54) / 96;
       case "in":
-        return pxValue / 96
+        return pxValue / 96;
       default:
-        return pxValue
+        return pxValue;
     }
-  }
+  };
 
   // 변환 수행
   useEffect(() => {
-    const numValue = Number.parseFloat(inputValue)
+    const numValue = Number.parseFloat(inputValue);
 
     if (isNaN(numValue)) {
-      setResults([])
-      return
+      setResults([]);
+      return;
     }
 
-    const allUnits: UnitType[] = ["px", "rem", "em", "vh", "vw", "vmin", "vmax", "pt", "cm", "in"]
+    const allUnits: UnitType[] = [
+      "px",
+      "rem",
+      "em",
+      "vh",
+      "vw",
+      "vmin",
+      "vmax",
+      "pt",
+      "cm",
+      "in",
+    ];
     const conversions: ConversionResult[] = allUnits
       .filter((unit) => unit !== inputUnit)
       .map((unit) => {
-        const convertedValue = convertUnit(numValue, inputUnit, unit)
+        const convertedValue = convertUnit(numValue, inputUnit, unit);
         return {
           unit,
           value: convertedValue.toFixed(4),
           description: unitDescriptions[unit],
-        }
-      })
+        };
+      });
 
-    setResults(conversions)
-  }, [inputValue, inputUnit, baseFontSize, viewportWidth, viewportHeight])
+    setResults(conversions);
+  }, [inputValue, inputUnit, baseFontSize, viewportWidth, viewportHeight]);
 
   // 클립보드 복사
   const copyToClipboard = (value: string, unit: string) => {
-    navigator.clipboard.writeText(`${value}${unit}`)
-    toast(`${value}${unit}이(가) 클립보드에 복사되었습니다.`)
-  }
+    navigator.clipboard.writeText(`${value}${unit}`);
+    toast(`${value}${unit}이(가) 클립보드에 복사되었습니다.`);
+  };
 
   // 프리셋 적용
   const applyPreset = (preset: "desktop" | "tablet" | "mobile") => {
     switch (preset) {
       case "desktop":
-        setViewportWidth(1920)
-        setViewportHeight(1080)
-        break
+        setViewportWidth(1920);
+        setViewportHeight(1080);
+        break;
       case "tablet":
-        setViewportWidth(768)
-        setViewportHeight(1024)
-        break
+        setViewportWidth(768);
+        setViewportHeight(1024);
+        break;
       case "mobile":
-        setViewportWidth(375)
-        setViewportHeight(667)
-        break
+        setViewportWidth(375);
+        setViewportHeight(667);
+        break;
     }
-    toast(`${preset === "desktop" ? "데스크톱" : preset === "tablet" ? "태블릿" : "모바일"} 뷰포트 크기가 적용되었습니다.`)
-  }
+    toast(
+      `${preset === "desktop" ? "데스크톱" : preset === "tablet" ? "태블릿" : "모바일"} 뷰포트 크기가 적용되었습니다.`,
+    );
+  };
 
   // 초기화
   const resetSettings = () => {
-    setBaseFontSize(16)
-    setViewportWidth(1920)
-    setViewportHeight(1080)
-    toast("초기화 완료: 설정이 기본값으로 초기화되었습니다.")
-  }
+    setBaseFontSize(16);
+    setViewportWidth(1920);
+    setViewportHeight(1080);
+    toast("초기화 완료: 설정이 기본값으로 초기화되었습니다.");
+  };
 
   // 일반적인 CSS 속성 예시
   const commonProperties = [
-    { name: "font-size", values: ["12px", "14px", "16px", "18px", "20px", "24px"] },
+    {
+      name: "font-size",
+      values: ["12px", "14px", "16px", "18px", "20px", "24px"],
+    },
     { name: "padding", values: ["4px", "8px", "12px", "16px", "20px", "24px"] },
     { name: "margin", values: ["8px", "16px", "24px", "32px", "40px", "48px"] },
-    { name: "width", values: ["100%", "50%", "320px", "768px", "1024px", "1440px"] },
-    { name: "height", values: ["100vh", "50vh", "200px", "400px", "600px", "800px"] },
-  ]
+    {
+      name: "width",
+      values: ["100%", "50%", "320px", "768px", "1024px", "1440px"],
+    },
+    {
+      name: "height",
+      values: ["100vh", "50vh", "200px", "400px", "600px", "800px"],
+    },
+  ];
 
   return (
     <div className="container py-10">
       <div className="flex flex-col items-center max-w-6xl mx-auto">
         <div className="flex items-center mb-6">
           <Ruler className="h-8 w-8 mr-2" />
-          <h1 className="text-3xl font-bold">CSS 단위 변환기</h1>
+          <h1 className="text-3xl font-bold">{t("tools.unit.pageTitle")}</h1>
         </div>
 
         <p className="text-muted-foreground text-center mb-8">
-          px, rem, em, vh, vw 등 다양한 CSS 단위를 상호 변환합니다. 반응형 웹 디자인에 유용한 도구입니다.
+          {t("tools.unit.pageDescription")}
         </p>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 w-full">
@@ -199,7 +257,9 @@ export default function UnitConverterPage() {
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="space-y-2">
-                  <Label htmlFor="base-font-size">기본 폰트 크기 (rem/em 기준)</Label>
+                  <Label htmlFor="base-font-size">
+                    기본 폰트 크기 (rem/em 기준)
+                  </Label>
                   <div className="flex items-center gap-2">
                     <Slider
                       id="base-font-size"
@@ -217,32 +277,44 @@ export default function UnitConverterPage() {
                       className="w-20"
                     />
                   </div>
-                  <p className="text-xs text-muted-foreground">{baseFontSize}px (일반적으로 16px)</p>
+                  <p className="text-xs text-muted-foreground">
+                    {baseFontSize}px (일반적으로 16px)
+                  </p>
                 </div>
 
                 <div className="space-y-2">
                   <Label>뷰포트 크기 (vh/vw 기준)</Label>
                   <div className="grid grid-cols-2 gap-2">
                     <div>
-                      <Label htmlFor="viewport-width" className="text-xs text-muted-foreground">
+                      <Label
+                        htmlFor="viewport-width"
+                        className="text-xs text-muted-foreground"
+                      >
                         너비
                       </Label>
                       <Input
                         id="viewport-width"
                         type="number"
                         value={viewportWidth}
-                        onChange={(e) => setViewportWidth(Number(e.target.value))}
+                        onChange={(e) =>
+                          setViewportWidth(Number(e.target.value))
+                        }
                       />
                     </div>
                     <div>
-                      <Label htmlFor="viewport-height" className="text-xs text-muted-foreground">
+                      <Label
+                        htmlFor="viewport-height"
+                        className="text-xs text-muted-foreground"
+                      >
                         높이
                       </Label>
                       <Input
                         id="viewport-height"
                         type="number"
                         value={viewportHeight}
-                        onChange={(e) => setViewportHeight(Number(e.target.value))}
+                        onChange={(e) =>
+                          setViewportHeight(Number(e.target.value))
+                        }
                       />
                     </div>
                   </div>
@@ -262,7 +334,9 @@ export default function UnitConverterPage() {
                     >
                       <Monitor className="h-4 w-4 mb-1" />
                       <span className="text-xs">Desktop</span>
-                      <span className="text-[10px] text-muted-foreground">1920x1080</span>
+                      <span className="text-[10px] text-muted-foreground">
+                        1920x1080
+                      </span>
                     </Button>
                     <Button
                       variant="outline"
@@ -272,7 +346,9 @@ export default function UnitConverterPage() {
                     >
                       <Tablet className="h-4 w-4 mb-1" />
                       <span className="text-xs">Tablet</span>
-                      <span className="text-[10px] text-muted-foreground">768x1024</span>
+                      <span className="text-[10px] text-muted-foreground">
+                        768x1024
+                      </span>
                     </Button>
                     <Button
                       variant="outline"
@@ -282,12 +358,18 @@ export default function UnitConverterPage() {
                     >
                       <Smartphone className="h-4 w-4 mb-1" />
                       <span className="text-xs">Mobile</span>
-                      <span className="text-[10px] text-muted-foreground">375x667</span>
+                      <span className="text-[10px] text-muted-foreground">
+                        375x667
+                      </span>
                     </Button>
                   </div>
                 </div>
 
-                <Button variant="outline" className="w-full bg-transparent" onClick={resetSettings}>
+                <Button
+                  variant="outline"
+                  className="w-full bg-transparent"
+                  onClick={resetSettings}
+                >
                   <RefreshCw className="h-4 w-4 mr-2" />
                   설정 초기화
                 </Button>
@@ -335,7 +417,10 @@ export default function UnitConverterPage() {
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="input-unit">단위</Label>
-                    <Select value={inputUnit} onValueChange={(value) => setInputUnit(value as UnitType)}>
+                    <Select
+                      value={inputUnit}
+                      onValueChange={(value) => setInputUnit(value as UnitType)}
+                    >
                       <SelectTrigger id="input-unit" className="text-lg">
                         <SelectValue />
                       </SelectTrigger>
@@ -362,7 +447,9 @@ export default function UnitConverterPage() {
                       {inputValue}
                       {inputUnit}
                     </p>
-                    <p className="text-xs text-muted-foreground mt-1">{unitDescriptions[inputUnit]}</p>
+                    <p className="text-xs text-muted-foreground mt-1">
+                      {unitDescriptions[inputUnit]}
+                    </p>
                   </div>
                 )}
               </CardContent>
@@ -391,7 +478,9 @@ export default function UnitConverterPage() {
                             variant="ghost"
                             size="icon"
                             className="h-6 w-6"
-                            onClick={() => copyToClipboard(result.value, result.unit)}
+                            onClick={() =>
+                              copyToClipboard(result.value, result.unit)
+                            }
                           >
                             <Copy className="h-3 w-3" />
                           </Button>
@@ -400,7 +489,9 @@ export default function UnitConverterPage() {
                           {result.value}
                           {result.unit}
                         </p>
-                        <p className="text-xs text-muted-foreground">{result.description}</p>
+                        <p className="text-xs text-muted-foreground">
+                          {result.description}
+                        </p>
                       </div>
                     ))}
                   </div>
@@ -411,25 +502,35 @@ export default function UnitConverterPage() {
             <Card>
               <CardHeader>
                 <CardTitle>일반적인 CSS 속성 예시</CardTitle>
-                <CardDescription>자주 사용하는 CSS 속성의 값을 빠르게 변환하세요</CardDescription>
+                <CardDescription>
+                  자주 사용하는 CSS 속성의 값을 빠르게 변환하세요
+                </CardDescription>
               </CardHeader>
               <CardContent>
                 <Tabs defaultValue="font-size">
                   <TabsList className="grid grid-cols-5 w-full">
                     {commonProperties.map((prop) => (
-                      <TabsTrigger key={prop.name} value={prop.name} className="text-xs">
+                      <TabsTrigger
+                        key={prop.name}
+                        value={prop.name}
+                        className="text-xs"
+                      >
                         {prop.name}
                       </TabsTrigger>
                     ))}
                   </TabsList>
                   {commonProperties.map((prop) => (
-                    <TabsContent key={prop.name} value={prop.name} className="space-y-2 mt-4">
+                    <TabsContent
+                      key={prop.name}
+                      value={prop.name}
+                      className="space-y-2 mt-4"
+                    >
                       <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
                         {prop.values.map((value) => {
-                          const match = value.match(/^([\d.]+)(.+)$/)
-                          if (!match) return null
-                          const numValue = Number.parseFloat(match[1])
-                          const unit = match[2] as UnitType
+                          const match = value.match(/^([\d.]+)(.+)$/);
+                          if (!match) return null;
+                          const numValue = Number.parseFloat(match[1]);
+                          const unit = match[2] as UnitType;
 
                           return (
                             <Button
@@ -437,13 +538,13 @@ export default function UnitConverterPage() {
                               variant="outline"
                               className="justify-start bg-transparent"
                               onClick={() => {
-                                setInputValue(numValue.toString())
-                                setInputUnit(unit)
+                                setInputValue(numValue.toString());
+                                setInputUnit(unit);
                               }}
                             >
                               <code className="text-sm">{value}</code>
                             </Button>
-                          )
+                          );
                         })}
                       </div>
                     </TabsContent>
@@ -455,5 +556,5 @@ export default function UnitConverterPage() {
         </div>
       </div>
     </div>
-  )
+  );
 }

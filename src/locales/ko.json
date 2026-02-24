@@ -18,7 +18,12 @@
     "success": "성공",
     "cancel": "취소",
     "confirm": "확인",
-    "close": "닫기"
+    "close": "닫기",
+    "optimize": "최적화",
+    "format": "포맷",
+    "convert": "변환",
+    "generate": "생성",
+    "test": "테스트"
   },
   "header": {
     "title": "웹 도구",
@@ -75,49 +80,138 @@
       "title": "코드 플레이그라운드",
       "description": "HTML, CSS, React 코드를 실시간으로 테스트하고 미리보기할 수 있는 도구입니다"
     },
+    "wordcounter": {
+      "title": "글자수 & 단어수 카운터",
+      "description": "텍스트의 글자수, 단어수, 문장수, 단락수를 실시간으로 계산하는 도구입니다",
+      "pageTitle": "글자수 & 단어수 카운터",
+      "pageSubtitle": "텍스트의 글자수, 단어수, 문장수, 단락수를 실시간으로 분석하고 예상 읽기 시간을 계산합니다",
+      "textInput": "텍스트 입력",
+      "placeholder": "여기에 텍스트를 입력하거나 붙여넣으세요...",
+      "textStats": "텍스트 통계",
+      "totalCharacters": "전체 글자수",
+      "charactersNoSpaces": "공백 제외",
+      "words": "단어수",
+      "sentences": "문장수",
+      "paragraphs": "단락수",
+      "lines": "줄 수",
+      "readingTime": "예상 읽기 시간",
+      "minutes": "분",
+      "readingTimeNote": "평균 200단어/분 기준",
+      "toUpperCase": "대문자로",
+      "toLowerCase": "소문자로",
+      "capitalize": "문장 첫 글자 대문자",
+      "helpTitle": "💡 도움말",
+      "helpItems": [
+        "실시간으로 글자수와 단어수가 계산됩니다",
+        "단어는 공백으로 구분됩니다",
+        "문장은 마침표, 느낌표, 물음표로 구분됩니다",
+        "단락은 빈 줄로 구분됩니다"
+      ]
+    },
     "sql": {
       "title": "SQL 쿼리 포매터",
-      "description": "SQL 쿼리를 보기 좋게 정리하고 포맷하는 도구입니다"
+      "description": "SQL 쿼리를 보기 좋게 정리하고 포맷하는 도구입니다",
+      "pageTitle": "SQL 쿼리 포매터",
+      "pageDescription": "SQL 쿼리를 보기 좋게 정리하고 포맷합니다",
+      "inputQuery": "입력 쿼리",
+      "inputDescription": "포맷팅할 SQL 쿼리를 입력하세요",
+      "inputPlaceholder": "SELECT * FROM users WHERE id = 1 AND name LIKE '%john%' ORDER BY created_at DESC;",
+      "formatButton": "포맷팅",
+      "resetButton": "초기화",
+      "formattedQuery": "포맷팅된 SQL",
+      "copyButton": "복사",
+      "outputDescription": "포맷팅된 결과가 여기에 표시됩니다",
+      "emptyState": "포맷팅된 SQL이 여기에 표시됩니다",
+      "exampleTitle": "사용 예시",
+      "exampleDescription": "다음과 같은 SQL 쿼리들을 포맷팅할 수 있습니다",
+      "beforeFormat": "입력 전:",
+      "afterFormat": "포맷팅 후:"
     },
     "xml": {
       "title": "XML 포매터",
-      "description": "XML를 보기 좋게 정리하고 포맷하는 도구입니다"
-    },
-    "texttoimage": {
-      "title": "Text to Image 변환기",
-      "description": "텍스트를 이미지로 변환하고 다양한 스타일을 적용할 수 있는 도구입니다"
+      "description": "XML를 보기 좋게 정리하고 포맷하는 도구입니다",
+      "pageTitle": "XML 포매터",
+      "pageDescription": "XML을 보기 좋게 정리하고 포맷합니다",
+      "originalXml": "원본 XML",
+      "inputDescription": "포맷팅할 XML 코드를 입력하세요",
+      "inputPlaceholder": "<root><user id=\"1\"><name>John</name><email>john@example.com</email></user></root>",
+      "formatButton": "포맷팅",
+      "resetButton": "초기화",
+      "formattedXml": "포맷팅된 XML",
+      "copyButton": "복사",
+      "outputDescription": "포맷팅된 결과가 여기에 표시됩니다",
+      "emptyState": "포맷팅된 XML이 여기에 표시됩니다",
+      "exampleTitle": "사용 예시",
+      "exampleDescription": "다음과 같은 XML 코드를 포맷팅할 수 있습니다",
+      "beforeFormat": "입력 전:",
+      "afterFormat": "포맷팅 후:",
+      "formatError": "포맷팅 중 오류가 발생했습니다.",
+      "copySuccess": "포맷팅된 XML이 클립보드에 복사되었습니다.",
+      "copyError": "클립보드 복사에 실패했습니다."
     },
     "signature": {
       "title": "서명 생성기",
-      "description": "디지털 서명을 생성하고 다운로드할 수 있는 도구입니다"
+      "description": "디지털 서명을 생성하고 다운로드할 수 있는 도구입니다",
+      "pageTitle": "서명 생성기",
+      "pageDescription": "디지털 서명을 생성합니다",
+      "cardTitle": "서명 캡처 도구",
+      "cardDescription": "아래 영역에 서명을 그리고 다운로드하세요",
+      "signatureLabel": "서명",
+      "clearButton": "지우기",
+      "downloadButton": "다운로드",
+      "placeholder": "여기에 서명해주세요 (투명 배경)",
+      "instruction": "마우스나 터치로 위 영역에 서명을 그려주세요. 투명 배경으로 저장됩니다.",
+      "downloadSuccess": "서명이 성공적으로 다운로드되었습니다."
     },
     "regex": {
-      "title": "regex 정규표현식 매칭 도구",
-      "description": "정규표현식을 테스트하고 매칭 결과를 확인할 수 있는 도구입니다"
+      "title": "정규표현식 매칭 도구",
+      "description": "정규표현식을 테스트하고 매칭 결과를 확인할 수 있는 도구입니다",
+      "pageTitle": "정규표현식 테스터",
+      "pageDescription": "정규표현식 패턴을 테스트하고 매칭 결과를 확인합니다"
     },
     "storage": {
       "title": "브라우저 저장소 관리 도구",
-      "description": "로컬스토리지와 세션스토리지를 관리하고 데이터를 추가, 삭제, 조회할 수 있는 도구입니다"
+      "description": "로컬스토리지와 세션스토리지를 관리하고 데이터를 추가, 삭제, 조회할 수 있는 도구입니다",
+      "pageTitle": "브라우저 저장소 관리",
+      "pageDescription": "로컬스토리지와 세션스토리지를 관리합니다"
     },
     "keycode": {
-      "title": "keycode 추적기",
-      "description": "키보드 입력을 실시간으로 추적하고 키코드 정보를 제공합니다"
+      "title": "키코드 추적기",
+      "description": "키보드 입력을 실시간으로 추적하고 키코드 정보를 제공합니다",
+      "pageTitle": "키코드 추적기",
+      "pageDescription": "키보드 키를 누르면 해당 키의 정보를 표시합니다",
+      "cardTitle": "키보드 입력",
+      "cardDescription": "아래 회색 영역을 클릭하거나 탭하여 포커스를 둔 후 아무 키나 눌러보세요.",
+      "resetButton": "초기화",
+      "placeholder": "키보드 키를 눌러주세요",
+      "placeholderDescription": "마지막으로 누른 키의 정보가 여기에 표시됩니다.",
+      "clearSuccess": "키코드 정보가 초기화되었습니다.",
+      "copySuccess": "가 클립보드에 복사되었습니다.",
+      "copyError": "클립보드 복사에 실패했습니다."
     },
     "querystring": {
       "title": "URL Query String 파서 & 빌더",
-      "description": "URL의 쿼리 스트링을 파싱하거나 새로운 쿼리 스트링을 생성할 수 있는 도구입니다."
+      "description": "URL의 쿼리 스트링을 파싱하거나 새로운 쿼리 스트링을 생성할 수 있는 도구입니다",
+      "pageTitle": "Query String 파서 & 빌더",
+      "pageDescription": "URL 쿼리 스트링을 파싱하고 생성합니다"
     },
     "hash": {
       "title": "Hash 생성기",
-      "description": "텍스트나 파일의 해시값을 생성합니다. MD5, SHA-1, SHA-256, SHA-384, SHA-512 알고리즘을 지원합니다."
+      "description": "텍스트나 파일의 해시값을 생성합니다. MD5, SHA-1, SHA-256, SHA-384, SHA-512 알고리즘을 지원합니다",
+      "pageTitle": "Hash 생성기",
+      "pageDescription": "텍스트나 파일의 해시값을 생성합니다"
     },
     "unit": {
       "title": "CSS 단위 변환기",
-      "description": "자주 사용하는 CSS 속성의 값을 빠르게 변환하세요"
+      "description": "자주 사용하는 CSS 속성의 값을 빠르게 변환하세요",
+      "pageTitle": "CSS 단위 변환기",
+      "pageDescription": "CSS 단위를 변환합니다"
     },
-    "wordcounter": {
-      "title": "글자수 & 단어수 카운터",
-      "description": "텍스트의 글자수, 단어수, 문장수, 단락수를 실시간으로 계산하는 도구입니다"
+    "texttoimage": {
+      "title": "Text to Image 변환기",
+      "description": "텍스트를 이미지로 변환하고 다양한 스타일을 적용할 수 있는 도구입니다",
+      "pageTitle": "Text to Image 변환기",
+      "pageDescription": "텍스트를 이미지로 변환합니다"
     }
   }
 }

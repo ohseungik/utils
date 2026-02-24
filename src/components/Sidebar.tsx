@@ -160,7 +160,7 @@ export default function Sidebar() {
   const isMobile = useMobile();
   const { t } = useLanguage();
   const [isOpen, setIsOpen] = useState(!isMobile);
-  
+
   const navItems = getNavItems();
 
   // 페이지 경로가 변경될 때 모바일에서는 사이드바를 닫습니다

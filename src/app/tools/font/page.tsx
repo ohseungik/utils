@@ -1,19 +1,18 @@
-import FontConverter from "@/components/FontConverter/FontConverter"
+"use client";
 
-export const metadata = {
-  title: "폰트 프리뷰 및 변환기 | 웹 도구 모음",
-  description: "웹 폰트 미리보기 및 다양한 포맷(WOFF, TTF) 변환 기능을 제공합니다",
-}
+import FontConverter from "@/components/FontConverter/FontConverter";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function FontConverterPage() {
+  const { t } = useLanguage();
+
   return (
     <div className="container mx-auto max-w-5xl">
       <div className="mb-8">
-        <h1 className="text-3xl font-bold mb-2">폰트 프리뷰 및 변환기</h1>
-        <p className="text-muted-foreground">웹 폰트를 미리보고 다양한 포맷으로 변환해보세요</p>
+        <h1 className="text-3xl font-bold mb-2">{t("tools.font.title")}</h1>
+        <p className="text-muted-foreground">{t("tools.font.description")}</p>
       </div>
       <FontConverter />
     </div>
-  )
+  );
 }
-

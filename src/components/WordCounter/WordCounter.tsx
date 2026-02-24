@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import { toast } from "sonner";
 import { Badge } from "@/components/ui/badge";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface TextStats {
   totalCharacters: number;
@@ -27,6 +28,7 @@ interface TextStats {
 }
 
 export default function WordCounter() {
+  const { t } = useLanguage();
   const [text, setText] = useState<string>("");
   const [stats, setStats] = useState<TextStats>({
     totalCharacters: 0,
@@ -84,32 +86,32 @@ export default function WordCounter() {
 
   const handleCopy = async () => {
     if (!text.trim()) {
-      toast("복사할 텍스트가 없습니다");
+      toast(t("common.copy") + " - " + t("common.error"));
       return;
     }
 
     try {
       await navigator.clipboard.writeText(text);
-      toast("텍스트가 클립보드에 복사되었습니다");
+      toast(t("common.success"));
     } catch (error) {
       console.error("복사 오류:", error);
-      toast("텍스트 복사에 실패했습니다");
+      toast(t("common.error"));
     }
   };
 
   const handleClear = () => {
     setText("");
-    toast("텍스트가 초기화되었습니다");
+    toast(t("common.success"));
   };
 
   const handleToUpperCase = () => {
     setText(text.toUpperCase());
-    toast("대문자로 변환되었습니다");
+    toast(t("common.success"));
   };
 
   const handleToLowerCase = () => {
     setText(text.toLowerCase());
-    toast("소문자로 변환되었습니다");
+    toast(t("common.success"));
   };
 
   const handleCapitalize = () => {
@@ -118,7 +120,7 @@ export default function WordCounter() {
       .map((sentence) => sentence.charAt(0).toUpperCase() + sentence.slice(1))
       .join(". ");
     setText(capitalized);
-    toast("문장의 첫 글자가 대문자로 변환되었습니다");
+    toast(t("common.success"));
   };
 
   return (
@@ -130,15 +132,17 @@ export default function WordCounter() {
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Type className="h-5 w-5" />
-                텍스트 입력
+                {t("tools.wordcounter.textInput")}
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               <div>
-                <Label htmlFor="text-input">분석할 텍스트를 입력하세요</Label>
+                <Label htmlFor="text-input">
+                  {t("tools.wordcounter.placeholder")}
+                </Label>
                 <Textarea
                   id="text-input"
-                  placeholder="여기에 텍스트를 입력하거나 붙여넣으세요..."
+                  placeholder={t("tools.wordcounter.placeholder")}
                   value={text}
                   onChange={(e) => setText(e.target.value)}
                   className="min-h-[400px] mt-2 font-mono"
@@ -148,20 +152,20 @@ export default function WordCounter() {
               <div className="flex flex-wrap gap-2">
                 <Button variant="outline" size="sm" onClick={handleCopy}>
                   <Copy className="mr-2 h-4 w-4" />
-                  복사
+                  {t("common.copy")}
                 </Button>
                 <Button variant="outline" size="sm" onClick={handleClear}>
                   <RefreshCw className="mr-2 h-4 w-4" />
-                  초기화
+                  {t("common.clear")}
                 </Button>
                 <Button variant="outline" size="sm" onClick={handleToUpperCase}>
-                  대문자로
+                  {t("tools.wordcounter.toUpperCase")}
                 </Button>
                 <Button variant="outline" size="sm" onClick={handleToLowerCase}>
-                  소문자로
+                  {t("tools.wordcounter.toLowerCase")}
                 </Button>
                 <Button variant="outline" size="sm" onClick={handleCapitalize}>
-                  문장 첫 글자 대문자
+                  {t("tools.wordcounter.capitalize")}
                 </Button>
               </div>
             </CardContent>
@@ -174,38 +178,38 @@ export default function WordCounter() {
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <FileText className="h-5 w-5" />
-                텍스트 통계
+                {t("tools.wordcounter.textStats")}
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="space-y-3">
                 <StatItem
-                  label="전체 글자수"
+                  label={t("tools.wordcounter.totalCharacters")}
                   value={stats.totalCharacters}
                   icon={<Type className="h-4 w-4" />}
                 />
                 <StatItem
-                  label="공백 제외"
+                  label={t("tools.wordcounter.charactersNoSpaces")}
                   value={stats.charactersNoSpaces}
                   icon={<Type className="h-4 w-4" />}
                 />
                 <StatItem
-                  label="단어수"
+                  label={t("tools.wordcounter.words")}
                   value={stats.words}
                   icon={<AlignLeft className="h-4 w-4" />}
                 />
                 <StatItem
-                  label="문장수"
+                  label={t("tools.wordcounter.sentences")}
                   value={stats.sentences}
                   icon={<ListOrdered className="h-4 w-4" />}
                 />
                 <StatItem
-                  label="단락수"
+                  label={t("tools.wordcounter.paragraphs")}
                   value={stats.paragraphs}
                   icon={<FileText className="h-4 w-4" />}
                 />
                 <StatItem
-                  label="줄 수"
+                  label={t("tools.wordcounter.lines")}
                   value={stats.lines}
                   icon={<AlignLeft className="h-4 w-4" />}
                 />
@@ -215,12 +219,15 @@ export default function WordCounter() {
                 <div className="pt-4 border-t">
                   <div className="flex items-center justify-between">
                     <span className="text-sm text-muted-foreground">
-                      예상 읽기 시간
+                      {t("tools.wordcounter.readingTime")}
                     </span>
-                    <Badge variant="secondary">{stats.readingTime}분</Badge>
+                    <Badge variant="secondary">
+                      {stats.readingTime}
+                      {t("tools.wordcounter.minutes")}
+                    </Badge>
                   </div>
                   <p className="text-xs text-muted-foreground mt-1">
-                    평균 200단어/분 기준
+                    {t("tools.wordcounter.readingTimeNote")}
                   </p>
                 </div>
               )}
@@ -230,14 +237,16 @@ export default function WordCounter() {
           {/* 추가 정보 카드 */}
           <Card>
             <CardHeader>
-              <CardTitle className="text-base">💡 도움말</CardTitle>
+              <CardTitle className="text-base">
+                {t("tools.wordcounter.helpTitle")}
+              </CardTitle>
             </CardHeader>
             <CardContent>
               <ul className="text-sm text-muted-foreground space-y-2">
-                <li>• 실시간으로 글자수와 단어수가 계산됩니다</li>
-                <li>• 단어는 공백으로 구분됩니다</li>
-                <li>• 문장은 마침표, 느낌표, 물음표로 구분됩니다</li>
-                <li>• 단락은 빈 줄로 구분됩니다</li>
+                <li>• {t("tools.wordcounter.helpItems.0")}</li>
+                <li>• {t("tools.wordcounter.helpItems.1")}</li>
+                <li>• {t("tools.wordcounter.helpItems.2")}</li>
+                <li>• {t("tools.wordcounter.helpItems.3")}</li>
               </ul>
             </CardContent>
           </Card>
