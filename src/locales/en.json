@@ -1,0 +1,123 @@
+{
+  "common": {
+    "title": "Web Tools Collection",
+    "description": "Useful web tools collection",
+    "useTool": "Use Tool",
+    "copy": "Copy",
+    "clear": "Clear",
+    "reset": "Reset",
+    "download": "Download",
+    "upload": "Upload",
+    "send": "Send",
+    "save": "Save",
+    "delete": "Delete",
+    "search": "Search",
+    "loading": "Loading...",
+    "processing": "Processing...",
+    "error": "Error",
+    "success": "Success",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "close": "Close"
+  },
+  "header": {
+    "title": "Web Tools",
+    "language": "Language",
+    "korean": "한국어",
+    "english": "English"
+  },
+  "home": {
+    "title": "Web Tools Collection",
+    "subtitle": "Use various tools for web development and design in one place. All processing is done in the browser and files are not sent to the server."
+  },
+  "tools": {
+    "image": {
+      "title": "Image Optimizer",
+      "description": "Provides image compression, WebP conversion, and resizing features"
+    },
+    "font": {
+      "title": "Font Preview & Converter",
+      "description": "Preview web fonts and convert to various formats (WOFF, TTF)"
+    },
+    "css": {
+      "title": "CSS Minifier",
+      "description": "Minify and format CSS code"
+    },
+    "json": {
+      "title": "JSON Formatter & Viewer",
+      "description": "A tool to format and edit JSON"
+    },
+    "api": {
+      "title": "API Tester",
+      "description": "API testing tool based on Fetch or Axios"
+    },
+    "base64": {
+      "title": "Base64 Encoder/Decoder",
+      "description": "A tool to encode and decode text and files to Base64"
+    },
+    "tailwind": {
+      "title": "CSS → Tailwind Converter",
+      "description": "A tool to convert CSS code to Tailwind CSS classes"
+    },
+    "qrcode": {
+      "title": "QR Code Generator",
+      "description": "A tool to convert text or URL to QR code and download"
+    },
+    "timestamp": {
+      "title": "Timestamp Converter",
+      "description": "A tool to convert between Unix timestamp and date/time format"
+    },
+    "swipepay": {
+      "title": "Swipe to Pay Test",
+      "description": "Swipe to pay test module"
+    },
+    "codeplayground": {
+      "title": "Code Playground",
+      "description": "A tool to test and preview HTML, CSS, React code in real-time"
+    },
+    "sql": {
+      "title": "SQL Query Formatter",
+      "description": "A tool to format and organize SQL queries"
+    },
+    "xml": {
+      "title": "XML Formatter",
+      "description": "A tool to format and organize XML"
+    },
+    "texttoimage": {
+      "title": "Text to Image Converter",
+      "description": "A tool to convert text to image and apply various styles"
+    },
+    "signature": {
+      "title": "Signature Generator",
+      "description": "A tool to generate and download digital signatures"
+    },
+    "regex": {
+      "title": "Regex Pattern Matcher",
+      "description": "A tool to test regular expressions and check matching results"
+    },
+    "storage": {
+      "title": "Browser Storage Manager",
+      "description": "A tool to manage local storage and session storage, add, delete, and view data"
+    },
+    "keycode": {
+      "title": "KeyCode Tracker",
+      "description": "Real-time keyboard input tracking and keycode information"
+    },
+    "querystring": {
+      "title": "URL Query String Parser & Builder",
+      "description": "A tool to parse URL query strings or generate new query strings"
+    },
+    "hash": {
+      "title": "Hash Generator",
+      "description": "Generate hash values for text or files. Supports MD5, SHA-1, SHA-256, SHA-384, SHA-512 algorithms"
+    },
+    "unit": {
+      "title": "CSS Unit Converter",
+      "description": "Quickly convert values of frequently used CSS properties"
+    },
+    "wordcounter": {
+      "title": "Word & Character Counter",
+      "description": "A tool to calculate the number of characters, words, sentences, and paragraphs in real-time"
+    }
+  }
+}

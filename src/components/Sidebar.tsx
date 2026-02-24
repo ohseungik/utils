@@ -33,121 +33,122 @@ import {
 } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useMobile } from "@/hooks/useMobile";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface NavItem {
-  title: string;
+  titleKey: string;
   href: string;
   icon: React.ReactNode;
 }
 
-const navItems: NavItem[] = [
+const getNavItems = (): NavItem[] => [
   {
-    title: "이미지 최적화",
+    titleKey: "tools.image.title",
     href: "/tools/image",
     icon: <Image className="h-5 w-5" />,
   },
   {
-    title: "폰트 프리뷰 및 변환기",
+    titleKey: "tools.font.title",
     href: "/tools/font",
     icon: <Type className="h-5 w-5" />,
   },
   {
-    title: "CSS 코드 압축기",
+    titleKey: "tools.css.title",
     href: "/tools/css",
     icon: <Code className="h-5 w-5" />,
   },
   {
-    title: "JSON 포매터 & 뷰어",
+    titleKey: "tools.json.title",
     href: "/tools/json",
     icon: <FileJson className="h-5 w-5" />,
   },
   {
-    title: "API 테스트 도구",
+    titleKey: "tools.api.title",
     href: "/tools/api",
     icon: <Globe className="h-5 w-5" />,
   },
   {
-    title: "Base64 인코딩/디코딩",
+    titleKey: "tools.base64.title",
     href: "/tools/base64",
     icon: <FileCode className="h-5 w-5" />,
   },
   {
-    title: "CSS → Tailwind 변환기",
+    titleKey: "tools.tailwind.title",
     href: "/tools/tailwind",
     icon: <Wand2 className="h-5 w-5" />,
   },
   {
-    title: "QR코드 생성기",
+    titleKey: "tools.qrcode.title",
     href: "/tools/qrcode",
     icon: <QrCode className="h-5 w-5" />,
   },
   {
-    title: "타임스탬프 변환기",
+    titleKey: "tools.timestamp.title",
     href: "/tools/timestamp",
     icon: <Clock className="h-5 w-5" />,
   },
   {
-    title: "밀어서 결제하기 테스트",
+    titleKey: "tools.swipepay.title",
     href: "/tools/swipepay",
     icon: <FileJson className="h-5 w-5" />,
   },
   {
-    title: "코드 플레이그라운드",
+    titleKey: "tools.codeplayground.title",
     href: "/tools/codeplayground",
     icon: <Play className="h-5 w-5" />,
   },
   {
-    title: "SQL 쿼리 포매터",
+    titleKey: "tools.sql.title",
     href: "/tools/sql",
     icon: <FileCode2 className="h-5 w-5" />,
   },
   {
-    title: "XML 포매터",
+    titleKey: "tools.xml.title",
     href: "/tools/xml",
     icon: <FileArchive className="h-5 w-5" />,
   },
   {
-    title: "Text to Image 변환기",
+    titleKey: "tools.texttoimage.title",
     href: "/tools/texttoimage",
     icon: <ImagePlus className="h-5 w-5" />,
   },
   {
-    title: "서명 생성기",
+    titleKey: "tools.signature.title",
     href: "/tools/signature",
     icon: <SignatureIcon className="h-5 w-5" />,
   },
   {
-    title: "regex 정규표현식 매칭 도구",
+    titleKey: "tools.regex.title",
     href: "/tools/regex",
     icon: <RegexIcon className="h-5 w-5" />,
   },
   {
-    title: "브라우저 저장소 관리 도구",
+    titleKey: "tools.storage.title",
     href: "/tools/storage",
     icon: <FileIcon className="h-5 w-5" />,
   },
   {
-    title: "keycode 추적기",
+    titleKey: "tools.keycode.title",
     href: "/tools/keycode",
     icon: <KeyboardIcon className="h-5 w-5" />,
   },
   {
-    title: "URL Query String 파서 & 빌더",
+    titleKey: "tools.querystring.title",
     href: "/tools/querystring",
     icon: <Link2 className="h-5 w-5" />,
   },
   {
-    title: "Hash 생성기",
+    titleKey: "tools.hash.title",
     href: "/tools/hash",
     icon: <Hash className="h-5 w-5" />,
   },
   {
-    title: "CSS 단위 변환기",
+    titleKey: "tools.unit.title",
     href: "/tools/unit",
     icon: <Ruler className="h-5 w-5" />,
   },
   {
-    title: "글자수 & 단어수 카운터",
+    titleKey: "tools.wordcounter.title",
     href: "/tools/wordcounter",
     icon: <FileText className="h-5 w-5" />,
   },
@@ -157,7 +158,10 @@ const navItems: NavItem[] = [
 export default function Sidebar() {
   const pathname = usePathname();
   const isMobile = useMobile();
+  const { t } = useLanguage();
   const [isOpen, setIsOpen] = useState(!isMobile);
+  
+  const navItems = getNavItems();
 
   // 페이지 경로가 변경될 때 모바일에서는 사이드바를 닫습니다
   useEffect(() => {
@@ -219,7 +223,7 @@ export default function Sidebar() {
         <div className="p-4 h-16 flex items-center border-b">
           {/* 타이틀 */}
           <Link href={"/"}>
-            <h1 className="font-bold text-xl">웹 도구</h1>
+            <h1 className="font-bold text-xl">{t("header.title")}</h1>
           </Link>
         </div>
 
@@ -236,7 +240,7 @@ export default function Sidebar() {
                     onClick={() => isMobile && setIsOpen(false)}
                   >
                     {item.icon}
-                    <span className="ml-2">{item.title}</span>
+                    <span className="ml-2">{t(item.titleKey)}</span>
                   </Button>
                 </Link>
               </li>

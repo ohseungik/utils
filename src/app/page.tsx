@@ -1,5 +1,6 @@
+"use client"
+
 import type React from "react";
-import type { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import {
@@ -33,20 +34,17 @@ import {
   Ruler,
   FileText,
 } from "lucide-react";
-
-export const metadata: Metadata = {
-  title: "웹 도구 모음",
-  description: "다양한 웹 도구를 한 곳에서 사용해보세요",
-};
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface ToolCardProps {
   title: string;
   description: string;
   icon: React.ReactNode;
   href: string;
+  buttonText: string;
 }
 
-function ToolCard({ title, description, icon, href }: ToolCardProps) {
+function ToolCard({ title, description, icon, href, buttonText }: ToolCardProps) {
   return (
     <Card className="h-full flex flex-col">
       <CardHeader>
@@ -61,167 +59,158 @@ function ToolCard({ title, description, icon, href }: ToolCardProps) {
       </CardContent>
       <CardFooter>
         <Link href={href} className="w-full">
-          <Button className="w-full">도구 사용하기</Button>
+          <Button className="w-full">{buttonText}</Button>
         </Link>
       </CardFooter>
     </Card>
   );
 }
 
+const getTools = () => [
+  {
+    titleKey: "tools.image.title",
+    descriptionKey: "tools.image.description",
+    icon: <Image className="h-5 w-5" />,
+    href: "/tools/image",
+  },
+  {
+    titleKey: "tools.font.title",
+    descriptionKey: "tools.font.description",
+    icon: <Type className="h-5 w-5" />,
+    href: "/tools/font",
+  },
+  {
+    titleKey: "tools.css.title",
+    descriptionKey: "tools.css.description",
+    icon: <Code className="h-5 w-5" />,
+    href: "/tools/css",
+  },
+  {
+    titleKey: "tools.json.title",
+    descriptionKey: "tools.json.description",
+    icon: <FileJson className="h-5 w-5" />,
+    href: "/tools/json",
+  },
+  {
+    titleKey: "tools.api.title",
+    descriptionKey: "tools.api.description",
+    icon: <Globe className="h-5 w-5" />,
+    href: "/tools/api",
+  },
+  {
+    titleKey: "tools.base64.title",
+    descriptionKey: "tools.base64.description",
+    icon: <FileCode className="h-5 w-5" />,
+    href: "/tools/base64",
+  },
+  {
+    titleKey: "tools.tailwind.title",
+    descriptionKey: "tools.tailwind.description",
+    icon: <Wand2 className="h-5 w-5" />,
+    href: "/tools/tailwind",
+  },
+  {
+    titleKey: "tools.qrcode.title",
+    descriptionKey: "tools.qrcode.description",
+    icon: <QrCode className="h-5 w-5" />,
+    href: "/tools/qrcode",
+  },
+  {
+    titleKey: "tools.timestamp.title",
+    descriptionKey: "tools.timestamp.description",
+    icon: <Clock className="h-5 w-5" />,
+    href: "/tools/timestamp",
+  },
+  {
+    titleKey: "tools.swipepay.title",
+    descriptionKey: "tools.swipepay.description",
+    icon: <FileJson className="h-5 w-5" />,
+    href: "/tools/swipepay",
+  },
+  {
+    titleKey: "tools.codeplayground.title",
+    descriptionKey: "tools.codeplayground.description",
+    icon: <Play className="h-5 w-5" />,
+    href: "/tools/codeplayground",
+  },
+  {
+    titleKey: "tools.sql.title",
+    descriptionKey: "tools.sql.description",
+    icon: <FileCode2 className="h-5 w-5" />,
+    href: "/tools/sql",
+  },
+  {
+    titleKey: "tools.xml.title",
+    descriptionKey: "tools.xml.description",
+    icon: <FileArchive className="h-5 w-5" />,
+    href: "/tools/xml",
+  },
+  {
+    titleKey: "tools.texttoimage.title",
+    descriptionKey: "tools.texttoimage.description",
+    icon: <ImagePlus className="h-5 w-5" />,
+    href: "/tools/texttoimage",
+  },
+  {
+    titleKey: "tools.signature.title",
+    descriptionKey: "tools.signature.description",
+    icon: <SignatureIcon className="h-5 w-5" />,
+    href: "/tools/signature",
+  },
+  {
+    titleKey: "tools.regex.title",
+    descriptionKey: "tools.regex.description",
+    icon: <RegexIcon className="h-5 w-5" />,
+    href: "/tools/regex",
+  },
+  {
+    titleKey: "tools.storage.title",
+    descriptionKey: "tools.storage.description",
+    icon: <FileIcon className="h-5 w-5" />,
+    href: "/tools/storage",
+  },
+  {
+    titleKey: "tools.keycode.title",
+    descriptionKey: "tools.keycode.description",
+    icon: <KeyboardIcon className="h-5 w-5" />,
+    href: "/tools/keycode",
+  },
+  {
+    titleKey: "tools.querystring.title",
+    descriptionKey: "tools.querystring.description",
+    icon: <Link2 className="h-5 w-5" />,
+    href: "/tools/querystring",
+  },
+  {
+    titleKey: "tools.hash.title",
+    descriptionKey: "tools.hash.description",
+    icon: <Hash className="h-5 w-5" />,
+    href: "/tools/hash",
+  },
+  {
+    titleKey: "tools.unit.title",
+    descriptionKey: "tools.unit.description",
+    icon: <Ruler className="h-5 w-5" />,
+    href: "/tools/unit",
+  },
+  {
+    titleKey: "tools.wordcounter.title",
+    descriptionKey: "tools.wordcounter.description",
+    icon: <FileText className="h-5 w-5" />,
+    href: "/tools/wordcounter",
+  },
+];
+
 export default function Home() {
-  const tools = [
-    {
-      title: "이미지 최적화",
-      description: "이미지 압축, WebP 변환, 리사이징 기능을 제공합니다",
-      icon: <Image className="h-5 w-5" />,
-      href: "/tools/image",
-    },
-    {
-      title: "폰트 프리뷰 및 변환기",
-      description:
-        "웹 폰트 미리보기 및 다양한 포맷(WOFF, TTF) 변환 기능을 제공합니다",
-      icon: <Type className="h-5 w-5" />,
-      href: "/tools/font",
-    },
-    {
-      title: "CSS 코드 압축기",
-      description: "CSS 코드를 Minify하고 포맷을 변환하는 기능을 제공합니다",
-      icon: <Code className="h-5 w-5" />,
-      href: "/tools/css",
-    },
-    {
-      title: "JSON 포매터 & 뷰어",
-      description: "JSON을 보기 좋게 정리하고 편집할 수 있는 도구입니다",
-      icon: <FileJson className="h-5 w-5" />,
-      href: "/tools/json",
-    },
-    {
-      title: "API 테스트 도구",
-      description: "Fetch 또는 Axios 기반 API 테스트 도구입니다",
-      icon: <Globe className="h-5 w-5" />,
-      href: "/tools/api",
-    },
-    {
-      title: "Base64 인코딩/디코딩",
-      description:
-        "텍스트와 파일을 Base64로 인코딩하고 디코딩할 수 있는 도구입니다",
-      icon: <FileCode className="h-5 w-5" />,
-      href: "/tools/base64",
-    },
-    {
-      title: "CSS → Tailwind 변환기",
-      description: "CSS 코드를 Tailwind CSS 클래스로 변환해주는 도구입니다",
-      icon: <Wand2 className="h-5 w-5" />,
-      href: "/tools/tailwind",
-    },
-    {
-      title: "QR코드 생성기",
-      description:
-        "텍스트나 URL을 QR코드로 변환하여 다운로드할 수 있는 도구입니다",
-      icon: <QrCode className="h-5 w-5" />,
-      href: "/tools/qrcode",
-    },
-    {
-      title: "타임스탬프 변환기",
-      description: "Unix 타임스탬프와 날짜/시간 형식 간의 변환 도구입니다",
-      icon: <Clock className="h-5 w-5" />,
-      href: "/tools/timestamp",
-    },
-    {
-      title: "밀어서 결제하기 테스트",
-      description: "밀어서 결제하기 테스트 모듈입니다",
-      icon: <FileJson className="h-5 w-5" />,
-      href: "/tools/swipepay",
-    },
-    {
-      title: "코드 플레이그라운드",
-      description:
-        "HTML, CSS, React 코드를 실시간으로 테스트하고 미리보기할 수 있는 도구입니다",
-      icon: <Play className="h-5 w-5" />,
-      href: "/tools/codeplayground",
-    },
-    {
-      title: "SQL 쿼리 포매터",
-      description: "SQL 쿼리를 보기 좋게 정리하고 포맷하는 도구입니다",
-      icon: <FileCode2 className="h-5 w-5" />,
-      href: "/tools/sql",
-    },
-    {
-      title: "XML 포매터",
-      description: "XML를 보기 좋게 정리하고 포맷하는 도구입니다",
-      icon: <FileArchive className="h-5 w-5" />,
-      href: "/tools/xml",
-    },
-    {
-      title: "Text to Image 변환기",
-      description:
-        "텍스트를 이미지로 변환하고 다양한 스타일을 적용할 수 있는 도구입니다",
-      icon: <ImagePlus className="h-5 w-5" />,
-      href: "/tools/texttoimage",
-    },
-    {
-      title: "서명 생성기",
-      description: "디지털 서명을 생성하고 다운로드할 수 있는 도구입니다",
-      icon: <SignatureIcon className="h-5 w-5" />,
-      href: "/tools/signature",
-    },
-    {
-      title: "regex 정규표현식 매칭 도구",
-      description:
-        "정규표현식을 테스트하고 매칭 결과를 확인할 수 있는 도구입니다",
-      icon: <RegexIcon className="h-5 w-5" />,
-      href: "/tools/regex",
-    },
-    {
-      title: "브라우저 저장소 관리 도구",
-      description:
-        "로컬스토리지와 세션스토리지를 관리하고 데이터를 추가, 삭제, 조회할 수 있는 도구입니다",
-      icon: <FileIcon className="h-5 w-5" />,
-      href: "/tools/storage",
-    },
-    {
-      title: "keycode 추적기",
-      description: "키보드 입력을 실시간으로 추적하고 키코드 정보를 제공합니다",
-      icon: <KeyboardIcon className="h-5 w-5" />,
-      href: "/tools/keycode",
-    },
-    {
-      title: "URL Query String 파서 & 빌더",
-      description:
-        "URL의 쿼리 스트링을 파싱하거나 새로운 쿼리 스트링을 생성할 수 있는 도구입니다.",
-      icon: <Link2 className="h-5 w-5" />,
-      href: "/tools/querystring",
-    },
-    {
-      title: "Hash 생성기",
-      description:
-        "텍스트나 파일의 해시값을 생성합니다. MD5, SHA-1, SHA-256, SHA-384, SHA-512 알고리즘을 지원합니다.",
-      icon: <Hash className="h-5 w-5" />,
-      href: "/tools/hash",
-    },
-    {
-      title: "CSS 단위 변환기",
-      description: "자주 사용하는 CSS 속성의 값을 빠르게 변환하세요",
-      icon: <Ruler className="h-5 w-5" />,
-      href: "/tools/unit",
-    },
-    {
-      title: "글자수 & 단어수 카운터",
-      description:
-        "텍스트의 글자수, 단어수, 문장수, 단락수를 실시간으로 계산하는 도구입니다",
-      icon: <FileText className="h-5 w-5" />,
-      href: "/tools/wordcounter",
-    },
-  ];
+  const { t } = useLanguage();
+  const tools = getTools();
 
   return (
     <div className="container mx-auto max-w-6xl py-6">
       <div className="mb-8 text-center">
-        <h1 className="text-4xl font-bold mb-4">웹 도구 모음</h1>
+        <h1 className="text-4xl font-bold mb-4">{t("home.title")}</h1>
         <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-          다양한 웹 개발 및 디자인 작업에 필요한 도구들을 한 곳에서
-          사용해보세요. 모든 처리는 브라우저에서 이루어지며 파일은 서버로
-          전송되지 않습니다.
+          {t("home.subtitle")}
         </p>
       </div>
 
@@ -229,10 +218,11 @@ export default function Home() {
         {tools.map((tool) => (
           <ToolCard
             key={tool.href}
-            title={tool.title}
-            description={tool.description}
+            title={t(tool.titleKey)}
+            description={t(tool.descriptionKey)}
             icon={tool.icon}
             href={tool.href}
+            buttonText={t("common.useTool")}
           />
         ))}
       </div>

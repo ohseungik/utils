@@ -1,0 +1,123 @@
+{
+  "common": {
+    "title": "웹 도구 모음",
+    "description": "유용한 웹 도구 모음",
+    "useTool": "도구 사용하기",
+    "copy": "복사",
+    "clear": "초기화",
+    "reset": "초기화",
+    "download": "다운로드",
+    "upload": "업로드",
+    "send": "전송",
+    "save": "저장",
+    "delete": "삭제",
+    "search": "검색",
+    "loading": "로딩 중...",
+    "processing": "처리 중...",
+    "error": "오류",
+    "success": "성공",
+    "cancel": "취소",
+    "confirm": "확인",
+    "close": "닫기"
+  },
+  "header": {
+    "title": "웹 도구",
+    "language": "언어",
+    "korean": "한국어",
+    "english": "English"
+  },
+  "home": {
+    "title": "웹 도구 모음",
+    "subtitle": "다양한 웹 개발 및 디자인 작업에 필요한 도구들을 한 곳에서 사용해보세요. 모든 처리는 브라우저에서 이루어지며 파일은 서버로 전송되지 않습니다."
+  },
+  "tools": {
+    "image": {
+      "title": "이미지 최적화",
+      "description": "이미지 압축, WebP 변환, 리사이징 기능을 제공합니다"
+    },
+    "font": {
+      "title": "폰트 프리뷰 및 변환기",
+      "description": "웹 폰트 미리보기 및 다양한 포맷(WOFF, TTF) 변환 기능을 제공합니다"
+    },
+    "css": {
+      "title": "CSS 코드 압축기",
+      "description": "CSS 코드를 Minify하고 포맷을 변환하는 기능을 제공합니다"
+    },
+    "json": {
+      "title": "JSON 포매터 & 뷰어",
+      "description": "JSON을 보기 좋게 정리하고 편집할 수 있는 도구입니다"
+    },
+    "api": {
+      "title": "API 테스트 도구",
+      "description": "Fetch 또는 Axios 기반 API 테스트 도구입니다"
+    },
+    "base64": {
+      "title": "Base64 인코딩/디코딩",
+      "description": "텍스트와 파일을 Base64로 인코딩하고 디코딩할 수 있는 도구입니다"
+    },
+    "tailwind": {
+      "title": "CSS → Tailwind 변환기",
+      "description": "CSS 코드를 Tailwind CSS 클래스로 변환해주는 도구입니다"
+    },
+    "qrcode": {
+      "title": "QR코드 생성기",
+      "description": "텍스트나 URL을 QR코드로 변환하여 다운로드할 수 있는 도구입니다"
+    },
+    "timestamp": {
+      "title": "타임스탬프 변환기",
+      "description": "Unix 타임스탬프와 날짜/시간 형식 간의 변환 도구입니다"
+    },
+    "swipepay": {
+      "title": "밀어서 결제하기 테스트",
+      "description": "밀어서 결제하기 테스트 모듈입니다"
+    },
+    "codeplayground": {
+      "title": "코드 플레이그라운드",
+      "description": "HTML, CSS, React 코드를 실시간으로 테스트하고 미리보기할 수 있는 도구입니다"
+    },
+    "sql": {
+      "title": "SQL 쿼리 포매터",
+      "description": "SQL 쿼리를 보기 좋게 정리하고 포맷하는 도구입니다"
+    },
+    "xml": {
+      "title": "XML 포매터",
+      "description": "XML를 보기 좋게 정리하고 포맷하는 도구입니다"
+    },
+    "texttoimage": {
+      "title": "Text to Image 변환기",
+      "description": "텍스트를 이미지로 변환하고 다양한 스타일을 적용할 수 있는 도구입니다"
+    },
+    "signature": {
+      "title": "서명 생성기",
+      "description": "디지털 서명을 생성하고 다운로드할 수 있는 도구입니다"
+    },
+    "regex": {
+      "title": "regex 정규표현식 매칭 도구",
+      "description": "정규표현식을 테스트하고 매칭 결과를 확인할 수 있는 도구입니다"
+    },
+    "storage": {
+      "title": "브라우저 저장소 관리 도구",
+      "description": "로컬스토리지와 세션스토리지를 관리하고 데이터를 추가, 삭제, 조회할 수 있는 도구입니다"
+    },
+    "keycode": {
+      "title": "keycode 추적기",
+      "description": "키보드 입력을 실시간으로 추적하고 키코드 정보를 제공합니다"
+    },
+    "querystring": {
+      "title": "URL Query String 파서 & 빌더",
+      "description": "URL의 쿼리 스트링을 파싱하거나 새로운 쿼리 스트링을 생성할 수 있는 도구입니다."
+    },
+    "hash": {
+      "title": "Hash 생성기",
+      "description": "텍스트나 파일의 해시값을 생성합니다. MD5, SHA-1, SHA-256, SHA-384, SHA-512 알고리즘을 지원합니다."
+    },
+    "unit": {
+      "title": "CSS 단위 변환기",
+      "description": "자주 사용하는 CSS 속성의 값을 빠르게 변환하세요"
+    },
+    "wordcounter": {
+      "title": "글자수 & 단어수 카운터",
+      "description": "텍스트의 글자수, 단어수, 문장수, 단락수를 실시간으로 계산하는 도구입니다"
+    }
+  }
+}
