@@ -33,6 +33,7 @@ import {
   Hash,
   Ruler,
   FileText,
+  TrendingDown,
 } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
@@ -204,6 +205,12 @@ const getTools = () => [
     descriptionKey: "tools.wordcounter.description",
     icon: <FileText className="h-5 w-5" />,
     href: "/tools/wordcounter",
+  },
+  {
+    titleKey: "tools.stockcalculator.title",
+    descriptionKey: "tools.stockcalculator.description",
+    icon: <TrendingDown className="h-5 w-5" />,
+    href: "/tools/stockcalculator",
   },
 ];
 

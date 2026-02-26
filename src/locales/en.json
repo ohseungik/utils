@@ -212,6 +212,35 @@
         "Sentences are separated by periods, exclamation marks, or question marks",
         "Paragraphs are separated by blank lines"
       ]
+    },
+    "stockcalculator": {
+      "title": "Stock Averaging Down Calculator",
+      "description": "Calculate average purchase price and simulate profit/loss for multiple stock purchases",
+      "pageTitle": "Stock Averaging Down Calculator",
+      "pageDescription": "Calculate average purchase price instantly and check profit/loss simulation",
+      "currencySettings": "Currency Settings",
+      "purchaseHistory": "Purchase History",
+      "purchaseDescription": "Enter the purchase price and quantity for each transaction",
+      "purchasePrice": "Purchase Price",
+      "quantity": "Quantity",
+      "shares": "shares",
+      "addPurchase": "Add Item",
+      "targetPrice": "Target / Current Price",
+      "targetPriceDescription": "Enter current price to view estimated profit/loss",
+      "currentPrice": "Current Price",
+      "results": "Calculation Results",
+      "totalQuantity": "Total Quantity",
+      "totalCost": "Total Investment",
+      "averagePrice": "Average Purchase Price",
+      "currentValue": "Current Value",
+      "profitLoss": "Estimated Profit/Loss",
+      "emptyState": "Enter purchase price and quantity",
+      "howToUse": "How to Use",
+      "step1": "Currency: Select Korean Won (₩) or US Dollar ($)",
+      "step2": "Purchase Price: Enter the purchase price for each transaction",
+      "step3": "Quantity: Enter the number of shares purchased at that price",
+      "step4": "Target Price: Enter current price to simulate profit/loss",
+      "disclaimer": "※ All calculations are performed in your browser, and no data is sent to the server. Exchange rate information is provided by Frankfurter API. Investment decisions are your own responsibility."
     }
   }
 }
