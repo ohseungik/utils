@@ -34,6 +34,7 @@ import {
   Ruler,
   FileText,
   TrendingDown,
+  Fingerprint,
 } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
@@ -211,6 +212,12 @@ const getTools = () => [
     descriptionKey: "tools.stockcalculator.description",
     icon: <TrendingDown className="h-5 w-5" />,
     href: "/tools/stockcalculator",
+  },
+  {
+    titleKey: "tools.uuid.title",
+    descriptionKey: "tools.uuid.description",
+    icon: <Fingerprint className="h-5 w-5" />,
+    href: "/tools/uuid",
   },
 ];
 

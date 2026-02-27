@@ -31,6 +31,7 @@ import {
   Ruler,
   FileText,
   TrendingDown,
+  Fingerprint,
 } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useMobile } from "@/hooks/useMobile";
@@ -157,6 +158,11 @@ const getNavItems = (): NavItem[] => [
     titleKey: "tools.stockcalculator.title",
     href: "/tools/stockcalculator",
     icon: <TrendingDown className="h-5 w-5" />,
+  },
+  {
+    titleKey: "tools.uuid.title",
+    href: "/tools/uuid",
+    icon: <Fingerprint className="h-5 w-5" />,
   },
   // 향후 도구들이 여기에 추가될 예정
 ];
