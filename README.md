@@ -90,4 +90,12 @@
 
 - https://utils-6fi.pages.dev/tools/wordcounter
 
+### 주식 물타기 계산기
+
+- https://utils-6fi.pages.dev/tools/stockcalculator
+
+### UUID 생성기
+
+- https://utils-6fi.pages.dev/tools/uuid
+
 해당 프로젝트는 AI를 통해서 만드는 프로젝트입니다.
