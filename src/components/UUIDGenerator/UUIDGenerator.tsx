@@ -52,7 +52,7 @@ export default function UUIDGenerator() {
     }));
 
     setUuids((prev) => [...formattedUUIDs, ...prev]);
-    toast.success(t("tools.uuid.generated", { count }));
+    toast.success(`${count}${t("tools.uuid.generated")}`);
   };
 
   // UUID 복사
@@ -218,7 +218,7 @@ export default function UUIDGenerator() {
             <div>
               <CardTitle>{t("tools.uuid.generatedUUIDs")}</CardTitle>
               <CardDescription>
-                {t("tools.uuid.totalCount", { count: uuids.length })}
+                {t("tools.uuid.totalCount")} {uuids.length}{t("tools.uuid.totalCountUnit")}
               </CardDescription>
             </div>
             {uuids.length > 0 && (
