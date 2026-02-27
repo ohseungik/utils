@@ -241,6 +241,37 @@
       "step3": "Quantity: Enter the number of shares purchased at that price",
       "step4": "Target Price: Enter current price to simulate profit/loss",
       "disclaimer": "※ All calculations are performed in your browser, and no data is sent to the server. Exchange rate information is provided by Frankfurter API. Investment decisions are your own responsibility."
+    },
+    "uuid": {
+      "title": "UUID Generator",
+      "description": "A tool to generate UUIDs (Universally Unique Identifiers) and convert them to various formats",
+      "pageTitle": "UUID Generator",
+      "pageDescription": "Generate unique UUIDs and convert them to various formats",
+      "settings": "Generation Settings",
+      "settingsDescription": "Configure UUID generation options",
+      "count": "Count",
+      "countDescription": "You can generate 1~100 UUIDs at once",
+      "uppercase": "Uppercase",
+      "uppercaseDescription": "Display UUIDs in uppercase",
+      "hyphens": "Include Hyphens",
+      "hyphensDescription": "Include hyphens in UUIDs",
+      "formatPreview": "Format Preview",
+      "generatedUUIDs": "Generated UUIDs",
+      "totalCount": "Total: {{count}}",
+      "copyAll": "Copy All",
+      "emptyState": "Click the generate button to create UUIDs",
+      "generated": "{{count}} UUID(s) generated",
+      "copied": "Copied",
+      "copyError": "Failed to copy",
+      "noUUIDs": "No UUIDs generated",
+      "allCopied": "All UUIDs copied",
+      "deleted": "UUID deleted",
+      "cleared": "All UUIDs cleared",
+      "helpTitle": "💡 Help",
+      "help1": "UUID v4 is randomly generated and globally unique",
+      "help2": "You can choose uppercase/lowercase and whether to include hyphens",
+      "help3": "Generated UUIDs can be copied individually or all at once",
+      "help4": "Changing format options will also update previously generated UUIDs"
     }
   }
 }

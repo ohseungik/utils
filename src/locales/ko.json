@@ -241,6 +241,37 @@
       "step3": "수량: 해당 단가에 매수한 주식 수량을 입력하세요",
       "step4": "목표가: 현재가를 입력하면 예상 수익/손실을 시뮬레이션합니다",
       "disclaimer": "※ 모든 계산은 브라우저에서 실행되며, 어떠한 데이터도 서버로 전송되지 않습니다. 환율 정보는 Frankfurter API에서 제공되며, 투자 판단은 본인의 책임입니다."
+    },
+    "uuid": {
+      "title": "UUID 생성기",
+      "description": "UUID(Universally Unique Identifier)를 생성하고 다양한 포맷으로 변환할 수 있는 도구입니다",
+      "pageTitle": "UUID 생성기",
+      "pageDescription": "고유한 UUID를 생성하고 다양한 포맷으로 변환하세요",
+      "settings": "생성 설정",
+      "settingsDescription": "UUID 생성 옵션을 설정하세요",
+      "count": "생성 개수",
+      "countDescription": "한 번에 1~100개의 UUID를 생성할 수 있습니다",
+      "uppercase": "대문자",
+      "uppercaseDescription": "UUID를 대문자로 표시합니다",
+      "hyphens": "하이픈 포함",
+      "hyphensDescription": "UUID에 하이픈을 포함합니다",
+      "formatPreview": "포맷 미리보기",
+      "generatedUUIDs": "생성된 UUID 목록",
+      "totalCount": "총 {{count}}개",
+      "copyAll": "전체 복사",
+      "emptyState": "생성 버튼을 클릭하여 UUID를 생성하세요",
+      "generated": "{{count}}개의 UUID가 생성되었습니다",
+      "copied": "복사됨",
+      "copyError": "복사에 실패했습니다",
+      "noUUIDs": "생성된 UUID가 없습니다",
+      "allCopied": "모든 UUID가 복사되었습니다",
+      "deleted": "UUID가 삭제되었습니다",
+      "cleared": "모든 UUID가 삭제되었습니다",
+      "helpTitle": "💡 도움말",
+      "help1": "UUID v4는 랜덤하게 생성되며 전 세계적으로 고유합니다",
+      "help2": "대문자/소문자 및 하이픈 포함 여부를 선택할 수 있습니다",
+      "help3": "생성된 UUID는 각각 복사하거나 전체를 한 번에 복사할 수 있습니다",
+      "help4": "포맷 옵션을 변경하면 기존에 생성된 UUID도 함께 업데이트됩니다"
     }
   }
 }
