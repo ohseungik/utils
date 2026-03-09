@@ -273,6 +273,31 @@
       "help2": "You can choose uppercase/lowercase and whether to include hyphens",
       "help3": "Generated UUIDs can be copied individually or all at once",
       "help4": "Changing format options will also update previously generated UUIDs"
+    },
+    "lotto": {
+      "title": "Lotto Number Generator",
+      "description": "Generate and manage random lotto numbers",
+      "pageTitle": "Lotto Number Generator",
+      "pageDescription": "Generate Korean Lotto 6/45 and US Powerball numbers",
+      "korea": "Lotto 6/45",
+      "powerball": "Powerball",
+      "koreaDescription": "6 numbers from 1~45 will be automatically generated",
+      "powerballDescription": "5 numbers from 1~69 + 1 Powerball from 1~26 will be generated",
+      "generate": "Generate Numbers",
+      "generated": "New numbers generated",
+      "generatedNumbers": "Generated Numbers",
+      "total": "Total",
+      "copied": "Numbers copied to clipboard",
+      "pinned": "Pin status changed",
+      "deleted": "Number deleted",
+      "cleared": "All numbers cleared",
+      "clearAll": "Clear All",
+      "howToUse": "How to Use",
+      "step1": "Select Type: Choose Korean Lotto 6/45 or US Powerball",
+      "step2": "Generate: Click the button to generate random numbers",
+      "step3": "Pin Feature: Pin your favorite numbers to keep them at the top",
+      "step4": "Copy & Delete: Copy or delete each number set as needed",
+      "disclaimer": "※ Generated numbers are stored in your browser and are completely random. Please make responsible lottery purchase decisions."
     }
   }
 }

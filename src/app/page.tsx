@@ -35,6 +35,7 @@ import {
   FileText,
   TrendingDown,
   Fingerprint,
+  Dices,
 } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
@@ -218,6 +219,12 @@ const getTools = () => [
     descriptionKey: "tools.uuid.description",
     icon: <Fingerprint className="h-5 w-5" />,
     href: "/tools/uuid",
+  },
+  {
+    titleKey: "tools.lotto.title",
+    descriptionKey: "tools.lotto.description",
+    icon: <Dices className="h-5 w-5" />,
+    href: "/tools/lotto",
   },
 ];
 
