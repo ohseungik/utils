@@ -80,7 +80,7 @@ export default function LottoGenerator() {
     }
 
     setGeneratedNumbers((prev) => [newNumber, ...prev]);
-    toast.success(t("lotto.generated"));
+    toast.success(t("tools.lotto.generated"));
   };
 
   const handleCopy = (item: LottoNumbers) => {
@@ -90,7 +90,7 @@ export default function LottoGenerator() {
         : `${item.numbers.join(", ")} + ${item.powerball}`;
     
     navigator.clipboard.writeText(text);
-    toast.success(t("lotto.copied"));
+    toast.success(t("tools.lotto.copied"));
   };
 
   const handlePin = (id: string) => {
@@ -103,18 +103,18 @@ export default function LottoGenerator() {
         return b.timestamp - a.timestamp;
       })
     );
-    toast.success(t("lotto.pinned"));
+    toast.success(t("tools.lotto.pinned"));
   };
 
   const handleDelete = (id: string) => {
     setGeneratedNumbers((prev) => prev.filter((item) => item.id !== id));
-    toast.success(t("lotto.deleted"));
+    toast.success(t("tools.lotto.deleted"));
   };
 
   const handleClearAll = () => {
     setGeneratedNumbers([]);
     localStorage.removeItem("lottoNumbers");
-    toast.success(t("lotto.cleared"));
+    toast.success(t("tools.lotto.cleared"));
   };
 
   const getNumberColor = (num: number, isKorea: boolean): string => {
@@ -146,31 +146,31 @@ export default function LottoGenerator() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Sparkles className="h-6 w-6" />
-            {t("lotto.title")}
+            {t("tools.lotto.title")}
           </CardTitle>
-          <CardDescription>{t("lotto.description")}</CardDescription>
+          <CardDescription>{t("tools.lotto.description")}</CardDescription>
         </CardHeader>
         <CardContent className="space-y-6">
           <Tabs value={lottoType} onValueChange={(v) => setLottoType(v as LottoType)}>
             <TabsList className="grid w-full grid-cols-2">
-              <TabsTrigger value="korea">🇰🇷 {t("lotto.korea")}</TabsTrigger>
-              <TabsTrigger value="powerball">🇺🇸 {t("lotto.powerball")}</TabsTrigger>
+              <TabsTrigger value="korea">🇰🇷 {t("tools.lotto.korea")}</TabsTrigger>
+              <TabsTrigger value="powerball">🇺🇸 {t("tools.lotto.powerball")}</TabsTrigger>
             </TabsList>
             <TabsContent value="korea" className="space-y-4">
               <div className="text-center space-y-2">
-                <p className="text-sm text-muted-foreground">{t("lotto.koreaDescription")}</p>
+                <p className="text-sm text-muted-foreground">{t("tools.lotto.koreaDescription")}</p>
                 <Button onClick={handleGenerate} size="lg" className="w-full sm:w-auto">
                   <Sparkles className="h-4 w-4 mr-2" />
-                  {t("lotto.generate")}
+                  {t("tools.lotto.generate")}
                 </Button>
               </div>
             </TabsContent>
             <TabsContent value="powerball" className="space-y-4">
               <div className="text-center space-y-2">
-                <p className="text-sm text-muted-foreground">{t("lotto.powerballDescription")}</p>
+                <p className="text-sm text-muted-foreground">{t("tools.lotto.powerballDescription")}</p>
                 <Button onClick={handleGenerate} size="lg" className="w-full sm:w-auto">
                   <Sparkles className="h-4 w-4 mr-2" />
-                  {t("lotto.generate")}
+                  {t("tools.lotto.generate")}
                 </Button>
               </div>
             </TabsContent>
@@ -182,14 +182,14 @@ export default function LottoGenerator() {
         <Card>
           <CardHeader>
             <div className="flex items-center justify-between">
-              <CardTitle>{t("lotto.generatedNumbers")}</CardTitle>
+              <CardTitle>{t("tools.lotto.generatedNumbers")}</CardTitle>
               <Button variant="outline" size="sm" onClick={handleClearAll}>
                 <Trash2 className="h-4 w-4 mr-2" />
-                {t("lotto.clearAll")}
+                {t("tools.lotto.clearAll")}
               </Button>
             </div>
             <CardDescription>
-              {t("lotto.total")}: {filteredNumbers.length}
+              {t("tools.lotto.total")}: {filteredNumbers.length}
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-3">
@@ -245,26 +245,26 @@ export default function LottoGenerator() {
 
       <Card>
         <CardHeader>
-          <CardTitle>{t("lotto.howToUse")}</CardTitle>
+          <CardTitle>{t("tools.lotto.howToUse")}</CardTitle>
         </CardHeader>
         <CardContent className="space-y-3 text-sm text-muted-foreground">
           <div className="flex gap-2">
             <span className="font-semibold">1.</span>
-            <p>{t("lotto.step1")}</p>
+            <p>{t("tools.lotto.step1")}</p>
           </div>
           <div className="flex gap-2">
             <span className="font-semibold">2.</span>
-            <p>{t("lotto.step2")}</p>
+            <p>{t("tools.lotto.step2")}</p>
           </div>
           <div className="flex gap-2">
             <span className="font-semibold">3.</span>
-            <p>{t("lotto.step3")}</p>
+            <p>{t("tools.lotto.step3")}</p>
           </div>
           <div className="flex gap-2">
             <span className="font-semibold">4.</span>
-            <p>{t("lotto.step4")}</p>
+            <p>{t("tools.lotto.step4")}</p>
           </div>
-          <p className="text-xs pt-2 border-t">{t("lotto.disclaimer")}</p>
+          <p className="text-xs pt-2 border-t">{t("tools.lotto.disclaimer")}</p>
         </CardContent>
       </Card>
     </div>
