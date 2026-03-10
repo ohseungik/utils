@@ -33,6 +33,7 @@ import {
   TrendingDown,
   Fingerprint,
   Dices,
+  Key,
 } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useMobile } from "@/hooks/useMobile";
@@ -169,6 +170,11 @@ const getNavItems = (): NavItem[] => [
     titleKey: "tools.lotto.title",
     href: "/tools/lotto",
     icon: <Dices className="h-5 w-5" />,
+  },
+  {
+    titleKey: "tools.password.title",
+    href: "/tools/password",
+    icon: <Key className="h-5 w-5" />,
   },
   // 향후 도구들이 여기에 추가될 예정
 ];
