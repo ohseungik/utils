@@ -334,6 +334,31 @@
       "tip4Title": "How it works",
       "tip4Description": "This generator uses the Web Crypto API to provide truly unpredictable randomness. All processing happens on your device only.",
       "disclaimer": "※ Generated passwords are processed only in your browser and never sent to any server. Store important passwords securely using a password manager."
+    },
+    "diffchecker": {
+      "title": "Diff Checker",
+      "description": "Compare two texts instantly and highlight the differences",
+      "original": "ORIGINAL",
+      "modified": "MODIFIED",
+      "originalPlaceholder": "Enter original text...",
+      "modifiedPlaceholder": "Enter modified text...",
+      "compare": "Compare",
+      "swap": "Swap",
+      "result": "Comparison Result",
+      "added": "Added",
+      "removed": "Removed",
+      "noDifference": "Both texts are identical",
+      "emptyTexts": "Please enter texts to compare",
+      "compared": "Text comparison completed",
+      "originalCleared": "Original text cleared",
+      "modifiedCleared": "Modified text cleared",
+      "swapped": "Original and modified texts swapped",
+      "reset": "All content has been cleared",
+      "howToUse": "How to Use",
+      "help1": "Enter the original and modified texts in their respective fields",
+      "help2": "Click the Compare button to highlight the differences",
+      "help3": "Green indicates added parts, red indicates removed parts",
+      "help4": "Use the Swap button to exchange the original and modified texts"
     }
   }
 }

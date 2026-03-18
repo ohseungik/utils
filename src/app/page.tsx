@@ -37,6 +37,7 @@ import {
   Fingerprint,
   Dices,
   Key,
+  GitCompare,
 } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
@@ -232,6 +233,12 @@ const getTools = () => [
     descriptionKey: "tools.password.description",
     icon: <Key className="h-5 w-5" />,
     href: "/tools/password",
+  },
+  {
+    titleKey: "tools.diffchecker.title",
+    descriptionKey: "tools.diffchecker.description",
+    icon: <GitCompare className="h-5 w-5" />,
+    href: "/tools/diffchecker",
   },
 ];
 
