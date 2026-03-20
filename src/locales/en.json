@@ -359,6 +359,54 @@
       "help2": "Click the Compare button to highlight the differences",
       "help3": "Green indicates added parts, red indicates removed parts",
       "help4": "Use the Swap button to exchange the original and modified texts"
+    },
+    "testdata": {
+      "title": "Test Data Generator",
+      "description": "Automatically generate edge case test data by programming type",
+      "pageTitle": "Test Data Generator",
+      "pageDescription": "Generate edge case test data suitable for programming languages and data types to improve code stability",
+      "settings": "Test Settings",
+      "settingsDescription": "Select programming language and data type",
+      "language": "Programming Language",
+      "dataType": "Data Type",
+      "filterCategory": "Category Filter",
+      "allCategories": "All",
+      "testCases": "Test Cases",
+      "totalCount": "Total:",
+      "cases": "cases",
+      "copyAll": "Copy All",
+      "copied": "Copied",
+      "allCopied": "All test cases copied to clipboard",
+      "copyError": "Failed to copy",
+      "emptyState": "Select programming language and data type to display test cases",
+      "aboutEdgeCases": "What are Edge Case Tests?",
+      "whatIsEdgeCase": "What is an Edge Case?",
+      "whatIsEdgeCaseDesc": "Edge cases are extreme input values that occur at the boundaries of the normal range. They include null, empty values, max/min values, unicode, security attack strings, and other test scenarios that developers often miss, helping prevent bugs in advance.",
+      "whyNeeded": "Why Are They Needed?",
+      "whyNeededDesc": "Most bugs in production environments originate from edge cases. By testing various boundary values and special inputs in advance, you can prevent runtime errors, security vulnerabilities, and data corruption.",
+      "categories": {
+        "null": "Null / Undefined",
+        "empty": "Empty / Whitespace",
+        "special": "Special Cases",
+        "boundary": "Boundary Values",
+        "format": "Format / Syntax",
+        "unicode": "Unicode / Encoding",
+        "security": "Security (Injection)"
+      },
+      "languages": {
+        "java": "Java",
+        "python": "Python",
+        "javascript": "JavaScript",
+        "go": "Go"
+      },
+      "dataTypes": {
+        "string": "String",
+        "integer": "Integer",
+        "float": "Float",
+        "boolean": "Boolean",
+        "array": "Array",
+        "date": "Date"
+      }
     }
   }
 }

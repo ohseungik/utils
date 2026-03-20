@@ -35,6 +35,7 @@ import {
   Dices,
   Key,
   GitCompare,
+  Database,
 } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useMobile } from "@/hooks/useMobile";
@@ -181,6 +182,11 @@ const getNavItems = (): NavItem[] => [
     titleKey: "tools.diffchecker.title",
     href: "/tools/diffchecker",
     icon: <GitCompare className="h-5 w-5" />,
+  },
+  {
+    titleKey: "tools.testdata.title",
+    href: "/tools/testdata",
+    icon: <Database className="h-5 w-5" />,
   },
   // 향후 도구들이 여기에 추가될 예정
 ];

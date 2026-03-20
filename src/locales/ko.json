@@ -359,6 +359,54 @@
       "help2": "비교하기 버튼을 클릭하면 차이점이 하이라이트로 표시됩니다",
       "help3": "녹색은 추가된 부분, 빨간색은 삭제된 부분을 나타냅니다",
       "help4": "좌우 교체 버튼으로 원본과 수정본의 위치를 바꿀 수 있습니다"
+    },
+    "testdata": {
+      "title": "테스트 데이터 생성기",
+      "description": "프로그래밍 타입별 엣지케이스 테스트 데이터를 자동으로 생성합니다",
+      "pageTitle": "테스트 데이터 생성기",
+      "pageDescription": "프로그래밍 언어와 데이터 타입에 맞는 엣지케이스 테스트 데이터를 생성하여 코드의 안정성을 향상시키세요",
+      "settings": "테스트 설정",
+      "settingsDescription": "프로그래밍 언어와 데이터 타입을 선택하세요",
+      "language": "프로그래밍 언어",
+      "dataType": "데이터 타입",
+      "filterCategory": "카테고리 필터",
+      "allCategories": "전체",
+      "testCases": "테스트 케이스",
+      "totalCount": "총",
+      "cases": "개 케이스",
+      "copyAll": "전체 복사",
+      "copied": "복사됨",
+      "allCopied": "모든 테스트 케이스가 복사되었습니다",
+      "copyError": "복사에 실패했습니다",
+      "emptyState": "프로그래밍 언어와 데이터 타입을 선택하면 테스트 케이스가 표시됩니다",
+      "aboutEdgeCases": "엣지케이스 테스트란?",
+      "whatIsEdgeCase": "엣지케이스란?",
+      "whatIsEdgeCaseDesc": "엣지케이스는 정상 범위의 경계에서 발생하는 극단적인 입력값입니다. null, 빈 값, 최대/최소값, 유니코드, 보안 공격 문자열 등 개발자가 놓치기 쉬운 테스트 시나리오를 미리 생성하여 버그를 예방합니다.",
+      "whyNeeded": "왜 필요한가요?",
+      "whyNeededDesc": "프로덕션 환경에서 발생하는 버그의 대부분은 엣지케이스에서 비롯됩니다. 미리 다양한 경계값과 특수 입력을 테스트하면 런타임 에러, 보안 취약점, 데이터 손상을 사전에 방지할 수 있습니다.",
+      "categories": {
+        "null": "Null / 미정의",
+        "empty": "빈 값 / 공백",
+        "special": "특수 케이스",
+        "boundary": "경계값",
+        "format": "포맷 / 형식",
+        "unicode": "유니코드 / 인코딩",
+        "security": "보안 (인젝션)"
+      },
+      "languages": {
+        "java": "Java",
+        "python": "Python",
+        "javascript": "JavaScript",
+        "go": "Go"
+      },
+      "dataTypes": {
+        "string": "String (문자열)",
+        "integer": "Integer (정수)",
+        "float": "Float (실수)",
+        "boolean": "Boolean (논리값)",
+        "array": "Array (배열)",
+        "date": "Date (날짜)"
+      }
     }
   }
 }

@@ -38,6 +38,7 @@ import {
   Dices,
   Key,
   GitCompare,
+  Database,
 } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
@@ -239,6 +240,12 @@ const getTools = () => [
     descriptionKey: "tools.diffchecker.description",
     icon: <GitCompare className="h-5 w-5" />,
     href: "/tools/diffchecker",
+  },
+  {
+    titleKey: "tools.testdata.title",
+    descriptionKey: "tools.testdata.description",
+    icon: <Database className="h-5 w-5" />,
+    href: "/tools/testdata",
   },
 ];
 
