@@ -207,11 +207,11 @@ export default function Roulette() {
       } else {
         setIsSpinning(false);
         // Calculate result
-        const normalizedRotation = (currentRotation % (2 * Math.PI) + 2 * Math.PI) % (2 * Math.PI);
+        // 화살표는 상단에 고정, rotation이 0일 때 items[0]이 상단
+        // rotation이 양수로 증가하면 휠이 시계 반대 방향으로 회전
+        const normalizedRotation = ((currentRotation % (2 * Math.PI)) + 2 * Math.PI) % (2 * Math.PI);
         const anglePerItem = (2 * Math.PI) / items.length;
-        // Pointer is at top (270 degrees or -90 degrees = 3π/2)
-        const pointerAngle = Math.PI / 2; // Adjust for pointer at top
-        const selectedIndex = Math.floor(((2 * Math.PI - normalizedRotation + pointerAngle) % (2 * Math.PI)) / anglePerItem) % items.length;
+        const selectedIndex = Math.floor(normalizedRotation / anglePerItem) % items.length;
         const selectedItem = items[selectedIndex];
         setResult(selectedItem.text);
         toast.success(`${t("tools.roulette.result")}: ${selectedItem.text}`);
