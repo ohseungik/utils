@@ -174,6 +174,11 @@ const getNavItems = (): NavItem[] => [
     icon: <Dices className="h-5 w-5" />,
   },
   {
+    titleKey: "tools.roulette.title",
+    href: "/tools/roulette",
+    icon: <Dices className="h-5 w-5" />,
+  },
+  {
     titleKey: "tools.password.title",
     href: "/tools/password",
     icon: <Key className="h-5 w-5" />,
