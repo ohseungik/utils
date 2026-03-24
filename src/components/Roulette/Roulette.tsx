@@ -207,11 +207,15 @@ export default function Roulette() {
       } else {
         setIsSpinning(false);
         // Calculate result
-        // 화살표는 상단에 고정, rotation이 0일 때 items[0]이 상단
-        // rotation이 양수로 증가하면 휠이 시계 반대 방향으로 회전
-        const normalizedRotation = ((currentRotation % (2 * Math.PI)) + 2 * Math.PI) % (2 * Math.PI);
+        // 화살표는 상단(-π/2)에 고정, rotation이 증가하면 시계 반대 방향 회전
+        // 각 아이템의 시작각: rotation + index * anglePerItem - π/2
+        // 화살표가 가리키는 아이템 찾기: rotation + index * anglePerItem - π/2 ≤ -π/2 < rotation + (index+1) * anglePerItem - π/2
+        // 즉, 0 ≤ -rotation < anglePerItem를 만족하는 index
         const anglePerItem = (2 * Math.PI) / items.length;
-        const selectedIndex = Math.floor(normalizedRotation / anglePerItem) % items.length;
+        const normalizedRotation = ((currentRotation % (2 * Math.PI)) + 2 * Math.PI) % (2 * Math.PI);
+        // rotation이 증가하면 더 큰 인덱스가 화살표로 이동하므로 역순 계산
+        const offset = (2 * Math.PI - normalizedRotation) % (2 * Math.PI);
+        const selectedIndex = Math.floor(offset / anglePerItem) % items.length;
         const selectedItem = items[selectedIndex];
         setResult(selectedItem.text);
         toast.success(`${t("tools.roulette.result")}: ${selectedItem.text}`);
