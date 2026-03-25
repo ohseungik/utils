@@ -36,6 +36,7 @@ import {
   Key,
   GitCompare,
   Database,
+  Users,
 } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useMobile } from "@/hooks/useMobile";
@@ -172,6 +173,11 @@ const getNavItems = (): NavItem[] => [
     titleKey: "tools.lotto.title",
     href: "/tools/lotto",
     icon: <Dices className="h-5 w-5" />,
+  },
+  {
+    titleKey: "tools.groupdraw.title",
+    href: "/tools/groupdraw",
+    icon: <Users className="h-5 w-5" />,
   },
   {
     titleKey: "tools.roulette.title",

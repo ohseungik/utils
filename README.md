@@ -98,4 +98,24 @@
 
 - https://utils-6fi.pages.dev/tools/uuid
 
+### 로또 번호 생성기
+
+- https://utils-6fi.pages.dev/tools/lotto
+
+### 점심 랜덤 돌림판
+
+- https://utils-6fi.pages.dev/tools/roulette
+
+### 비밀번호 생성기
+
+- https://utils-6fi.pages.dev/tools/password
+
+### Diff 비교기
+
+- https://utils-6fi.pages.dev/tools/diffchecker
+
+### 테스트 데이터 생성기
+
+- https://utils-6fi.pages.dev/tools/testdata
+
 해당 프로젝트는 AI를 통해서 만드는 프로젝트입니다.
