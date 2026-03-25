@@ -261,20 +261,20 @@ export default function Sidebar() {
       {/* 사이드바 */}
       <div
         className={cn(
-          "transition-all duration-300 z-40 bg-background border-r h-screen",
+          "transition-all duration-300 z-40 bg-background border-r h-screen flex flex-col",
           isMobile
             ? cn("fixed", isOpen ? "w-64 left-0" : "w-0 -left-full")
             : "relative w-64", // PC에서는 항상 고정 너비
         )}
       >
-        <div className="p-4 h-16 flex items-center border-b">
+        <div className="p-4 h-16 flex items-center border-b flex-shrink-0">
           {/* 타이틀 */}
           <Link href={"/"}>
             <h1 className="font-bold text-xl">{t("header.title")}</h1>
           </Link>
         </div>
 
-        <nav className="p-2 overflow-y-auto max-h-[calc(100vh-4rem)]">
+        <nav className="p-2 overflow-y-auto flex-1">
           <ul className="space-y-2">
             {navItems.map((item) => (
               <li key={item.href}>
