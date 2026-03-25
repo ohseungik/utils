@@ -63,7 +63,7 @@ export default function GroupDraw() {
 
   const getParticipants = (): string[] => {
     return participantsText
-      .split("\n")
+      .split(/[\n,]/) // 엔터 또는 쉼표로 구분
       .map(line => line.trim())
       .filter(line => line.length > 0);
   };

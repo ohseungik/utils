@@ -118,4 +118,9 @@
 
 - https://utils-6fi.pages.dev/tools/testdata
 
+
+### 그룹 제비뽑기
+
+- https://utils-6fi.pages.dev/tools/groupdraw
+
 해당 프로젝트는 AI를 통해서 만드는 프로젝트입니다.

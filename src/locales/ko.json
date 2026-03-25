@@ -310,7 +310,7 @@
       "winnerModeDescription": "참가자 중에서 N명을 랜덤하게 추첨합니다",
       "settings": "설정",
       "participants": "참가자 명단",
-      "participantsPlaceholder": "한 줄에 한 명씩 입력하세요\n예시:\n홍길동\n김철수\n이영희\n박민수",
+      "participantsPlaceholder": "한 줄에 한 명씩 또는 쉼표로 구분하여 입력하세요\n예시 1:\n홍길동\n김철수\n이영희\n박민수\n\n예시 2:\n홍길동, 김철수, 이영희, 박민수",
       "participantCount": "참가자 수",
       "people": "명",
       "teamCountLabel": "나눌 팀 개수",
@@ -331,7 +331,7 @@
       "teamDivision": "개 팀 나누기",
       "winnerSelection": "명 뽑기",
       "howToUse": "사용 방법",
-      "step1": "참가자 명단: 한 줄에 한 명씩 입력하세요",
+      "step1": "참가자 명단: 한 줄에 한 명씩 또는 쉼표로 구분하여 입력하세요",
       "step2": "모드 선택: 팀 나누기 또는 N명 뽑기 중 선택하세요",
       "step3": "팀/인원 설정: 나눌 팀 개수 또는 뽑을 인원을 설정하세요",
       "step4": "결과 확인: 섞기 버튼을 클릭하여 랜덤 결과를 확인하세요"

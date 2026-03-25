@@ -310,7 +310,7 @@
       "winnerModeDescription": "Randomly draw N people from participants",
       "settings": "Settings",
       "participants": "Participants",
-      "participantsPlaceholder": "Enter one name per line\nExample:\nJohn Doe\nJane Smith\nBob Johnson\nAlice Brown",
+      "participantsPlaceholder": "Enter one name per line or separated by commas\nExample 1:\nJohn Doe\nJane Smith\nBob Johnson\nAlice Brown\n\nExample 2:\nJohn Doe, Jane Smith, Bob Johnson, Alice Brown",
       "participantCount": "Participant Count",
       "people": " people",
       "teamCountLabel": "Number of Teams",
@@ -331,7 +331,7 @@
       "teamDivision": " Team Division",
       "winnerSelection": " Winner Selection",
       "howToUse": "How to Use",
-      "step1": "Participants: Enter one name per line",
+      "step1": "Participants: Enter one name per line or separated by commas",
       "step2": "Mode Selection: Choose between Divide Teams or Pick N People",
       "step3": "Team/Winner Settings: Set the number of teams or winners",
       "step4": "View Results: Click the Shuffle button to see random results"
