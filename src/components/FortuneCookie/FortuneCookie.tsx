@@ -17,8 +17,8 @@ export default function FortuneCookie() {
     luckyColor: string;
   } | null>(null);
 
-  const fortunes = t("tools.fortunecookie.fortunes") as string[];
-  const colors = t("tools.fortunecookie.colors") as string[];
+  const fortunes = t("tools.fortunecookie.fortunes") as unknown as string[];
+  const colors = t("tools.fortunecookie.colors") as unknown as string[];
 
   const openCookie = () => {
     const randomFortune = fortunes[Math.floor(Math.random() * fortunes.length)];
