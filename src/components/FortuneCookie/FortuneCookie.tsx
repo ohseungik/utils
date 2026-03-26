@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -8,8 +8,84 @@ import { Copy, Sparkles, Cookie } from "lucide-react";
 import { toast } from "sonner";
 import { useLanguage } from "@/contexts/LanguageContext";
 
+// 운세 메시지 데이터
+const fortuneData = {
+  ko: {
+    fortunes: [
+      "오늘은 당신에게 특별한 기회가 찾아올 것입니다.",
+      "행운은 준비된 자에게 찾아옵니다. 준비하세요!",
+      "당신의 노력이 곧 결실을 맺을 것입니다.",
+      "오늘 만나는 사람이 중요한 인연이 될 수 있습니다.",
+      "긍정적인 마음이 더 큰 행운을 불러올 것입니다.",
+      "작은 변화가 큰 차이를 만들어낼 것입니다.",
+      "당신의 직감을 믿으세요. 오늘은 특히 정확합니다.",
+      "새로운 도전을 두려워하지 마세요. 성공이 기다립니다.",
+      "오늘 하루 웃음을 잃지 않는다면 좋은 일이 생길 것입니다.",
+      "당신이 찾던 답은 이미 당신 안에 있습니다.",
+      "주변 사람들에게 감사를 표현하면 더 큰 행복이 옵니다.",
+      "오늘은 당신의 창의력이 빛을 발할 것입니다.",
+      "예상치 못한 곳에서 도움의 손길이 올 것입니다.",
+      "인내심을 가지세요. 좋은 결과가 곧 찾아올 것입니다.",
+      "당신의 열정이 주변 사람들에게 영감을 줄 것입니다.",
+      "오늘 내린 결정이 미래를 밝게 만들 것입니다.",
+      "작은 친절이 예상치 못한 보상으로 돌아올 것입니다.",
+      "당신의 꿈이 현실이 되는 날이 가까워지고 있습니다.",
+      "오늘은 새로운 시작을 위한 완벽한 날입니다.",
+      "어려움은 일시적입니다. 곧 밝은 빛이 보일 것입니다.",
+    ],
+    colors: [
+      "빨강",
+      "파랑",
+      "노랑",
+      "초록",
+      "보라",
+      "주황",
+      "분홍",
+      "하늘색",
+      "금색",
+      "은색",
+    ],
+  },
+  en: {
+    fortunes: [
+      "A special opportunity will come your way today.",
+      "Fortune favors the prepared mind. Be ready!",
+      "Your efforts will soon bear fruit.",
+      "The person you meet today could become an important connection.",
+      "A positive attitude will bring greater fortune.",
+      "A small change will make a big difference.",
+      "Trust your instincts. They are especially accurate today.",
+      "Don't fear new challenges. Success awaits.",
+      "If you don't lose your smile today, good things will happen.",
+      "The answer you seek is already within you.",
+      "Express gratitude to those around you for greater happiness.",
+      "Today your creativity will shine.",
+      "Help will come from an unexpected place.",
+      "Be patient. Good results are coming soon.",
+      "Your passion will inspire those around you.",
+      "The decision you make today will brighten your future.",
+      "A small kindness will return as an unexpected reward.",
+      "The day your dreams become reality is approaching.",
+      "Today is the perfect day for a new beginning.",
+      "Difficulties are temporary. Bright light will soon appear.",
+    ],
+    colors: [
+      "Red",
+      "Blue",
+      "Yellow",
+      "Green",
+      "Purple",
+      "Orange",
+      "Pink",
+      "Sky Blue",
+      "Gold",
+      "Silver",
+    ],
+  },
+};
+
 export default function FortuneCookie() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const [isOpened, setIsOpened] = useState(false);
   const [fortune, setFortune] = useState<{
     message: string;
@@ -17,13 +93,13 @@ export default function FortuneCookie() {
     luckyColor: string;
   } | null>(null);
 
-  const fortunes = t("tools.fortunecookie.fortunes") as unknown as string[];
-  const colors = t("tools.fortunecookie.colors") as unknown as string[];
+  // 현재 언어에 맞는 데이터 가져오기
+  const currentData = useMemo(() => fortuneData[language], [language]);
 
   const openCookie = () => {
-    const randomFortune = fortunes[Math.floor(Math.random() * fortunes.length)];
+    const randomFortune = currentData.fortunes[Math.floor(Math.random() * currentData.fortunes.length)];
     const randomNumber = Math.floor(Math.random() * 100) + 1;
-    const randomColor = colors[Math.floor(Math.random() * colors.length)];
+    const randomColor = currentData.colors[Math.floor(Math.random() * currentData.colors.length)];
 
     setFortune({
       message: randomFortune,
