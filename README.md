@@ -122,4 +122,9 @@
 
 - https://utils-6fi.pages.dev/tools/groupdraw
 
+### 포츈쿠키 뽑기
+
+- https://utils-6fi.pages.dev/tools/fortunecookie
+
+
 해당 프로젝트는 AI를 통해서 만드는 프로젝트입니다.
