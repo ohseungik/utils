@@ -20,7 +20,6 @@ import {
   calculateExpressionNumber,
   calculateSoulUrgeNumber,
   calculatePersonalityNumber,
-  getNumberMeaning,
 } from "@/lib/numerologyUtils";
 
 interface NumerologyResult {
@@ -156,16 +155,10 @@ export default function Numerology() {
                 </div>
                 <div className="space-y-2 rounded-lg bg-muted p-4">
                   <p className="font-semibold text-sm">
-                    {t(
-                      getNumberMeaning(result.lifePathNumber, "lifePath")
-                        ?.keyword || ""
-                    )}
+                    {t(`tools.numerology.meanings.${result.lifePathNumber}.lifePath.keyword`)}
                   </p>
                   <p className="text-sm text-muted-foreground">
-                    {t(
-                      getNumberMeaning(result.lifePathNumber, "lifePath")
-                        ?.description || ""
-                    )}
+                    {t(`tools.numerology.meanings.${result.lifePathNumber}.lifePath.description`)}
                   </p>
                 </div>
               </CardContent>
@@ -195,16 +188,10 @@ export default function Numerology() {
                 </div>
                 <div className="space-y-2 rounded-lg bg-muted p-4">
                   <p className="font-semibold text-sm">
-                    {t(
-                      getNumberMeaning(result.expressionNumber, "expression")
-                        ?.keyword || ""
-                    )}
+                    {t(`tools.numerology.meanings.${result.expressionNumber}.expression.keyword`)}
                   </p>
                   <p className="text-sm text-muted-foreground">
-                    {t(
-                      getNumberMeaning(result.expressionNumber, "expression")
-                        ?.description || ""
-                    )}
+                    {t(`tools.numerology.meanings.${result.expressionNumber}.expression.description`)}
                   </p>
                 </div>
               </CardContent>
@@ -234,16 +221,10 @@ export default function Numerology() {
                 </div>
                 <div className="space-y-2 rounded-lg bg-muted p-4">
                   <p className="font-semibold text-sm">
-                    {t(
-                      getNumberMeaning(result.soulUrgeNumber, "soulUrge")
-                        ?.keyword || ""
-                    )}
+                    {t(`tools.numerology.meanings.${result.soulUrgeNumber}.soulUrge.keyword`)}
                   </p>
                   <p className="text-sm text-muted-foreground">
-                    {t(
-                      getNumberMeaning(result.soulUrgeNumber, "soulUrge")
-                        ?.description || ""
-                    )}
+                    {t(`tools.numerology.meanings.${result.soulUrgeNumber}.soulUrge.description`)}
                   </p>
                 </div>
               </CardContent>
@@ -273,16 +254,10 @@ export default function Numerology() {
                 </div>
                 <div className="space-y-2 rounded-lg bg-muted p-4">
                   <p className="font-semibold text-sm">
-                    {t(
-                      getNumberMeaning(result.personalityNumber, "personality")
-                        ?.keyword || ""
-                    )}
+                    {t(`tools.numerology.meanings.${result.personalityNumber}.personality.keyword`)}
                   </p>
                   <p className="text-sm text-muted-foreground">
-                    {t(
-                      getNumberMeaning(result.personalityNumber, "personality")
-                        ?.description || ""
-                    )}
+                    {t(`tools.numerology.meanings.${result.personalityNumber}.personality.description`)}
                   </p>
                 </div>
               </CardContent>
