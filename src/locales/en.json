@@ -514,6 +514,257 @@
         "array": "Array",
         "date": "Date"
       }
+    },
+    "numerology": {
+      "title": "Numerology Calculator",
+      "description": "Calculate Life Path, Expression, and Soul Urge numbers from birthdate and name",
+      "pageTitle": "Numerology Calculator",
+      "pageDescription": "Discover your Life Path, Expression, Soul Urge, and Personality numbers",
+      "inputSection": "Enter Information",
+      "inputDescription": "Enter your name and birthdate to calculate your numerology numbers",
+      "fullName": "Full Name (English)",
+      "fullNamePlaceholder": "John Smith",
+      "fullNameHint": "Enter your name in English (spaces allowed)",
+      "birthdate": "Birthdate",
+      "birthdateHint": "Select your birthdate",
+      "calculate": "Calculate",
+      "enterData": "Please enter your name or birthdate",
+      "calculated": "Numerology numbers calculated",
+      "reset": "Reset successfully",
+      "lifePathNumber": "Life Path Number",
+      "lifePathDescription": "Your life journey and purpose",
+      "expressionNumber": "Expression Number",
+      "expressionDescription": "Your talents and abilities",
+      "soulUrgeNumber": "Soul Urge Number",
+      "soulUrgeDescription": "Your inner desires",
+      "personalityNumber": "Personality Number",
+      "personalityDescription": "How others see you",
+      "aboutNumerology": "About Numerology",
+      "whatIsNumerology": "What is Numerology?",
+      "whatIsNumerologyDesc": "Numerology is an ancient practice that analyzes human personality, talents, and destiny through numbers. It uses Pythagorean principles to convert birthdates and names into numbers and interprets them.",
+      "howToUse": "How to Use",
+      "howToUse1": "Enter your English name to calculate Expression, Soul Urge, and Personality numbers",
+      "howToUse2": "Enter your birthdate to calculate your Life Path number",
+      "howToUse3": "Each number is displayed as 1~9 or Master Numbers 11, 22, 33",
+      "howToUse4": "Check the meaning of each number to gain deeper self-understanding",
+      "meanings": {
+        "1": {
+          "lifePath": {
+            "keyword": "Leadership, Independence",
+            "description": "You are a leader and pioneer. Independent, confident, and goal-oriented."
+          },
+          "expression": {
+            "keyword": "Creativity, Originality",
+            "description": "You possess original ideas and innovative thinking."
+          },
+          "soulUrge": {
+            "keyword": "Freedom, Independence",
+            "description": "You desire to freely forge your own path."
+          },
+          "personality": {
+            "keyword": "Confidence, Determination",
+            "description": "Others see you as confident and decisive."
+          }
+        },
+        "2": {
+          "lifePath": {
+            "keyword": "Cooperation, Harmony",
+            "description": "Peace-loving and cooperative. Diplomatic, sensitive, and values relationships."
+          },
+          "expression": {
+            "keyword": "Mediation, Consideration",
+            "description": "You excel at mediating between people."
+          },
+          "soulUrge": {
+            "keyword": "Harmony, Partnership",
+            "description": "You deeply desire harmonious relationships and cooperation."
+          },
+          "personality": {
+            "keyword": "Kindness, Gentleness",
+            "description": "Others see you as warm and approachable."
+          }
+        },
+        "3": {
+          "lifePath": {
+            "keyword": "Creativity, Expression",
+            "description": "Creative and expressive. Talented in arts and communication."
+          },
+          "expression": {
+            "keyword": "Artistry, Communication",
+            "description": "You have talent in expressing yourself through words, writing, and art."
+          },
+          "soulUrge": {
+            "keyword": "Self-expression, Joy",
+            "description": "You desire to express yourself and enjoy life."
+          },
+          "personality": {
+            "keyword": "Charm, Sociability",
+            "description": "You appear charming and sociable."
+          }
+        },
+        "4": {
+          "lifePath": {
+            "keyword": "Stability, Practicality",
+            "description": "Practical and systematic. Seeks stability, hardworking and reliable."
+          },
+          "expression": {
+            "keyword": "Organization, System",
+            "description": "You excel at handling things systematically."
+          },
+          "soulUrge": {
+            "keyword": "Stability, Order",
+            "description": "You desire to create stable and orderly environments."
+          },
+          "personality": {
+            "keyword": "Reliability, Sincerity",
+            "description": "Others see you as trustworthy and sincere."
+          }
+        },
+        "5": {
+          "lifePath": {
+            "keyword": "Freedom, Adventure",
+            "description": "Freedom-loving and embraces change. Adventurous, versatile, and adaptable."
+          },
+          "expression": {
+            "keyword": "Versatility, Adaptability",
+            "description": "You can demonstrate abilities in various fields."
+          },
+          "soulUrge": {
+            "keyword": "Change, Experience",
+            "description": "You crave new experiences and change."
+          },
+          "personality": {
+            "keyword": "Active, Dynamic",
+            "description": "You appear energetic and adventurous."
+          }
+        },
+        "6": {
+          "lifePath": {
+            "keyword": "Responsibility, Service",
+            "description": "Responsible and enjoys caring for others. Family-oriented and values harmony."
+          },
+          "expression": {
+            "keyword": "Healing, Nurturing",
+            "description": "You have the ability to care for and heal others."
+          },
+          "soulUrge": {
+            "keyword": "Family, Love",
+            "description": "You desire to care for your loved ones."
+          },
+          "personality": {
+            "keyword": "Warmth, Responsibility",
+            "description": "Others see you as warm and responsible."
+          }
+        },
+        "7": {
+          "lifePath": {
+            "keyword": "Wisdom, Exploration",
+            "description": "Analytical and intellectual. Seeks truth and possesses deep insight."
+          },
+          "expression": {
+            "keyword": "Analysis, Intuition",
+            "description": "You have the ability to analyze deeply and gain insights."
+          },
+          "soulUrge": {
+            "keyword": "Knowledge, Understanding",
+            "description": "You desire to explore truth and knowledge."
+          },
+          "personality": {
+            "keyword": "Mystery, Intelligence",
+            "description": "Others see you as intellectual and mysterious."
+          }
+        },
+        "8": {
+          "lifePath": {
+            "keyword": "Success, Power",
+            "description": "Ambitious and goal-oriented. Pursues material success and power with excellent management skills."
+          },
+          "expression": {
+            "keyword": "Management, Leadership",
+            "description": "You excel in business and management."
+          },
+          "soulUrge": {
+            "keyword": "Achievement, Influence",
+            "description": "You desire great achievement and influence."
+          },
+          "personality": {
+            "keyword": "Authority, Capability",
+            "description": "Others see you as authoritative and capable."
+          }
+        },
+        "9": {
+          "lifePath": {
+            "keyword": "Humanitarianism, Completion",
+            "description": "Humanitarian and altruistic. Wants to make the world better with a broad heart."
+          },
+          "expression": {
+            "keyword": "Philanthropy, Dedication",
+            "description": "You have talent for service and dedication to humanity."
+          },
+          "soulUrge": {
+            "keyword": "Ideals, Service",
+            "description": "You desire to create a better world."
+          },
+          "personality": {
+            "keyword": "Tolerance, Understanding",
+            "description": "Others see you as generous and understanding."
+          }
+        },
+        "11": {
+          "lifePath": {
+            "keyword": "Inspiration, Intuition (Master Number)",
+            "description": "A Master Number with high spiritual awareness. Highly intuitive and leads others through inspiration."
+          },
+          "expression": {
+            "keyword": "Spiritual Messenger",
+            "description": "You have the ability to convey spiritual messages and inspire people."
+          },
+          "soulUrge": {
+            "keyword": "Enlightenment, Light",
+            "description": "You desire to spread spiritual enlightenment and light."
+          },
+          "personality": {
+            "keyword": "Charisma, Inspiration",
+            "description": "Others see you as charismatic and inspiring."
+          }
+        },
+        "22": {
+          "lifePath": {
+            "keyword": "Master Builder (Master Number)",
+            "description": "A Master Number that turns dreams into reality. Has grand vision and can realize it practically."
+          },
+          "expression": {
+            "keyword": "Great Architect",
+            "description": "You have the ability to successfully complete large projects."
+          },
+          "soulUrge": {
+            "keyword": "Grand Achievement",
+            "description": "You desire to accomplish great works that impact humanity."
+          },
+          "personality": {
+            "keyword": "Vision, Execution",
+            "description": "Others see you as someone with both vision and execution power."
+          }
+        },
+        "33": {
+          "lifePath": {
+            "keyword": "Master Teacher (Master Number)",
+            "description": "A Master Number of unconditional love and service. Has ability to heal and uplift others."
+          },
+          "expression": {
+            "keyword": "Healing and Teaching",
+            "description": "You have special talent in healing and teaching others."
+          },
+          "soulUrge": {
+            "keyword": "Unconditional Love",
+            "description": "You desire to heal the world with unconditional love."
+          },
+          "personality": {
+            "keyword": "Compassion, Devotion",
+            "description": "Others see you as compassionate and devoted."
+          }
+        }
+      }
     }
   }
 }

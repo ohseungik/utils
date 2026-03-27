@@ -514,6 +514,257 @@
         "array": "Array (배열)",
         "date": "Date (날짜)"
       }
+    },
+    "numerology": {
+      "title": "수비학 계산기",
+      "description": "생년월일과 이름으로 생명수, 표현수, 영혼충동수를 계산합니다",
+      "pageTitle": "수비학 계산기",
+      "pageDescription": "당신의 생명수, 표현수, 영혼충동수, 성격수를 알아보세요",
+      "inputSection": "정보 입력",
+      "inputDescription": "이름과 생년월일을 입력하여 수비학 숫자를 계산하세요",
+      "fullName": "영문 전체 이름",
+      "fullNamePlaceholder": "John Smith",
+      "fullNameHint": "영문 이름을 입력하세요 (공백 포함 가능)",
+      "birthdate": "생년월일",
+      "birthdateHint": "생년월일을 선택하세요",
+      "calculate": "계산하기",
+      "enterData": "이름 또는 생년월일을 입력하세요",
+      "calculated": "수비학 숫자가 계산되었습니다",
+      "reset": "초기화되었습니다",
+      "lifePathNumber": "생명수 (Life Path Number)",
+      "lifePathDescription": "당신의 인생 여정과 목적",
+      "expressionNumber": "표현수 (Expression Number)",
+      "expressionDescription": "당신의 재능과 능력",
+      "soulUrgeNumber": "영혼충동수 (Soul Urge Number)",
+      "soulUrgeDescription": "당신의 내면의 욕구",
+      "personalityNumber": "성격수 (Personality Number)",
+      "personalityDescription": "타인이 보는 당신의 모습",
+      "aboutNumerology": "수비학이란?",
+      "whatIsNumerology": "수비학의 개념",
+      "whatIsNumerologyDesc": "수비학은 숫자를 통해 인간의 성격, 재능, 운명을 분석하는 고대 학문입니다. 피타고라스 수비학 원리를 사용하여 생년월일과 이름을 숫자로 변환하고 해석합니다.",
+      "howToUse": "사용 방법",
+      "howToUse1": "영문 이름을 입력하면 표현수, 영혼충동수, 성격수를 계산할 수 있습니다",
+      "howToUse2": "생년월일을 입력하면 생명수를 계산할 수 있습니다",
+      "howToUse3": "각 숫자는 1~9 또는 마스터 넘버 11, 22, 33으로 표시됩니다",
+      "howToUse4": "각 숫자의 의미를 확인하여 자신을 더 깊이 이해해보세요",
+      "meanings": {
+        "1": {
+          "lifePath": {
+            "keyword": "리더십, 독립성",
+            "description": "리더이자 개척자입니다. 독립적이고 자신감 있으며 목표 지향적입니다."
+          },
+          "expression": {
+            "keyword": "창의성, 독창성",
+            "description": "독창적인 아이디어와 혁신적인 사고를 가지고 있습니다."
+          },
+          "soulUrge": {
+            "keyword": "자유, 독립",
+            "description": "자유롭게 자신의 길을 개척하고 싶어합니다."
+          },
+          "personality": {
+            "keyword": "자신감, 결단력",
+            "description": "타인에게 자신감 있고 결단력 있는 모습으로 비춰집니다."
+          }
+        },
+        "2": {
+          "lifePath": {
+            "keyword": "협력, 조화",
+            "description": "평화를 사랑하고 협력적입니다. 외교적이고 민감하며 타인과의 관계를 중요시합니다."
+          },
+          "expression": {
+            "keyword": "조정능력, 배려",
+            "description": "사람들 사이의 중재자 역할을 잘 합니다."
+          },
+          "soulUrge": {
+            "keyword": "조화, 파트너십",
+            "description": "조화로운 관계와 협력을 내면 깊이 원합니다."
+          },
+          "personality": {
+            "keyword": "친절함, 온화함",
+            "description": "타인에게 따뜻하고 친근한 사람으로 비춰집니다."
+          }
+        },
+        "3": {
+          "lifePath": {
+            "keyword": "창조성, 표현",
+            "description": "창의적이고 표현력이 풍부합니다. 예술적 재능과 커뮤니케이션 능력이 뛰어납니다."
+          },
+          "expression": {
+            "keyword": "예술성, 소통",
+            "description": "말과 글, 예술을 통해 자신을 표현하는 재능이 있습니다."
+          },
+          "soulUrge": {
+            "keyword": "자기표현, 즐거움",
+            "description": "자신을 표현하고 삶을 즐기고 싶어합니다."
+          },
+          "personality": {
+            "keyword": "매력, 사교성",
+            "description": "매력적이고 사교적인 사람으로 보입니다."
+          }
+        },
+        "4": {
+          "lifePath": {
+            "keyword": "안정성, 실용성",
+            "description": "실용적이고 체계적입니다. 안정을 추구하며 근면성실하고 신뢰할 수 있습니다."
+          },
+          "expression": {
+            "keyword": "조직력, 체계",
+            "description": "체계적으로 일을 처리하는 능력이 뛰어납니다."
+          },
+          "soulUrge": {
+            "keyword": "안정, 질서",
+            "description": "안정적이고 질서 있는 환경을 만들고 싶어합니다."
+          },
+          "personality": {
+            "keyword": "신뢰성, 성실함",
+            "description": "믿음직하고 성실한 사람으로 비춰집니다."
+          }
+        },
+        "5": {
+          "lifePath": {
+            "keyword": "자유, 모험",
+            "description": "자유를 사랑하고 변화를 즐깁니다. 모험적이고 다재다능하며 적응력이 뛰어납니다."
+          },
+          "expression": {
+            "keyword": "다재다능, 적응력",
+            "description": "다양한 분야에서 능력을 발휘할 수 있습니다."
+          },
+          "soulUrge": {
+            "keyword": "변화, 경험",
+            "description": "새로운 경험과 변화를 갈망합니다."
+          },
+          "personality": {
+            "keyword": "활동적, 역동적",
+            "description": "활기차고 모험을 즐기는 사람으로 보입니다."
+          }
+        },
+        "6": {
+          "lifePath": {
+            "keyword": "책임감, 봉사",
+            "description": "책임감이 강하고 타인을 돌보는 것을 좋아합니다. 가정적이고 조화를 중시합니다."
+          },
+          "expression": {
+            "keyword": "치유, 돌봄",
+            "description": "타인을 돌보고 치유하는 능력이 있습니다."
+          },
+          "soulUrge": {
+            "keyword": "가족, 사랑",
+            "description": "사랑하는 사람들을 보살피고 싶어합니다."
+          },
+          "personality": {
+            "keyword": "따뜻함, 책임감",
+            "description": "따뜻하고 책임감 있는 사람으로 비춰집니다."
+          }
+        },
+        "7": {
+          "lifePath": {
+            "keyword": "지혜, 탐구",
+            "description": "분석적이고 지적입니다. 진리를 탐구하며 깊은 통찰력을 가지고 있습니다."
+          },
+          "expression": {
+            "keyword": "분석력, 직관",
+            "description": "깊이 있게 분석하고 통찰하는 능력이 있습니다."
+          },
+          "soulUrge": {
+            "keyword": "지식, 이해",
+            "description": "진리와 지식을 탐구하고 싶어합니다."
+          },
+          "personality": {
+            "keyword": "신비로움, 지성",
+            "description": "지적이고 신비로운 사람으로 비춰집니다."
+          }
+        },
+        "8": {
+          "lifePath": {
+            "keyword": "성공, 권력",
+            "description": "야심적이고 목표 지향적입니다. 물질적 성공과 권력을 추구하며 경영 능력이 뛰어납니다."
+          },
+          "expression": {
+            "keyword": "경영능력, 통솔력",
+            "description": "사업과 경영에서 뛰어난 능력을 발휘합니다."
+          },
+          "soulUrge": {
+            "keyword": "성취, 영향력",
+            "description": "큰 성취와 영향력을 원합니다."
+          },
+          "personality": {
+            "keyword": "권위, 능력",
+            "description": "권위 있고 유능한 사람으로 비춰집니다."
+          }
+        },
+        "9": {
+          "lifePath": {
+            "keyword": "인도주의, 완성",
+            "description": "인도주의적이고 이타적입니다. 세상을 더 나은 곳으로 만들고자 하며 마음이 넓습니다."
+          },
+          "expression": {
+            "keyword": "박애, 헌신",
+            "description": "인류에 대한 봉사와 헌신의 재능이 있습니다."
+          },
+          "soulUrge": {
+            "keyword": "이상, 봉사",
+            "description": "더 나은 세상을 만들고 싶어합니다."
+          },
+          "personality": {
+            "keyword": "관용, 이해심",
+            "description": "관대하고 이해심 많은 사람으로 비춰집니다."
+          }
+        },
+        "11": {
+          "lifePath": {
+            "keyword": "영감, 직관 (마스터 넘버)",
+            "description": "높은 영적 인식을 가진 마스터 넘버입니다. 직관력이 뛰어나고 영감을 통해 타인을 이끕니다."
+          },
+          "expression": {
+            "keyword": "영적 메신저",
+            "description": "영적 메시지를 전달하고 사람들에게 영감을 주는 능력이 있습니다."
+          },
+          "soulUrge": {
+            "keyword": "계몽, 빛",
+            "description": "영적 깨달음과 빛을 전파하고 싶어합니다."
+          },
+          "personality": {
+            "keyword": "카리스마, 영감",
+            "description": "카리스마 있고 영감을 주는 사람으로 비춰집니다."
+          }
+        },
+        "22": {
+          "lifePath": {
+            "keyword": "마스터 빌더 (마스터 넘버)",
+            "description": "꿈을 현실로 만드는 마스터 넘버입니다. 큰 비전을 가지고 실용적으로 실현할 수 있습니다."
+          },
+          "expression": {
+            "keyword": "위대한 건축가",
+            "description": "큰 프로젝트를 성공적으로 완수하는 능력이 있습니다."
+          },
+          "soulUrge": {
+            "keyword": "거대한 성취",
+            "description": "인류에 영향을 미칠 큰 업적을 이루고 싶어합니다."
+          },
+          "personality": {
+            "keyword": "비전, 실행력",
+            "description": "비전과 실행력을 겸비한 사람으로 비춰집니다."
+          }
+        },
+        "33": {
+          "lifePath": {
+            "keyword": "마스터 교사 (마스터 넘버)",
+            "description": "무조건적 사랑과 봉사의 마스터 넘버입니다. 타인을 치유하고 고양시키는 능력이 있습니다."
+          },
+          "expression": {
+            "keyword": "치유와 교육",
+            "description": "타인을 치유하고 가르치는 특별한 재능이 있습니다."
+          },
+          "soulUrge": {
+            "keyword": "무조건적 사랑",
+            "description": "무조건적인 사랑으로 세상을 치유하고 싶어합니다."
+          },
+          "personality": {
+            "keyword": "자비, 헌신",
+            "description": "자비롭고 헌신적인 사람으로 비춰집니다."
+          }
+        }
+      }
     }
   }
 }
